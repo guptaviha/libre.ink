@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChakraProvider } from "@chakra-ui/react";
 import { EditPage } from './EditPage';
 import { ViewPage } from './ViewPage';
 
@@ -11,14 +12,14 @@ export const App = () => {
     if (post) {
         decodedPost = atob(post);
     }
-    
+
     return (
-        <div>
+        <ChakraProvider>
             {!post
                 ? <EditPage />
                 : <ViewPage post={decodedPost} />
             }
-        </div>
+        </ChakraProvider>
     );
 };
 
