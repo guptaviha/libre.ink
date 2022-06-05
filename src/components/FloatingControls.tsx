@@ -21,54 +21,51 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
 
     return (
-        <Fade style={{ transitionDuration: '0.4s'}} in={show}>
-            <Box background='red'>
-                <IconButton
-                    onClick={() => setSoundOn(!soundOn)}
-                    position='absolute'
-                    top='10px'
-                    right='10px'
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    size='lg'
-                    fontSize='30px'
-                    icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
-                />
-
-                <Popover>
-                    <PopoverTrigger>
-                        <IconButton
-                            onClick={() => setStatsBoxOpen(!statsBoxOpen)}
-                            position='absolute'
-                            bottom='10px'
-                            left='10px'
-                            aria-label='stats-count'
-                            variant='ghost'
-                            size='lg'
-                            fontSize='30px'
-                            isRound={true}
-                            icon={<FiBarChart2 />}
-                        />
-                    </PopoverTrigger>
-                    <PopoverContent>
-                        <Box>
-                            <TableContainer>
-                                <Table variant='unstyled'>
-                                    <Tbody>
-                                        {Object.keys(stats).map((statKey) => (
-                                            <Tr key={statKey}>
-                                                <Td>{camelToTitleCase(statKey)}</Td>
-                                                <Td>{stats[statKey]}</Td>
-                                            </Tr>
-                                        ))}
-                                    </Tbody>
-                                </Table>
-                            </TableContainer>
-                        </Box>
-                    </PopoverContent>
-                </Popover>
-            </Box>
+        <Fade style={{ transitionDuration: '0.4s' }} in={show}>
+            <IconButton
+                onClick={() => setSoundOn(!soundOn)}
+                position='absolute'
+                top='10px'
+                right='10px'
+                aria-label='audio-toggle'
+                variant='ghost'
+                isRound={true}
+                size='lg'
+                fontSize='30px'
+                icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
+            />
+            <Popover>
+                <PopoverTrigger>
+                    <IconButton
+                        onClick={() => setStatsBoxOpen(!statsBoxOpen)}
+                        position='absolute'
+                        bottom='10px'
+                        left='10px'
+                        aria-label='stats-count'
+                        variant='ghost'
+                        size='lg'
+                        fontSize='30px'
+                        isRound={true}
+                        icon={<FiBarChart2 />}
+                    />
+                </PopoverTrigger>
+                <PopoverContent>
+                    <Box>
+                        <TableContainer>
+                            <Table variant='unstyled'>
+                                <Tbody>
+                                    {Object.keys(stats).map((statKey) => (
+                                        <Tr key={statKey}>
+                                            <Td>{camelToTitleCase(statKey)}</Td>
+                                            <Td>{stats[statKey]}</Td>
+                                        </Tr>
+                                    ))}
+                                </Tbody>
+                            </Table>
+                        </TableContainer>
+                    </Box>
+                </PopoverContent>
+            </Popover>
         </Fade>
     )
 };
