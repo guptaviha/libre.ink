@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Heading, Textarea } from '@chakra-ui/react';
-import { FiEdit2 } from 'react-icons/fi';
+import { Box, Heading, Textarea } from '@chakra-ui/react';
 import Typewriter from 'typewriter-effect';
 import { FloatingControls } from './FloatingControls';
+import { PublishButton } from './PublishButton';
 
 export type StatsType = {
     wordCount: number;
@@ -65,6 +65,7 @@ export const EditPage = () => {
             <Textarea
                 id="edit-container"
                 value={postContent}
+                // spellcheck={true}
                 size="lg"
                 rows="20"
                 m="50px"
@@ -113,12 +114,10 @@ export const EditPage = () => {
                 autoFocus
                 variant='unstyled'
             />
-            <Button variant='ghost' position='absolute' bottom='10px' right='10px' leftIcon={<FiEdit2 />} id="publish-btn" onClick={() => {
+            <PublishButton id="publish-btn" onClick={() => {
                 const encodedPost = btoa(postContent);
                 window.location.search = `?post=${encodedPost}`
-            }}>
-                Publish
-            </Button>
+            }} />
             <FloatingControls stats={stats} />
         </Box>
     );

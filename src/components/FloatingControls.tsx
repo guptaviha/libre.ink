@@ -29,6 +29,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 aria-label='audio-toggle'
                 variant='ghost'
                 isRound={true}
+                size='lg'
+                fontSize='30px'
                 icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
             />
 
@@ -41,6 +43,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         left='10px'
                         aria-label='stats-count'
                         variant='ghost'
+                        size='lg'
+                        fontSize='30px'
                         isRound={true}
                         icon={<FiBarChart2 />}
                     />
