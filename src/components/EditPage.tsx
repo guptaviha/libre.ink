@@ -21,14 +21,6 @@ async function playAudio(id) {
     }
     await x.play(); 
 } 
-async function pauseAudio(id) {
-    var x = document.getElementById(id) as HTMLAudioElement; 
-    await x.pause();
-}
-async function loadAudio(id) {
-    var x = document.getElementById(id) as HTMLAudioElement; 
-    await x.load();
-}
 
 export const EditPage = () => {
     const [postContent, setPostContent] = useState('');
@@ -72,38 +64,35 @@ export const EditPage = () => {
                 maxHeight="400px"
                 placeholder="Write your heart out..."
                 onKeyDown={async (event) => {
-                    console.log(event.which)
-                    const key = event.which
+                    console.log(event.keyCode)
+                    const key = event.keyCode
                     // space
                     if (key == 32){
-                        // await pauseAudio("space-bar-audio")
-                        // await loadAudio("space-bar-audio")
                         await playAudio("space-bar-audio")
                     }
                     // return
                     else if (key == 13){
-                        // await pauseAudio("return-audio")
-                        // await loadAudio("return-audio")
                         await playAudio("return-audio")
                     } 
                     // backspace
                     else if (key == 8){
-                        // await pauseAudio("backspace-audio")
-                        // await loadAudio("backspace-audio")
                         await playAudio("backspace-audio")
                     }
-                    // default to all keys
-                    else {
-                        // await pauseAudio("key-audio")
-                        // await loadAudio("key-audio")
-                        // console.log("keyCount before",keyCount)
+                    // tab
+                    else if (key == 9){
+                        event.preventDefault();
+                    }
+                    // default to all printing keys
+                    // http://gcctech.org/csc/javascript/javascript_keycodes.htm
+                    else if ((key >= 48 && key <=90) 
+                    || (key >= 96 && key <= 111)
+                    || (key >= 186 && key <= 192)
+                    || (key >= 219 && key <= 222) ){
                         if (keyCount >= 2){
                             keyCount = 0
                         } else {
                             keyCount = keyCount + 1
                         }
-                        // console.log("keyCount after",keyCount)
-                        console.log(keySounds[keyCount])
                         await playAudio(keySounds[keyCount])
                     }
                 }}
