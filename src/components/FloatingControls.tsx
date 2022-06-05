@@ -8,6 +8,12 @@ type FloatingControlsProps = {
     stats: StatsType;
 };
 
+const camelToTitleCase = (text: string) => {
+    const result = text.replace(/([A-Z])/g, " $1");
+    const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+    return finalResult;
+};
+
 export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats } = props;
     const [soundOn, setSoundOn] = useState(true);
@@ -46,7 +52,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 <Tbody>
                                     {Object.keys(stats).map((statKey) => (
                                         <Tr key={statKey}>
-                                            <Td>{statKey}</Td>
+                                            <Td>{camelToTitleCase(statKey)}</Td>
                                             <Td>{stats[statKey]}</Td>
                                         </Tr>
                                     ))}
