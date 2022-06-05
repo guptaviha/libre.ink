@@ -10,10 +10,10 @@ Remember to save your blog URL because all the content of your blog post lives i
  - Markdown renderer
  - Markdown editor
 
-## Optional Features
- - Print icon?
- - Share btns?
+### Optional
+ - Print icon
+ - Share buttons
 
-## Done
+### Completed
  - Typewriter sounds
  - Floating sidepanel
