@@ -10,19 +10,24 @@ export type StatsType = {
     sentenceCount: number;
 };
 
+const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
+var keyCount = 0
 
 
-function playAudio(id) { 
-    var x = document.getElementById(id); 
-    x.play(); 
+async function playAudio(id) { 
+    var x = document.getElementById(id) as HTMLAudioElement;
+    if (id == "key-audio-1"){
+        x.volume = 0.4
+    }
+    await x.play(); 
 } 
-function pauseAudio(id) {
-    var x = document.getElementById(id); 
-    x.pause();
+async function pauseAudio(id) {
+    var x = document.getElementById(id) as HTMLAudioElement; 
+    await x.pause();
 }
-function loadAudio(id) {
-    var x = document.getElementById(id); 
-    x.load();
+async function loadAudio(id) {
+    var x = document.getElementById(id) as HTMLAudioElement; 
+    await x.load();
 }
 
 export const EditPage = () => {
@@ -63,32 +68,40 @@ export const EditPage = () => {
                 minHeight="400px"
                 maxHeight="400px"
                 placeholder="Write your heart out..."
-                onKeyDown={(event) => {
+                onKeyDown={async (event) => {
                     console.log(event.which)
                     const key = event.which
                     // space
                     if (key == 32){
-                        pauseAudio("space-bar-audio")
-                        loadAudio("space-bar-audio")
-                        playAudio("space-bar-audio")
+                        // await pauseAudio("space-bar-audio")
+                        // await loadAudio("space-bar-audio")
+                        await playAudio("space-bar-audio")
                     }
                     // return
                     else if (key == 13){
-                        pauseAudio("return-audio")
-                        loadAudio("return-audio")
-                        playAudio("return-audio")
+                        // await pauseAudio("return-audio")
+                        // await loadAudio("return-audio")
+                        await playAudio("return-audio")
                     } 
                     // backspace
                     else if (key == 8){
-                        pauseAudio("backspace-audio")
-                        loadAudio("backspace-audio")
-                        playAudio("backspace-audio")
+                        // await pauseAudio("backspace-audio")
+                        // await loadAudio("backspace-audio")
+                        await playAudio("backspace-audio")
                     }
                     // default to all keys
                     else {
-                        pauseAudio("key-audio")
-                        loadAudio("key-audio")
-                        playAudio("key-audio")
+                        // await pauseAudio("key-audio")
+                        // await loadAudio("key-audio")
+                        // console.log("keyCount before",keyCount)
+                        if (keyCount >= 2){
+                            keyCount = 0
+                        } else {
+                            keyCount = keyCount + 1
+                        }
+                        // console.log("keyCount after",keyCount)
+                        console.log(keySounds[keyCount])
+                        await playAudio(keySounds[keyCount])
                     }
                 }}
                 onChange={(event) => {
