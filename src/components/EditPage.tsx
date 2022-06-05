@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Heading, Textarea } from '@chakra-ui/react';
-import { FiEdit2 } from 'react-icons/fi';
+import { Box, Heading, Textarea } from '@chakra-ui/react';
 import Typewriter from 'typewriter-effect';
 import { FloatingControls } from './FloatingControls';
+import { PublishButton } from './PublishButton';
 
 export type StatsType = {
     wordCount: number;
@@ -12,7 +12,6 @@ export type StatsType = {
 
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0
-
 
 async function playAudio(id) { 
     var x = document.getElementById(id) as HTMLAudioElement;
@@ -24,6 +23,7 @@ async function playAudio(id) {
 
 export const EditPage = () => {
     const [postContent, setPostContent] = useState('');
+    const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
         wordCount: 0,
         characterCount: 0,
@@ -43,7 +43,9 @@ export const EditPage = () => {
     };
 
     return (
-        <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center'>
+        <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
+            setRecentlyTypedCount(0);
+        }}>
             <Heading as={'h2'} fontFamily='monospace'>
                 <Typewriter
                     options={{
@@ -57,6 +59,7 @@ export const EditPage = () => {
             <Textarea
                 id="edit-container"
                 value={postContent}
+                // spellcheck={true}
                 size="lg"
                 rows="20"
                 m="50px"
@@ -64,6 +67,7 @@ export const EditPage = () => {
                 maxHeight="400px"
                 placeholder="Write your heart out..."
                 onKeyDown={async (event) => {
+                    setRecentlyTypedCount(recentlyTypedCount+1);
                     console.log(event.keyCode)
                     const key = event.keyCode
                     // space
@@ -102,13 +106,11 @@ export const EditPage = () => {
                 autoFocus
                 variant='unstyled'
             />
-            <Button variant='ghost' position='absolute' bottom='10px' right='10px' leftIcon={<FiEdit2 />} id="publish-btn" onClick={() => {
+            <PublishButton id="publish-btn" onClick={() => {
                 const encodedPost = btoa(postContent);
                 window.location.search = `?post=${encodedPost}`
-            }}>
-                Publish
-            </Button>
-            <FloatingControls stats={stats} />
+            }} />
+            <FloatingControls stats={stats} show={recentlyTypedCount < 2} />
         </Box>
     );
 };

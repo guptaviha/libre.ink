@@ -1,12 +1,8 @@
-import { Box, IconButton, Popover, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr } from '@chakra-ui/react';
+import { Box, Fade, IconButton, Popover, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute } from 'react-icons/bs';
 import { FiBarChart2 } from 'react-icons/fi';
 import { StatsType } from './EditPage';
-
-type FloatingControlsProps = {
-    stats: StatsType;
-};
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -14,13 +10,18 @@ const camelToTitleCase = (text: string) => {
     return finalResult;
 };
 
+type FloatingControlsProps = {
+    stats: StatsType;
+    show: boolean;
+};
+
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats } = props;
+    const { stats, show } = props;
     const [soundOn, setSoundOn] = useState(true);
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
 
     return (
-        <Box background='red'>
+        <Fade style={{ transitionDuration: '0.4s' }} in={show}>
             <IconButton
                 onClick={() => setSoundOn(!soundOn)}
                 position='absolute'
@@ -29,9 +30,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 aria-label='audio-toggle'
                 variant='ghost'
                 isRound={true}
+                size='lg'
+                fontSize='30px'
                 icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
             />
-
             <Popover>
                 <PopoverTrigger>
                     <IconButton
@@ -41,6 +43,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         left='10px'
                         aria-label='stats-count'
                         variant='ghost'
+                        size='lg'
+                        fontSize='30px'
                         isRound={true}
                         icon={<FiBarChart2 />}
                     />
@@ -62,6 +66,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     </Box>
                 </PopoverContent>
             </Popover>
-        </Box>
+        </Fade>
     )
 };
