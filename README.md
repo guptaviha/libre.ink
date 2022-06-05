@@ -5,8 +5,15 @@ Remember to save your blog URL because all the content of your blog post lives i
 ## Features Coming Soon
  - Basic Settings Sidepanel
      - Themes (Dark mode, parchment)
+     - Mute/Unmute typing sounds
+     - About Page
  - Markdown renderer
  - Markdown editor
- - Typewriter sounds for heading
+
+## Optional Features
  - Print icon?
  - Share btns?
+
+## Done
+ - Typewriter sounds
+ - Floating sidepanel
