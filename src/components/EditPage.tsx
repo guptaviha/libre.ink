@@ -61,7 +61,6 @@ export const EditPage = () => {
                         pauseFor: 90000000,
                     }}
                 />
-
             </Heading>
             <Textarea
                 id="edit-container"
