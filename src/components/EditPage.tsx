@@ -13,7 +13,6 @@ export type StatsType = {
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0
 
-
 async function playAudio(id) { 
     var x = document.getElementById(id) as HTMLAudioElement;
     if (id == "key-audio-1"){
@@ -32,6 +31,7 @@ async function loadAudio(id) {
 
 export const EditPage = () => {
     const [postContent, setPostContent] = useState('');
+    const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
         wordCount: 0,
         characterCount: 0,
@@ -51,7 +51,9 @@ export const EditPage = () => {
     };
 
     return (
-        <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center'>
+        <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
+            setRecentlyTypedCount(0);
+        }}>
             <Heading as={'h2'} fontFamily='monospace'>
                 <Typewriter
                     options={{
@@ -73,6 +75,7 @@ export const EditPage = () => {
                 maxHeight="400px"
                 placeholder="Write your heart out..."
                 onKeyDown={async (event) => {
+                    setRecentlyTypedCount(recentlyTypedCount+1);
                     console.log(event.which)
                     const key = event.which
                     // space
@@ -118,7 +121,7 @@ export const EditPage = () => {
                 const encodedPost = btoa(postContent);
                 window.location.search = `?post=${encodedPost}`
             }} />
-            <FloatingControls stats={stats} />
+            <FloatingControls stats={stats} show={recentlyTypedCount < 2} />
         </Box>
     );
 };
