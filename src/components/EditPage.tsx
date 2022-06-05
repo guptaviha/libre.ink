@@ -58,7 +58,7 @@ export const EditPage = () => {
                         strings: ['Mini Blog'],
                         autoStart: true,
                         loop: false,
-                        pauseFor: 900000,
+                        pauseFor: 90000000,
                     }}
                 />
             </Heading>
