@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, Heading, Textarea } from '@chakra-ui/react';
 import { FiEdit2 } from 'react-icons/fi';
 import Typewriter from 'typewriter-effect';
@@ -9,8 +9,6 @@ export type StatsType = {
     characterCount: number;
     sentenceCount: number;
 };
-
-
 
 function playAudio(id) { 
     var x = document.getElementById(id); 
@@ -33,10 +31,14 @@ export const EditPage = () => {
         sentenceCount: 0,
     });
 
+    useEffect(() => {
+        calculateStats();
+    }, [postContent]);
+
     const calculateStats = () => {
         setStats({
             wordCount: postContent.split(' ').length,
-            characterCount: postContent.length + 1,
+            characterCount: postContent.length,
             sentenceCount: postContent.split('.').length,
         });
     };
@@ -93,7 +95,6 @@ export const EditPage = () => {
                 }}
                 onChange={(event) => {
                     setPostContent(event.target.value);
-                    calculateStats();
                 }}
                 autoFocus
                 variant='unstyled'
