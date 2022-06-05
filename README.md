@@ -10,4 +10,3 @@ Remember to save your blog URL because all the content of your blog post lives i
  - Typewriter sounds for heading
  - Print icon?
  - Share btns?
-
