@@ -13,16 +13,47 @@ export type StatsType = {
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0
 
-async function playAudio(id) { 
+async function playAudio(id) {
     var x = document.getElementById(id) as HTMLAudioElement;
-    if (id == "key-audio-1"){
+    if (id == "key-audio-1") {
         x.volume = 0.4
     }
-    await x.play(); 
-} 
+    await x.play();
+}
+
+async function handleKeyAudio(keyCode: number) {
+    const key = keyCode
+    // space
+    if (key == 32) {
+        await playAudio("space-bar-audio")
+    }
+    // return
+    else if (key == 13) {
+        await playAudio("return-audio")
+    }
+    // backspace
+    else if (key == 8) {
+        await playAudio("backspace-audio")
+    }
+    // default to all printing keys
+    // http://gcctech.org/csc/javascript/javascript_keycodes.htm
+    else if ((key >= 48 && key <= 90)
+        || (key >= 96 && key <= 111)
+        || (key >= 186 && key <= 192)
+        || (key >= 219 && key <= 222)) {
+        if (keyCount >= 2) {
+            keyCount = 0
+        } else {
+            keyCount = keyCount + 1
+        }
+        await playAudio(keySounds[keyCount])
+    }
+}
+
 
 export const EditPage = () => {
     const [postContent, setPostContent] = useState('');
+    const [soundOn, setSoundOn] = useState(true);
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
         wordCount: 0,
@@ -67,37 +98,14 @@ export const EditPage = () => {
                 maxHeight="400px"
                 placeholder="Write your heart out..."
                 onKeyDown={async (event) => {
-                    setRecentlyTypedCount(recentlyTypedCount+1);
-                    console.log(event.keyCode)
-                    const key = event.keyCode
-                    // space
-                    if (key == 32){
-                        await playAudio("space-bar-audio")
+                    setRecentlyTypedCount(recentlyTypedCount + 1);
+                    const key = event.keyCode;
+                    if (soundOn) {
+                        handleKeyAudio(key);
                     }
-                    // return
-                    else if (key == 13){
-                        await playAudio("return-audio")
-                    } 
-                    // backspace
-                    else if (key == 8){
-                        await playAudio("backspace-audio")
-                    }
-                    // tab
-                    else if (key == 9){
+                    // TODO: Remove tab logic if handled by component
+                    if (key == 9) {
                         event.preventDefault();
-                    }
-                    // default to all printing keys
-                    // http://gcctech.org/csc/javascript/javascript_keycodes.htm
-                    else if ((key >= 48 && key <=90) 
-                    || (key >= 96 && key <= 111)
-                    || (key >= 186 && key <= 192)
-                    || (key >= 219 && key <= 222) ){
-                        if (keyCount >= 2){
-                            keyCount = 0
-                        } else {
-                            keyCount = keyCount + 1
-                        }
-                        await playAudio(keySounds[keyCount])
                     }
                 }}
                 onChange={(event) => {
@@ -110,7 +118,12 @@ export const EditPage = () => {
                 const encodedPost = btoa(postContent);
                 window.location.search = `?post=${encodedPost}`
             }} />
-            <FloatingControls stats={stats} show={recentlyTypedCount < 2} />
+            <FloatingControls
+                stats={stats}
+                show={recentlyTypedCount < 2}
+                soundOn={soundOn}
+                setSoundOn={setSoundOn}
+            />
         </Box>
     );
 };

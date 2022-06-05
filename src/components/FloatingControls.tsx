@@ -13,11 +13,12 @@ const camelToTitleCase = (text: string) => {
 type FloatingControlsProps = {
     stats: StatsType;
     show: boolean;
+    soundOn: boolean;
+    setSoundOn: (soundOn: boolean) => void;
 };
 
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats, show } = props;
-    const [soundOn, setSoundOn] = useState(true);
+    const { stats, show, soundOn, setSoundOn } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
 
     return (
