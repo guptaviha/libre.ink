@@ -2,6 +2,7 @@ import { Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverT
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
+import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2 } from 'react-icons/fi';
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
@@ -28,7 +29,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, postContent, setSoundOn } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
     const { colorMode, toggleColorMode } = useColorMode();
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure()
+    const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure()
 
     return (
         <>
@@ -65,7 +67,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 />
                 <IconButton
                     _focus={{ outline: "none" }}
-                    onClick={onOpen}
+                    onClick={onOpenInfo}
                     position='fixed'
                     top='10px'
                     right='110px'
@@ -76,7 +78,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     fontSize='30px'
                     icon={<BsInfo />}
                 />
-                <Modal isOpen={isOpen} onClose={onClose}>
+                <Modal isOpen={isOpenInfo} onClose={onCloseInfo} >
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
@@ -156,12 +158,44 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme='whatsapp' onClick={onClose}>
+                            <Button colorScheme='whatsapp' onClick={onCloseInfo}>
                                 Got it!
                             </Button>
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
+
+                <IconButton
+                    _focus={{ outline: "none" }}
+                    onClick={onOpenFont}
+                    position='fixed'
+                    top='10px'
+                    right='160px'
+                    aria-label='audio-toggle'
+                    variant='ghost'
+                    isRound={true}
+                    size='lg'
+                    fontSize='30px'
+                    icon={<RiFontSize />}
+                />
+                <Modal isOpen={isOpenFont} onClose={onCloseFont} >
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>
+                            Font Settings
+                        </ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button colorScheme='whatsapp' onClick={onCloseInfo}>
+                                Apply
+                            </Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+
                 <Popover>
                     <PopoverTrigger>
                         <IconButton
