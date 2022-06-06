@@ -1,9 +1,10 @@
-import { Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
+import { Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { BsVolumeUp, BsVolumeMute } from 'react-icons/bs';
+import { BsVolumeUp, BsVolumeMute, BsFacebook } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import { FiBarChart2 } from 'react-icons/fi';
-import { BsInfo } from 'react-icons/bs';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
+import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
@@ -72,7 +73,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>
-                    Welcome to mini-blog!
+                        Welcome to mini-blog!
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
@@ -80,10 +81,75 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <br></br>
                         <br></br>
                         <b>Remember to save your blog URL</b> because all the content of your blog post lives in the URL. The application does not talk to a database or server of any kind.
+                        <br></br>
+                        <br></br>
+
+                        <Stack spacing={4} direction='row' align='center'>
+                            <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                open-source
+                            </Button>
+                            <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                privacy-friendly
+                            </Button>
+                            <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                serverless
+                            </Button>
+                            <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                b64 encoding
+                            </Button>
+                        </Stack>
+                        <br></br>
+
+
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={() =>
+                                window.open(
+                                    'https://github.com/guptaviha/mini-blog',
+                                    '_blank'
+                                )
+                            }
+                            variant='ghost'
+                            isRound={true}
+                            size='lg'
+                            fontSize='30px'
+                            aria-label='audio-toggle'
+                            icon={<BsGithub />}
+                        />
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={() =>
+                                window.open(
+                                    'https://twitter.com/intent/tweet?text=Check%20this%20out!%20Minimalistic%20and%20quick%20blogging%20is%20here:%20miniblog.ink',
+                                    '_blank'
+                                )
+                            }
+                            variant='ghost'
+                            isRound={true}
+                            size='lg'
+                            fontSize='30px'
+                            aria-label='audio-toggle'
+                            icon={<BsTwitter />}
+                        />
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={() =>
+                                window.open(
+                                    'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fminiblog.ink%2F&amp;src=sdkpreparse',
+                                    '_blank'
+                                )
+                            }
+                            variant='ghost'
+                            isRound={true}
+                            size='lg'
+                            fontSize='30px'
+                            aria-label='audio-toggle'
+                            icon={<BsFacebook />}
+                        />
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button colorScheme='whatsapp' onClick={onClose}>
                             Got it!
                         </Button>
                     </ModalFooter>
