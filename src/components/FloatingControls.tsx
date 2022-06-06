@@ -1,9 +1,12 @@
-import { Box, Fade, IconButton, Popover, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
+import { Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import { FiBarChart2 } from 'react-icons/fi';
+import { BsInfo } from 'react-icons/bs';
 import { StatsType } from './EditPage';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -22,11 +25,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, setSoundOn } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
     const { colorMode, toggleColorMode } = useColorMode();
-
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
         <Fade style={{ transitionDuration: '0.4s' }} in={show}>
             <IconButton
+                _focus={{ outline: "none" }}
                 onClick={() => setSoundOn(!soundOn)}
                 position='absolute'
                 top='10px'
@@ -39,6 +43,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
             />
             <IconButton
+                _focus={{ outline: "none" }}
                 onClick={() => toggleColorMode()}
                 position='absolute'
                 top='10px'
@@ -50,9 +55,47 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 fontSize='30px'
                 icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
             />
+            <IconButton
+                _focus={{ outline: "none" }}
+                onClick={onOpen}
+                position='absolute'
+                top='10px'
+                right='110px'
+                aria-label='audio-toggle'
+                variant='ghost'
+                isRound={true}
+                size='lg'
+                fontSize='30px'
+                icon={<BsInfo />}
+            />
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>
+                        About
+                    </ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        Welcome to mini-blog!
+                        <br></br>
+                        <br></br>
+                        The serverless instant-publish blog platform that lets you publish as fast as you can write.
+                        <br></br>
+                        <br></br>
+                        Remember to save your blog URL because all the content of your blog post lives in the URL. The application does not talk to a database or server of any kind.
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                            Got it!
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
             <Popover>
                 <PopoverTrigger>
                     <IconButton
+                        _focus={{ outline: "none" }}
                         onClick={() => setStatsBoxOpen(!statsBoxOpen)}
                         position='absolute'
                         bottom='10px'
@@ -65,7 +108,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         icon={<FiBarChart2 />}
                     />
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent left='10px' _focus={{ outline: "none" }}>
                     <Box>
                         <TableContainer>
                             <Table variant='unstyled'>

@@ -6,12 +6,13 @@ Remember to save your blog URL because all the content of your blog post lives i
  - [x] Typewriter sounds
  - [x] Floating sidepanel
  - [ ] Basic Settings Sidepanel
-     - [ ] Themes (Dark mode, parchment)
-     - [ ] Mute/Unmute typing sounds
+     - [x] Themes (Dark mode, parchment)
+     - [x] Mute/Unmute typing sounds
      - [ ] About Page
  - [ ] Markdown renderer
  - [ ] Markdown editor
  - [ ] Add support for tab
+ - [ ] Fix typewriter sounds on mobile
 
 ### Optional
  - [ ] Print icon
