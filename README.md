@@ -14,10 +14,12 @@ Remember to save your blog URL because all the content of your blog post lives i
  - [ ] Add support for tab
  - [ ] Fix typewriter sounds on mobile
  - [ ] Analytics dashboard
+ - [ ] Save to clipboard btn
+ - [ ] Store textarea text to local storage
 
 ### Optional
  - [ ] Print icon
- - [ ] Share buttons
+ - [x] Share buttons
  - [ ] Fonts
 
 
