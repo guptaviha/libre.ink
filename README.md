@@ -8,14 +8,16 @@ Remember to save your blog URL because all the content of your blog post lives i
  - [ ] Basic Settings Sidepanel
      - [x] Themes (Dark mode, parchment)
      - [x] Mute/Unmute typing sounds
-     - [ ] About Page
+     - [x] About Page
  - [ ] Markdown renderer
  - [ ] Markdown editor
  - [ ] Add support for tab
  - [ ] Fix typewriter sounds on mobile
+ - [ ] Analytics dashboard
 
 ### Optional
  - [ ] Print icon
  - [ ] Share buttons
+ - [ ] Fonts
 
 

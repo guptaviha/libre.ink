@@ -77,7 +77,7 @@ export const EditPage = () => {
         <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
             setRecentlyTypedCount(0);
         }}>
-            <Heading as={'h2'} fontFamily='monospace'>
+            <Heading as={'h3'} size="md" fontFamily='monospace'>
                 <Typewriter
                     options={{
                         strings: ['Mini Blog'],
@@ -90,10 +90,10 @@ export const EditPage = () => {
             <Textarea
                 id="edit-container"
                 value={postContent}
-                // spellcheck={true}
                 size="lg"
                 rows="20"
                 m="50px"
+                font-family="Courier New"
                 minHeight="400px"
                 maxHeight="400px"
                 placeholder="Write your heart out..."

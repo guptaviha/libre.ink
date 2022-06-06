@@ -72,17 +72,14 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>
-                        About
+                    Welcome to mini-blog!
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        Welcome to mini-blog!
-                        <br></br>
-                        <br></br>
                         The serverless instant-publish blog platform that lets you publish as fast as you can write.
                         <br></br>
                         <br></br>
-                        Remember to save your blog URL because all the content of your blog post lives in the URL. The application does not talk to a database or server of any kind.
+                        <b>Remember to save your blog URL</b> because all the content of your blog post lives in the URL. The application does not talk to a database or server of any kind.
                     </ModalBody>
 
                     <ModalFooter>
