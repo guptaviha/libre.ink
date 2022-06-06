@@ -9,9 +9,9 @@ type ViewPageProps = {
 export const ViewPage = (props: ViewPageProps) => {
     const { post } = props;
     return (
-        <Box p='12' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center'>
+        <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left'>
             <Link href='/' _hover={{ textDecoration:"none" }} _focus={{ boxShadow:"none" }}>
-                <Heading as={'h4'} size="sm" fontFamily='monospace'>
+                <Heading as={'h3'} size="md" fontFamily='monospace'>
                     <Typewriter
                         options={{
                             strings: ['Mini Blog'],
@@ -29,6 +29,8 @@ export const ViewPage = (props: ViewPageProps) => {
                 m="50px"
                 minHeight="400px"
                 maxHeight="400px"
+                fontFamily="monospace"
+                fontSize="lg"
             >
                 {post}
             </Text>

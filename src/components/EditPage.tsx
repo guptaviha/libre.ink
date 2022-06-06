@@ -74,7 +74,8 @@ export const EditPage = () => {
     };
 
     return (
-        <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
+        // <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
+            <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left' onMouseMove={(event) => {
             setRecentlyTypedCount(0);
         }}>
             <Heading as={'h3'} size="md" fontFamily='monospace'>
@@ -85,6 +86,7 @@ export const EditPage = () => {
                         loop: false,
                         pauseFor: 90000000,
                     }}
+
                 />
             </Heading>
             <Textarea
@@ -93,7 +95,8 @@ export const EditPage = () => {
                 size="lg"
                 rows="20"
                 m="50px"
-                font-family="Courier New"
+                fontSize="lg"
+                fontFamily="monospace"
                 minHeight="400px"
                 maxHeight="400px"
                 placeholder="Write your heart out..."
