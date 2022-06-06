@@ -4,7 +4,7 @@ import { FiEdit2 } from 'react-icons/fi';
 export const PublishButton = (props: ButtonProps) => {
     return (
         <Popover trigger='hover' placement='left'>
-            <PopoverContent w='125px' position='absolute' right='-45px' bg='lime' padding='2px' paddingRight='35px' bottom='-23px'>
+            <PopoverContent w='125px' position='absolute' right='-45px' bg='#009900' padding='2px' paddingRight='35px' bottom='-23px'>
                 <Button fontSize='20px' variant='unstyled' onClick={props.onClick}>Publish</Button>
             </PopoverContent>
             <PopoverTrigger>
