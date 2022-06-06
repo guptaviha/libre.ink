@@ -2,6 +2,7 @@ import React from 'react';
 import { ChakraProvider } from "@chakra-ui/react";
 import { EditPage } from './EditPage';
 import { ViewPage } from './ViewPage';
+import theme from '../theme';
 
 export const App = () => {
     const queryString = window.location.search;
@@ -14,7 +15,7 @@ export const App = () => {
     }
 
     return (
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
             {!post
                 ? <EditPage />
                 : <ViewPage post={decodedPost} />

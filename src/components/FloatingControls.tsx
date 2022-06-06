@@ -1,6 +1,7 @@
-import { Box, Fade, IconButton, Popover, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr } from '@chakra-ui/react';
+import { Box, Fade, IconButton, Popover, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute } from 'react-icons/bs';
+import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import { FiBarChart2 } from 'react-icons/fi';
 import { StatsType } from './EditPage';
 
@@ -20,6 +21,8 @@ type FloatingControlsProps = {
 export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, setSoundOn } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
+    const { colorMode, toggleColorMode } = useColorMode();
+
 
     return (
         <Fade style={{ transitionDuration: '0.4s' }} in={show}>
@@ -34,6 +37,18 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 size='lg'
                 fontSize='30px'
                 icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
+            />
+            <IconButton
+                onClick={() => toggleColorMode()}
+                position='absolute'
+                top='10px'
+                right='60px'
+                aria-label='audio-toggle'
+                variant='ghost'
+                isRound={true}
+                size='lg'
+                fontSize='30px'
+                icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
             />
             <Popover>
                 <PopoverTrigger>
