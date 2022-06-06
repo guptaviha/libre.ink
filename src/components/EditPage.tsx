@@ -113,6 +113,7 @@ export const EditPage = () => {
                 }}
                 autoFocus
                 variant='unstyled'
+                resize='none'
             />
             <PublishButton id="publish-btn" onClick={() => {
                 const encodedPost = btoa(postContent);
