@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Heading, Textarea } from '@chakra-ui/react';
+import { Box, Heading, Textarea, useColorMode } from '@chakra-ui/react';
 import Typewriter from 'typewriter-effect';
 import { FloatingControls } from './FloatingControls';
-import { PublishButton } from './PublishButton';
+import MDEditor from "@uiw/react-md-editor";
 
 export type StatsType = {
     wordCount: number;
@@ -50,10 +50,10 @@ async function handleKeyAudio(keyCode: number) {
     }
 }
 
-
 export const EditPage = () => {
     const [postContent, setPostContent] = useState('');
     const [soundOn, setSoundOn] = useState(true);
+    const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
         wordCount: 0,
@@ -75,7 +75,7 @@ export const EditPage = () => {
 
     return (
         // <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
-            <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left' onMouseMove={(event) => {
+        <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left' onMouseMove={(event) => {
             setRecentlyTypedCount(0);
         }}>
             <Heading as={'h3'} size="md" fontFamily='monospace'>
@@ -89,7 +89,42 @@ export const EditPage = () => {
 
                 />
             </Heading>
-            <Textarea
+            <br></br>
+            <div data-color-mode={colorMode}>
+                <MDEditor 
+                    preview='edit'
+                    autoFocus={true}
+                    hideToolbar={true}
+                    height={400}
+                    value={postContent}
+                    visibleDragbar={false}
+                    onKeyDown={async (event) => {
+                        setRecentlyTypedCount(recentlyTypedCount + 1);
+                        const key = event.keyCode;
+                        if (soundOn) {
+                            handleKeyAudio(key);
+                        }
+                    }}
+                    onChange={(text) => {
+                        setPostContent(text);
+                    }}
+                    style={{
+                        "padding": "50px",
+                        "background": "unset",
+                        "boxShadow": "unset"
+                    }}
+                    textareaProps={
+                        {
+                            "placeholder":"Write your heart out..."
+                        }
+                    }
+
+                />
+                <br></br>
+            </div>
+
+
+            {/* <Textarea
                 id="edit-container"
                 value={postContent}
                 size="lg"
@@ -117,14 +152,12 @@ export const EditPage = () => {
                 autoFocus
                 variant='unstyled'
                 resize='none'
-            />
-            <PublishButton id="publish-btn" onClick={() => {
-                const encodedPost = btoa(postContent);
-                window.location.search = `?post=${encodedPost}`
-            }} />
+            >
+            </Textarea> */}
             <FloatingControls
                 stats={stats}
                 show={recentlyTypedCount < 2}
+                postContent={postContent}
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
             />

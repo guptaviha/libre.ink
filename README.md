@@ -9,13 +9,14 @@ Remember to save your blog URL because all the content of your blog post lives i
      - [x] Themes (Dark mode, parchment)
      - [x] Mute/Unmute typing sounds
      - [x] About Page
- - [ ] Markdown renderer
- - [ ] Markdown editor
- - [ ] Add support for tab
+ - [x] Markdown renderer
+ - [x] Markdown editor
  - [ ] Fix typewriter sounds on mobile
  - [ ] Analytics dashboard
- - [ ] Save to clipboard btn
  - [ ] Store textarea text to local storage
+ - [ ] Dark/light mode in viewpage
+ - [ ] Save button on viewpage with pocket/archive.org/link/email btns
+ - [ ] About text
 
 ### Optional
  - [ ] Print icon

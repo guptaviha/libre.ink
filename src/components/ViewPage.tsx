@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Text, Heading, Link } from '@chakra-ui/react';
+import { Box, Text, Heading, Link, useColorMode } from '@chakra-ui/react';
 import Typewriter from 'typewriter-effect';
+import MDEditor from '@uiw/react-md-editor';
 
 type ViewPageProps = {
     post: string;
@@ -8,9 +9,11 @@ type ViewPageProps = {
 
 export const ViewPage = (props: ViewPageProps) => {
     const { post } = props;
+    const { colorMode } = useColorMode();
+
     return (
         <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left'>
-            <Link href='/' _hover={{ textDecoration:"none" }} _focus={{ boxShadow:"none" }}>
+            <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                 <Heading as={'h3'} size="md" fontFamily='monospace'>
                     <Typewriter
                         options={{
@@ -22,7 +25,7 @@ export const ViewPage = (props: ViewPageProps) => {
                     />
                 </Heading>
             </Link>
-            <Text
+            {/* <Text
                 whiteSpace="pre-line"
                 id="view-container"
                 size="lg"
@@ -33,7 +36,17 @@ export const ViewPage = (props: ViewPageProps) => {
                 fontSize="lg"
             >
                 {post}
-            </Text>
+            </Text> */}
+            <div data-color-mode={colorMode} >
+                <MDEditor.Markdown
+                    source={post}
+                    style={{
+                        "padding": "50px",
+                        "background": "unset",
+                        "boxShadow": "unset"
+                    }}
+                />
+            </div>
 
         </Box>
     );
