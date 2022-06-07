@@ -74,7 +74,6 @@ export const EditPage = () => {
     };
 
     return (
-        // <Box p='14' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='center' onMouseMove={(event) => {
         <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left' onMouseMove={(event) => {
             setRecentlyTypedCount(0);
         }}>
@@ -123,43 +122,13 @@ export const EditPage = () => {
                 <br></br>
             </div>
 
-
-            {/* <Textarea
-                id="edit-container"
-                value={postContent}
-                size="lg"
-                rows="20"
-                m="50px"
-                fontSize="lg"
-                fontFamily="monospace"
-                minHeight="400px"
-                maxHeight="400px"
-                placeholder="Write your heart out..."
-                onKeyDown={async (event) => {
-                    setRecentlyTypedCount(recentlyTypedCount + 1);
-                    const key = event.keyCode;
-                    if (soundOn) {
-                        handleKeyAudio(key);
-                    }
-                    // TODO: Remove tab logic if handled by component
-                    if (key == 9) {
-                        event.preventDefault();
-                    }
-                }}
-                onChange={(event) => {
-                    setPostContent(event.target.value);
-                }}
-                autoFocus
-                variant='unstyled'
-                resize='none'
-            >
-            </Textarea> */}
             <FloatingControls
+                postContent={postContent}
                 stats={stats}
                 show={recentlyTypedCount < 2}
-                postContent={postContent}
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
+                editMode={true}
             />
         </Box>
     );

@@ -3,11 +3,10 @@ import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
-import { FiBarChart2 } from 'react-icons/fi';
-import { FaGithub, FaTwitter } from 'react-icons/fa';
+import { FiBarChart2, FiSave } from 'react-icons/fi';
 import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
 import { PublishButton } from './PublishButton';
 
@@ -18,46 +17,43 @@ const camelToTitleCase = (text: string) => {
 };
 
 type FloatingControlsProps = {
-    postContent: string;
-    stats: StatsType;
+    postContent?: string;
+    stats?: StatsType;
     show: boolean;
-    soundOn: boolean;
-    setSoundOn: (soundOn: boolean) => void;
+    soundOn?: boolean;
+    setSoundOn?: (soundOn: boolean) => void;
+    editMode: boolean;
 };
 
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats, show, soundOn, postContent, setSoundOn } = props;
+    const { stats, show, soundOn, postContent, setSoundOn, editMode } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
     const { colorMode, toggleColorMode } = useColorMode();
-    const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure()
-    const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure()
+    const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure();
+    const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure();
+    const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
+    const btnPadding = 50;
+    const pageMargin = 10;
+    let currBtnPageMargin = 10;
 
     return (
         <>
-            <PublishButton id="publish-btn" onClick={() => {
+            {editMode ? <PublishButton id="publish-btn" onClick={() => {
                 const encodedPost = btoa(postContent);
-                window.location.search = `?post=${encodedPost}`
-            }} />
+                window.location.search = `?post=${encodedPost}`;
+            }} /> : null}
+
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
-                <IconButton
-                    _focus={{ outline: "none" }}
-                    onClick={() => setSoundOn(!soundOn)}
-                    position='fixed'
-                    top='10px'
-                    right='10px'
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    size='lg'
-                    fontSize='30px'
-                    icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
-                />
+
+                {/* Dark Mode Btn */}
                 <IconButton
                     _focus={{ outline: "none" }}
                     onClick={() => toggleColorMode()}
                     position='fixed'
-                    top='10px'
-                    right='60px'
+                    // top='10px'
+                    top={pageMargin + "px"}
+                    // right='10px'
+                    right={currBtnPageMargin + "px"}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
@@ -65,11 +61,67 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     fontSize='30px'
                     icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
                 />
-                <IconButton
+
+                {/* {editMode ? currBtnPageMargin = currBtnPageMargin + btnPadding : null} */}
+
+                {/* Mute Btn */}
+                {editMode ? <IconButton
+                    _focus={{ outline: "none" }}
+                    onClick={() => setSoundOn(!soundOn)}
+                    position='fixed'
+                    // top='10px'
+                    top={pageMargin + "px"}
+                    right='60px'
+                    aria-label='audio-toggle'
+                    variant='ghost'
+                    isRound={true}
+                    size='lg'
+                    fontSize='30px'
+                    icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
+                /> : null }
+
+                {/* Save Btn */}
+                { !editMode ? <IconButton
+                    _focus={{ outline: "none" }}
+                    onClick={onOpenSave}
+                    position='fixed'
+                    // top='10px'
+                    top={pageMargin + "px"}
+                    right='60px'
+                    aria-label='audio-toggle'
+                    variant='ghost'
+                    isRound={true}
+                    size='lg'
+                    fontSize='30px'
+                    icon={<FiSave />}
+                /> : null }
+
+                {/* Save Modal */}
+                <Modal isOpen={isOpenSave} onClose={onCloseSave} >
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>
+                            Save URL
+                        </ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button colorScheme='whatsapp' onClick={onCloseSave}>
+                                Done
+                            </Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+
+                {/* Info Btn */}
+                {editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={onOpenInfo}
                     position='fixed'
-                    top='10px'
+                    // top='10px'
+                    top={pageMargin + "px"}
                     right='110px'
                     aria-label='audio-toggle'
                     variant='ghost'
@@ -77,7 +129,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     size='lg'
                     fontSize='30px'
                     icon={<BsInfo />}
-                />
+                /> : null }
+
+                {/* Info Modal */}
                 <Modal isOpen={isOpenInfo} onClose={onCloseInfo} >
                     <ModalOverlay />
                     <ModalContent>
@@ -103,9 +157,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
                                     markdown-supported
                                 </Button>
-                                {/* <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    b64 encoding
-                                </Button> */}
                             </Stack>
                             <br></br>
 
@@ -165,11 +216,13 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     </ModalContent>
                 </Modal>
 
-                <IconButton
+                {/* Font Btn */}
+                {editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={onOpenFont}
                     position='fixed'
-                    top='10px'
+                    // top='10px'
+                    top={pageMargin + "px"}
                     right='160px'
                     aria-label='audio-toggle'
                     variant='ghost'
@@ -177,7 +230,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     size='lg'
                     fontSize='30px'
                     icon={<RiFontSize />}
-                />
+                /> : null}
+
+                {/* Font Modal */}
                 <Modal isOpen={isOpenFont} onClose={onCloseFont} >
                     <ModalOverlay />
                     <ModalContent>
@@ -186,7 +241,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            
+
                         </ModalBody>
                         <ModalFooter>
                             <Button colorScheme='whatsapp' onClick={onCloseInfo}>
@@ -196,14 +251,17 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     </ModalContent>
                 </Modal>
 
-                <Popover>
+                {/* Stats Btn */}
+                {editMode ? <Popover>
                     <PopoverTrigger>
                         <IconButton
                             _focus={{ outline: "none" }}
                             onClick={() => setStatsBoxOpen(!statsBoxOpen)}
                             position='fixed'
-                            bottom='10px'
-                            left='10px'
+                            // bottom='10px'
+                            bottom={pageMargin + "px"}
+                            // left='10px'
+                            left={pageMargin + "px"}
                             aria-label='stats-count'
                             variant='ghost'
                             size='lg'
@@ -228,7 +286,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             </TableContainer>
                         </Box>
                     </PopoverContent>
-                </Popover>
+                </Popover> : null}
+
             </Fade>
         </>
     )

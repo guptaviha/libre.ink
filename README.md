@@ -26,10 +26,17 @@ The application does not talk to a database or server of any kind. All the conte
  - [x] Markdown editor
  - [ ] Store textarea text to local storage
  - [ ] Analytics dashboard
+ - [ ] Remove hide for publish button
+ - [ ] Chome extension
 
 ### Bugs To Fix
  - [ ] Fix typewriter sounds on mobile
-
-
+ - [ ] We need to fix the padding for mobile.
+ - [ ] Make the height fixed and only the textarea scrollable
+ - [ ] Textarea is coming under the top controls
+ - [ ] html title needs to be set so sharing looks good
+ - [ ] Markdown intro in placeholder?
+ - [ ] HTML title/preview
+ - [ ] Make site responsive . media queries?
 
 
