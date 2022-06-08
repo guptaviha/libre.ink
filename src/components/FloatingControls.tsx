@@ -1,14 +1,16 @@
-import { Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
+import { useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { BsVolumeUp, BsVolumeMute, BsFacebook } from 'react-icons/bs';
-import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
+import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
+import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
-import { FiBarChart2, FiSave } from 'react-icons/fi';
+import { FiBarChart2, FiSave, FiPocket } from 'react-icons/fi';
 import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
+import { SiInternetarchive } from 'react-icons/si';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
 import { PublishButton } from './PublishButton';
+
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -28,7 +30,10 @@ type FloatingControlsProps = {
 export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, postContent, setSoundOn, editMode } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
+    const [isEmailed, setIsEmailed] = useState(false);
     const { colorMode, toggleColorMode } = useColorMode();
+    const toast = useToast()
     const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure();
     const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure();
     const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
@@ -78,10 +83,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     size='lg'
                     fontSize='30px'
                     icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
-                /> : null }
+                /> : null}
 
                 {/* Save Btn */}
-                { !editMode ? <IconButton
+                {!editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={onOpenSave}
                     position='fixed'
@@ -94,7 +99,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     size='lg'
                     fontSize='30px'
                     icon={<FiSave />}
-                /> : null }
+                /> : null}
 
                 {/* Save Modal */}
                 <Modal isOpen={isOpenSave} onClose={onCloseSave} >
@@ -105,7 +110,73 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-
+                            Remember to save your URL.
+                            <br></br>
+                            <br></br>
+                            <Stack spacing={4} direction='row' align='center'>
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(window.location.href);
+                                        setIsCopied(true);
+                                        toast({
+                                            title: 'URL copied to clipboard.',
+                                            status: 'success',
+                                            duration: 2500,
+                                            position: 'top',
+                                            isClosable: true,
+                                          })
+                                    }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={ isCopied ? <BsClipboardCheck /> : <BsClipboard /> }
+                                />
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={() => {
+                                        const url = window.location.href;
+                                        window.open(`mailto:?subject=My%20Mini%20Blog&body=${url}`);
+                                        setIsEmailed(true);
+                                    }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={ isEmailed ? <MdOutlineMarkEmailRead /> : <MdOutlineMailOutline /> }
+                                />
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={() => {
+                                        const url = window.location.href;
+                                        window.open(`mailto:add@getpocket.com?subject=My%20Mini%20Blog&body=${url}`);
+                                    }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={ <FiPocket /> }
+                                />
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={() => {
+                                        window.open(
+                                            'https://archive.org/create/',
+                                            '_blank'
+                                        )
+                                    }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={ <SiInternetarchive /> }
+                                />
+                            </Stack>
                         </ModalBody>
                         <ModalFooter>
                             <Button colorScheme='whatsapp' onClick={onCloseSave}>
@@ -129,7 +200,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     size='lg'
                     fontSize='30px'
                     icon={<BsInfo />}
-                /> : null }
+                /> : null}
 
                 {/* Info Modal */}
                 <Modal isOpen={isOpenInfo} onClose={onCloseInfo} >

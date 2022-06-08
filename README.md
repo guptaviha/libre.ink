@@ -21,7 +21,7 @@ The application does not talk to a database or server of any kind. All the conte
      - [ ] Fonts
  - [x] Floating sidepanel on EditPage
      - [x] Dark/light mode
-     - [ ] Save Button (pocket/archive.org/link/email)
+     - [x] Save Button (pocket/archive.org/link/email)
  - [x] Markdown renderer
  - [x] Markdown editor
  - [ ] Store textarea text to local storage
