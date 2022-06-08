@@ -24,7 +24,7 @@ The application does not talk to a database or server of any kind. All the conte
      - [x] Save Button (pocket/archive.org/link/email)
  - [x] Markdown renderer
  - [x] Markdown editor
- - [ ] Store textarea text to local storage
+ - [x] Store textarea text to local storage
  - [ ] Analytics dashboard
  - [ ] Remove hide for publish button
  - [ ] Chome extension
@@ -35,8 +35,6 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Make the height fixed and only the textarea scrollable
  - [ ] Textarea is coming under the top controls
  - [ ] html title needs to be set so sharing looks good
- - [ ] Markdown intro in placeholder?
+ - [x] Markdown intro in placeholder?
  - [ ] HTML title/preview
  - [ ] Make site responsive . media queries?
-
-

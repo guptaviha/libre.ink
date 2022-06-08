@@ -10,6 +10,8 @@ export type StatsType = {
     sentenceCount: number;
 };
 
+const localStoragePost = ( localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : '' );
+
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0
 
@@ -51,7 +53,7 @@ async function handleKeyAudio(keyCode: number) {
 }
 
 export const EditPage = () => {
-    const [postContent, setPostContent] = useState('');
+    const [postContent, setPostContent] = useState(localStoragePost);
     const [soundOn, setSoundOn] = useState(true);
     const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
@@ -60,6 +62,8 @@ export const EditPage = () => {
         characterCount: 0,
         sentenceCount: 0,
     });
+
+
 
     useEffect(() => {
         calculateStats();
@@ -94,7 +98,7 @@ export const EditPage = () => {
                     preview='edit'
                     autoFocus={true}
                     hideToolbar={true}
-                    height={400}
+                    height={500}
                     value={postContent}
                     visibleDragbar={false}
                     onKeyDown={async (event) => {
@@ -104,8 +108,10 @@ export const EditPage = () => {
                             handleKeyAudio(key);
                         }
                     }}
+                    
                     onChange={(text) => {
                         setPostContent(text);
+                        console.log(text)
                     }}
                     style={{
                         "padding": "50px",
@@ -114,7 +120,30 @@ export const EditPage = () => {
                     }}
                     textareaProps={
                         {
-                            "placeholder":"Write your heart out..."
+                            "placeholder":`# Quick guide to using miniblog
+
+Hello internet! 
+Use this tool to write your heart out - we support markdown too!
+
+### Use any number (1-6) of hashtags to specify your title size
+
+**You can use bold like this**
+
+*Or italics like this*
+
+[Here you can add a link](https://www.markdownguide.org/cheat-sheet/)
+
+> You can add a blockquote like this
+
+1. Making a list is easy
+2. Use numbers for an ordered list
+- or hyphens for an unordered list
+
+What to add lines to segment your post? Use three hyphens like this:
+
+---
+
+\`You can even add code segments inside of backticks\``
                         }
                     }
 

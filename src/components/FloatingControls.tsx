@@ -6,6 +6,7 @@ import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiSave, FiPocket } from 'react-icons/fi';
 import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
 import { SiInternetarchive } from 'react-icons/si';
+import { BiEdit } from 'react-icons/bi';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
@@ -45,6 +46,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         <>
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
                 const encodedPost = btoa(postContent);
+                localStorage.setItem('storedPost', postContent);
                 window.location.search = `?post=${encodedPost}`;
             }} /> : null}
 
@@ -286,6 +288,24 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
+
+                {/* Edit Btn */}
+                {!editMode ? <IconButton
+                    _focus={{ outline: "none" }}
+                    onClick={() => {
+                        window.location.href='/'
+                    }}
+                    position='fixed'
+                    // top='10px'
+                    top={pageMargin + "px"}
+                    right='110px'
+                    aria-label='audio-toggle'
+                    variant='ghost'
+                    isRound={true}
+                    size='lg'
+                    fontSize='30px'
+                    icon={<BiEdit />}
+                /> : null}
 
                 {/* Font Btn */}
                 {editMode ? <IconButton
