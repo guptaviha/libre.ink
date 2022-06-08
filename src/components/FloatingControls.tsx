@@ -1,4 +1,4 @@
-import { useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
+import { FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -26,10 +26,12 @@ type FloatingControlsProps = {
     soundOn?: boolean;
     setSoundOn?: (soundOn: boolean) => void;
     editMode: boolean;
+    hideMdToolbar?: boolean;
+    setHideMdToolbar?: (hideMdToolbar: boolean) => void;
 };
 
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats, show, soundOn, postContent, setSoundOn, editMode } = props;
+    const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
@@ -127,14 +129,14 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                             duration: 2500,
                                             position: 'top',
                                             isClosable: true,
-                                          })
+                                        })
                                     }}
                                     variant='ghost'
                                     isRound={true}
                                     size='lg'
                                     fontSize='30px'
                                     aria-label='audio-toggle'
-                                    icon={ isCopied ? <BsClipboardCheck /> : <BsClipboard /> }
+                                    icon={isCopied ? <BsClipboardCheck /> : <BsClipboard />}
                                 />
                                 <IconButton
                                     _focus={{ outline: "none" }}
@@ -148,7 +150,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     size='lg'
                                     fontSize='30px'
                                     aria-label='audio-toggle'
-                                    icon={ isEmailed ? <MdOutlineMarkEmailRead /> : <MdOutlineMailOutline /> }
+                                    icon={isEmailed ? <MdOutlineMarkEmailRead /> : <MdOutlineMailOutline />}
                                 />
                                 <IconButton
                                     _focus={{ outline: "none" }}
@@ -161,7 +163,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     size='lg'
                                     fontSize='30px'
                                     aria-label='audio-toggle'
-                                    icon={ <FiPocket /> }
+                                    icon={<FiPocket />}
                                 />
                                 <IconButton
                                     _focus={{ outline: "none" }}
@@ -176,7 +178,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     size='lg'
                                     fontSize='30px'
                                     aria-label='audio-toggle'
-                                    icon={ <SiInternetarchive /> }
+                                    icon={<SiInternetarchive />}
                                 />
                             </Stack>
                         </ModalBody>
@@ -293,7 +295,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 {!editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={() => {
-                        window.location.href='/'
+                        window.location.href = '/'
                     }}
                     position='fixed'
                     // top='10px'
@@ -332,10 +334,21 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
+                            <FormControl display='flex' alignItems='center'>
+                                <FormLabel htmlFor='markdown-toolbar' mb='0'>
+                                    Show Markdown Toolbar?
+                                </FormLabel>
+                                <Switch id='markdown-toolbar' 
+                                defaultChecked={ hideMdToolbar ? false : true}
+                                onChange={() => {
+                                    setHideMdToolbar(!hideMdToolbar)
+                                    console.log(hideMdToolbar)
 
+                                    }} />
+                            </FormControl>
                         </ModalBody>
                         <ModalFooter>
-                            <Button colorScheme='whatsapp' onClick={onCloseInfo}>
+                            <Button colorScheme='whatsapp' onClick={onCloseFont}>
                                 Apply
                             </Button>
                         </ModalFooter>
