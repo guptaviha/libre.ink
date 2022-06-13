@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { background, Box, Heading, Textarea, useColorMode } from '@chakra-ui/react';
-import Typewriter from 'typewriter-effect';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
+import { APP_TITLE } from '../constants';
 
 export type StatsType = {
     wordCount: number;
@@ -77,7 +77,7 @@ async function handleKeyAudio(keyCode: number) {
 }
 
 export const EditPage = () => {
-    const [postContent, setPostContent] = useState(localStoragePost);
+    const [postContent, setPostContent]: [string, any] = useState(localStoragePost);
     const [soundOn, setSoundOn] = useState(true);
     const [hideMdToolbar, setHideMdToolbar] = useState(true);
     const { colorMode } = useColorMode();
@@ -88,19 +88,24 @@ export const EditPage = () => {
         sentenceCount: 0,
     });
 
-
-
     useEffect(() => {
         calculateStats();
+        setTitle();
     }, [postContent]);
 
-    const calculateStats = () => {
+    const setTitle = useCallback(() => {
+        const plainTextFirstLine = postContent.split('\n')[0].replace(/[#*>`]/g, '').substring(0, 150);
+        const title = plainTextFirstLine.trim().length ? `${plainTextFirstLine} - ${APP_TITLE}` : APP_TITLE;
+        document.title = title;
+    }, [postContent]);
+
+    const calculateStats = useCallback(() => {
         setStats({
             wordCount: postContent.split(' ').length,
             characterCount: postContent.length,
             sentenceCount: postContent.split('.').length,
         });
-    };
+    }, [postContent]);
 
     return (
         <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left'
@@ -108,17 +113,6 @@ export const EditPage = () => {
             onMouseMove={(event) => {
                 setRecentlyTypedCount(0);
             }}>
-            <Heading as={'h3'} size="md" fontFamily='monospace'>
-                <Typewriter
-                    options={{
-                        strings: ['Mini Blog'],
-                        autoStart: true,
-                        loop: false,
-                        pauseFor: 90000000,
-                    }}
-
-                />
-            </Heading>
             <br></br>
             <div data-color-mode={colorMode}>
                 <MDEditor

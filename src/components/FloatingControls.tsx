@@ -1,17 +1,18 @@
-import { FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
+import { FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Heading, Link } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
-import { FiBarChart2, FiSave, FiPocket } from 'react-icons/fi';
+import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
+import { AiOutlineSave } from 'react-icons/ai';
 import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
 import { SiInternetarchive } from 'react-icons/si';
-import { BiEdit } from 'react-icons/bi';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
 import { PublishButton } from './PublishButton';
-
+import Typewriter from 'typewriter-effect';
+import { APP_TITLE } from '../constants';
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -53,6 +54,20 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             }} /> : null}
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
+
+                <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+                    <Heading as={'h3'} size="md" fontFamily='monospace' position='fixed' top='20px' left='20px'>
+                        <Typewriter
+                            options={{
+                                strings: [APP_TITLE],
+                                autoStart: true,
+                                loop: false,
+                                pauseFor: 90000000,
+                            }}
+
+                        />
+                    </Heading>
+                </Link>
 
                 {/* Dark Mode Btn */}
                 <IconButton
@@ -102,7 +117,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     isRound={true}
                     size='lg'
                     fontSize='30px'
-                    icon={<FiSave />}
+                    icon={<AiOutlineSave />}
                 /> : null}
 
                 {/* Save Modal */}
@@ -306,7 +321,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     isRound={true}
                     size='lg'
                     fontSize='30px'
-                    icon={<BiEdit />}
+                    icon={<FiEdit2 />}
                 /> : null}
 
                 {/* Font Btn */}
@@ -338,11 +353,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 <FormLabel htmlFor='markdown-toolbar' mb='0'>
                                     Show Markdown Toolbar?
                                 </FormLabel>
-                                <Switch id='markdown-toolbar' 
-                                defaultChecked={ hideMdToolbar ? false : true}
-                                onChange={() => {
-                                    setHideMdToolbar(!hideMdToolbar)
-                                    console.log(hideMdToolbar)
+                                <Switch id='markdown-toolbar'
+                                    defaultChecked={hideMdToolbar ? false : true}
+                                    onChange={() => {
+                                        setHideMdToolbar(!hideMdToolbar)
+                                        console.log(hideMdToolbar)
 
                                     }} />
                             </FormControl>

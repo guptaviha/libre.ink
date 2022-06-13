@@ -23,6 +23,12 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Store array of published urls in local storage and show them
  - [ ] Clean slate button
  - [ ] Typewriter background - added 3 options, not looking too great
+ - [ ] Fix archive.org button
+ - [ ] Change icons to be sexier
+ - [ ] Increase default text size
+ - [ ] Enable reader-mode compatibility
+ - [ ] Add Reader-mode button
+ - [ ] Center text field with responsive width
 
 ### Bugs To Fix
  - [ ] Fix typewriter sounds on mobile

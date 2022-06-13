@@ -14,18 +14,6 @@ export const ViewPage = (props: ViewPageProps) => {
 
     return (
         <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left'>
-            <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
-                <Heading as={'h3'} size="md" fontFamily='monospace'>
-                    <Typewriter
-                        options={{
-                            strings: ['Mini Blog'],
-                            autoStart: true,
-                            loop: false,
-                            pauseFor: 90000000,
-                        }}
-                    />
-                </Heading>
-            </Link>
             <div data-color-mode={colorMode} >
                 <MDEditor.Markdown
                     source={post}
