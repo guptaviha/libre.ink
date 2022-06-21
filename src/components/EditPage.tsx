@@ -11,7 +11,7 @@ export type StatsType = {
 };
 
 const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : '');
-const placeholderText = `# Quick guide to using miniblog
+const placeholderText = `# Quick guide to using libre.ink
 
 Hello internet! 
 Use this tool to write your heart out - we support markdown too!
