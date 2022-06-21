@@ -1,5 +1,5 @@
-# mini-blog
-mini-blog is a serverless instant-publish blogging platform that lets you publish as fast as you can write.
+# libre.ink
+libre.ink is a serverless instant-publish blogging platform that lets you publish as fast as you can write.
 
 The application does not talk to a database or server of any kind. All the content of your blog post lives in the URL using base64 encoding, so just remember to save your blog URL!
 

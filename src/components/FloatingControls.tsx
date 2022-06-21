@@ -224,7 +224,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
-                            Welcome to mini-blog!
+                            Welcome to libre.ink!
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>

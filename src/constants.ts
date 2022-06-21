@@ -1,1 +1,1 @@
-export const APP_TITLE = 'Mini Blog';
+export const APP_TITLE = 'libre.ink';
