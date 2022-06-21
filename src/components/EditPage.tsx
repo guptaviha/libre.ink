@@ -133,10 +133,7 @@ export const EditPage = () => {
                         }
                     }}
 
-                    onChange={(text) => {
-                        setPostContent(text);
-                        // console.log(text)
-                    }}
+                    onChange={(text) => setPostContent(text)}
                     style={{
                         // "padding": "50px",
                         "background": "unset",
