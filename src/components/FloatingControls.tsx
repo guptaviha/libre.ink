@@ -156,7 +156,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     _focus={{ outline: "none" }}
                                     onClick={() => {
                                         const url = window.location.href;
-                                        window.open(`mailto:?subject=My%20Mini%20Blog&body=${url}`);
+                                        window.open(`mailto:?subject=My%20MLibre%20Ink&body=${url}`);
                                         setIsEmailed(true);
                                     }}
                                     variant='ghost'
@@ -170,7 +170,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     _focus={{ outline: "none" }}
                                     onClick={() => {
                                         const url = window.location.href;
-                                        window.open(`mailto:add@getpocket.com?subject=My%20Mini%20Blog&body=${url}`);
+                                        window.open(`mailto:add@getpocket.com?subject=My%20Libre%20Ink&body=${url}`);
                                     }}
                                     variant='ghost'
                                     isRound={true}
@@ -253,7 +253,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 _focus={{ outline: "none" }}
                                 onClick={() =>
                                     window.open(
-                                        'https://github.com/guptaviha/mini-blog',
+                                        'https://github.com/guptaviha/libre.ink',
                                         '_blank'
                                     )
                                 }
@@ -268,7 +268,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 _focus={{ outline: "none" }}
                                 onClick={() =>
                                     window.open(
-                                        'https://twitter.com/intent/tweet?text=Check%20this%20out!%20Minimalistic%20and%20quick%20blogging%20is%20here:%20miniblog.ink',
+                                        'https://twitter.com/intent/tweet?text=Check%20this%20out!%20Minimalistic%20and%20quick%20blogging%20is%20here:%20libre.ink',
                                         '_blank'
                                     )
                                 }
@@ -283,7 +283,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 _focus={{ outline: "none" }}
                                 onClick={() =>
                                     window.open(
-                                        'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fminiblog.ink%2F&amp;src=sdkpreparse',
+                                        'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flibre.ink%2F&amp;src=sdkpreparse',
                                         '_blank'
                                     )
                                 }

@@ -1,5 +1,5 @@
 {
-  "name": "mini-blog",
+  "name": "libre.ink",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guptaviha/mini-blog.git"
+    "url": "git+https://github.com/guptaviha/libre.ink.git"
   },
   "author": "Viha Gupta",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/guptaviha/mini-blog/issues"
+    "url": "https://github.com/guptaviha/libre.ink/issues"
   },
-  "homepage": "https://github.com/guptaviha/mini-blog#readme",
+  "homepage": "https://github.com/guptaviha/libre.ink#readme",
   "devDependencies": {
     "parcel": "^2.6.0",
     "process": "^0.11.10"
