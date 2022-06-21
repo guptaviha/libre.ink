@@ -25,7 +25,7 @@ export const ViewPage = (props: ViewPageProps) => {
             <div style={{
                 overflow: "auto",
                 // background: 'maroon', 
-                height: "50vh"
+                height: "80vh"
             }} >
                 <div data-color-mode={colorMode} >
                     <MDEditor.Markdown

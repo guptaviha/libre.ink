@@ -116,12 +116,13 @@ export const EditPage = () => {
                 setRecentlyTypedCount(0);
             }}>
             <br></br>
-            <div data-color-mode={colorMode} >
+            <div data-color-mode={colorMode} style={{height: "80vh" }}>
                 <MDEditor
                     preview='edit'
                     autoFocus={true}
                     hideToolbar={hideMdToolbar}
-                    height='500'
+                    height='650'
+                    // height='70vh'
                     value={postContent}
                     visibleDragbar={false}
                     onKeyDown={async (event) => {
