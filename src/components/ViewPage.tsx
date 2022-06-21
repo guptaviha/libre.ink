@@ -11,20 +11,35 @@ type ViewPageProps = {
 export const ViewPage = (props: ViewPageProps) => {
     const { post } = props;
     const { colorMode } = useColorMode();
+    document.title = "VihasTitle";
 
     return (
-        <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left'>
-            <div data-color-mode={colorMode} >
-                <MDEditor.Markdown
-                    source={post}
-                    style={{
-                        "padding": "50px",
-                        "background": "unset",
-                        "boxShadow": "unset"
-                    }}
-                />
+        <Box p='60px' w={{ base: '100%', md: '80%', lg: '70%' }}
+            h='100vh'
+            margin='auto'
+            overflow='hidden'
+            display='flex' flexDirection='column' alignItems='left'
+        >
+            <br></br>
+
+            <div style={{
+                overflow: "auto",
+                // background: 'maroon', 
+                height: "50vh"
+            }} >
+                <div data-color-mode={colorMode} >
+                    <MDEditor.Markdown
+                        source={post}
+                        // height='6000px'
+                        style={{
+                            // "padding": "50px",
+                            "background": "unset",
+                            "boxShadow": "unset"
+                        }}
+                    />
+                </div>
             </div>
-            
+
             <FloatingControls
                 editMode={false}
                 show={true}

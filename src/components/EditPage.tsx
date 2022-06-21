@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { background, Box, Heading, Textarea, useColorMode } from '@chakra-ui/react';
+import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
 import { APP_TITLE } from '../constants';
@@ -108,18 +108,20 @@ export const EditPage = () => {
     }, [postContent]);
 
     return (
-        <Box p='7' w='100%' h='100vh' display='flex' flexDirection='column' alignItems='left'
-            // backgroundImage="paper-1.jpeg" 
+        <Box p='50px' w={{ base: '100%', md: '80%', lg: '70%' }}
+            h='100vh'
+            margin='auto'
+            display='flex' flexDirection='column' alignItems='left'
             onMouseMove={(event) => {
                 setRecentlyTypedCount(0);
             }}>
             <br></br>
-            <div data-color-mode={colorMode}>
+            <div data-color-mode={colorMode} >
                 <MDEditor
                     preview='edit'
                     autoFocus={true}
                     hideToolbar={hideMdToolbar}
-                    height={500}
+                    height='500'
                     value={postContent}
                     visibleDragbar={false}
                     onKeyDown={async (event) => {
@@ -135,7 +137,7 @@ export const EditPage = () => {
                         // console.log(text)
                     }}
                     style={{
-                        "padding": "50px",
+                        // "padding": "50px",
                         "background": "unset",
                         "boxShadow": "unset"
                     }}
@@ -144,7 +146,6 @@ export const EditPage = () => {
                             "placeholder": placeholderText
                         }
                     }
-
                 />
                 <br></br>
             </div>

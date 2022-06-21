@@ -56,7 +56,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
 
                 <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
-                    <Heading size={{ base: 'lg', sm: 'md',  md: 'md', lg: 'md' }} fontFamily='monospace' position='fixed' top='24px' left='24px'>
+                    <Heading size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' position='fixed' top='24px' left='24px'>
                         <Typewriter
                             options={{
                                 strings: [APP_TITLE],
