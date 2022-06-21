@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, Heading, Link, useColorMode } from '@chakra-ui/react';
-import Typewriter from 'typewriter-effect';
+import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from '@uiw/react-md-editor';
+import { setTitle } from '../common';
 
 type ViewPageProps = {
     post: string;
@@ -11,7 +11,7 @@ type ViewPageProps = {
 export const ViewPage = (props: ViewPageProps) => {
     const { post } = props;
     const { colorMode } = useColorMode();
-    document.title = "VihasTitle";
+    setTitle(post);
 
     return (
         <Box p='60px' w={{ base: '100%', md: '80%', lg: '70%' }}
