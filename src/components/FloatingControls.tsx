@@ -56,7 +56,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
 
                 <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
-                    <Heading as={'h3'} size="md" fontFamily='monospace' position='fixed' top='20px' left='20px'>
+                    <Heading size={{ base: 'lg', sm: 'md',  md: 'md', lg: 'md' }} fontFamily='monospace' position='fixed' top='24px' left='24px'>
                         <Typewriter
                             options={{
                                 strings: [APP_TITLE],
@@ -74,32 +74,32 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     _focus={{ outline: "none" }}
                     onClick={() => toggleColorMode()}
                     position='fixed'
-                    // top='10px'
-                    top={pageMargin + "px"}
-                    // right='10px'
-                    right={currBtnPageMargin + "px"}
+                    // top={{ base: '16px', sm: '10px' }}
+                    // right={{ base: '16px', sm: '10px' }}
+                    top='12px'
+                    right={{ base: '10px', sm: '10px' }}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
-                    size='lg'
+                    // size={{ base: 'md', sm: 'lg' }}
+                    // fontSize={{ base: '20px', sm: '30px' }}
+                    // size='lg'
                     fontSize='30px'
                     icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
                 />
 
-                {/* {editMode ? currBtnPageMargin = currBtnPageMargin + btnPadding : null} */}
 
                 {/* Mute Btn */}
                 {editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={() => setSoundOn(!soundOn)}
                     position='fixed'
-                    // top='10px'
-                    top={pageMargin + "px"}
-                    right='60px'
+                    top='12px'
+                    right={{ base: '54px', sm: '60px' }}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
-                    size='lg'
+                    // size='lg'
                     fontSize='30px'
                     icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
                 /> : null}
@@ -109,13 +109,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     _focus={{ outline: "none" }}
                     onClick={onOpenSave}
                     position='fixed'
-                    // top='10px'
-                    top={pageMargin + "px"}
-                    right='60px'
+                    top='12px'
+                    right={{ base: '50px', sm: '60px' }}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
-                    size='lg'
+                    // size='lg'
                     fontSize='30px'
                     icon={<AiOutlineSave />}
                 /> : null}
@@ -210,13 +209,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     _focus={{ outline: "none" }}
                     onClick={onOpenInfo}
                     position='fixed'
-                    // top='10px'
-                    top={pageMargin + "px"}
-                    right='110px'
+                    top='12px'
+                    right={{ base: '90px', sm: '110px' }}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
-                    size='lg'
+                    // size='lg'
                     fontSize='30px'
                     icon={<BsInfo />}
                 /> : null}
@@ -313,13 +311,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         window.location.href = '/'
                     }}
                     position='fixed'
-                    // top='10px'
-                    top={pageMargin + "px"}
-                    right='110px'
+                    top='12px'
+                    right={{ base: '90px', sm: '110px' }}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
-                    size='lg'
+                    // size='lg'
                     fontSize='30px'
                     icon={<FiEdit2 />}
                 /> : null}
@@ -329,13 +326,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     _focus={{ outline: "none" }}
                     onClick={onOpenFont}
                     position='fixed'
-                    // top='10px'
-                    top={pageMargin + "px"}
-                    right='160px'
+                    top='12px'
+                    right={{ base: '130px', sm: '160px' }}
                     aria-label='audio-toggle'
                     variant='ghost'
                     isRound={true}
-                    size='lg'
+                    // size='lg'
                     fontSize='30px'
                     icon={<RiFontSize />}
                 /> : null}
@@ -377,13 +373,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             _focus={{ outline: "none" }}
                             onClick={() => setStatsBoxOpen(!statsBoxOpen)}
                             position='fixed'
-                            // bottom='10px'
-                            bottom={pageMargin + "px"}
-                            // left='10px'
-                            left={pageMargin + "px"}
+                            bottom='10px'
+                            left='10px'
                             aria-label='stats-count'
                             variant='ghost'
-                            size='lg'
+                            // size='lg'
                             fontSize='30px'
                             isRound={true}
                             icon={<FiBarChart2 />}
