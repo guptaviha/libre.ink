@@ -3,6 +3,7 @@ import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
 import { APP_TITLE } from '../constants';
+import { setTitle } from '../common';
 
 export type StatsType = {
     wordCount: number;
@@ -90,13 +91,7 @@ export const EditPage = () => {
 
     useEffect(() => {
         calculateStats();
-        setTitle();
-    }, [postContent]);
-
-    const setTitle = useCallback(() => {
-        const plainTextFirstLine = postContent.split('\n')[0].replace(/[#*>`]/g, '').substring(0, 150);
-        const title = plainTextFirstLine.trim().length ? `${plainTextFirstLine} - ${APP_TITLE}` : APP_TITLE;
-        document.title = title;
+        setTitle(postContent);
     }, [postContent]);
 
     const calculateStats = useCallback(() => {
