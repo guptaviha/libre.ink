@@ -26,7 +26,7 @@ export const ViewPage = (props: ViewPageProps) => {
                 source={post}
                 style={{
                     margin: "70px 0 0",
-                    padding: "50px",
+                    padding: "0 50px 50px",
                     background: "unset",
                     boxShadow: "unset",
                     overflow: "auto"

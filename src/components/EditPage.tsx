@@ -104,42 +104,43 @@ export const EditPage = () => {
 
     return (
         <Box w={{ base: '100%', md: '80%', lg: '70%' }}
-            h='80vh'
+            h='100vh'
             margin='0 auto'
             display='flex'
             flexDirection='column'
             alignItems='left'
-            onMouseMove={(event) => {
-                setRecentlyTypedCount(0);
-            }}>
-            <Box data-color-mode={colorMode} padding="60px" style={{ height: "100vh", overflow: scroll }}>
-                <MDEditor
-                    preview='edit'
-                    autoFocus={true}
-                    hideToolbar={hideMdToolbar}
-                    height='650'
-                    value={postContent}
-                    visibleDragbar={false}
-                    onKeyDown={async (event) => {
-                        setRecentlyTypedCount(recentlyTypedCount + 1);
-                        const key = event.keyCode;
-                        if (soundOn) {
-                            handleKeyAudio(key);
-                        }
-                    }}
-                    onChange={(text) => setPostContent(text)}
-                    style={{
-                        // paddingLeft: "100px",
-                        background: "unset",
-                        boxShadow: "unset",
-                    }}
-                    textareaProps={
-                        {
-                            "placeholder": placeholderText
-                        }
+            // padding="60px"
+            data-color-mode={colorMode}
+            onTouchMove={(event) => setRecentlyTypedCount(0)}
+            onMouseMove={(event) => setRecentlyTypedCount(0)}>
+            <MDEditor
+                preview='edit'
+                autoFocus={true}
+                hideToolbar={hideMdToolbar}
+                height='635'
+                value={postContent}
+                visibleDragbar={false}
+                onKeyDown={async (event) => {
+                    setRecentlyTypedCount(recentlyTypedCount + 1);
+                    const key = event.keyCode;
+                    if (soundOn) {
+                        handleKeyAudio(key);
                     }
-                />
-            </Box>
+                }}
+                onChange={(text) => setPostContent(text)}
+                style={{
+                    margin: "70px 0 0",
+                    padding: "0 50px",
+                    background: "unset",
+                    boxShadow: "unset",
+                    // overflow: "auto",
+                }}
+                textareaProps={
+                    {
+                        "placeholder": placeholderText
+                    }
+                }
+            />
 
             <FloatingControls
                 postContent={postContent}
