@@ -94,6 +94,15 @@ export const EditPage = () => {
         setTitle(postContent);
     }, [postContent]);
 
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    useEffect(() => {
+        function handleResize() {
+            setWindowHeight(window.innerHeight);
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    });
+
     const calculateStats = useCallback(() => {
         setStats({
             wordCount: postContent.split(' ').length,
@@ -106,18 +115,18 @@ export const EditPage = () => {
         <Box w={{ base: '100%', md: '80%', lg: '70%' }}
             h='100vh'
             margin='0 auto'
-            display='flex'
-            flexDirection='column'
-            alignItems='left'
+            // background={'maroon'}
+            // position='fixed'
+            // top='0px'
             // padding="60px"
             data-color-mode={colorMode}
-            onTouchMove={(event) => setRecentlyTypedCount(0)}
-            onMouseMove={(event) => setRecentlyTypedCount(0)}>
+            onTouchMove={() => setRecentlyTypedCount(0)}
+            onMouseMove={() => setRecentlyTypedCount(0)}>
             <MDEditor
                 preview='edit'
                 autoFocus={true}
                 hideToolbar={hideMdToolbar}
-                height='635'
+                height={windowHeight - 100}
                 value={postContent}
                 visibleDragbar={false}
                 onKeyDown={async (event) => {
