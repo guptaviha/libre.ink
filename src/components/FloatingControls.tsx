@@ -6,7 +6,6 @@ import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
 import { AiOutlineSave } from 'react-icons/ai';
 import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
-import { SiInternetarchive } from 'react-icons/si';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
@@ -239,21 +238,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     fontSize='30px'
                                     aria-label='audio-toggle'
                                     icon={<FiPocket />}
-                                />
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    onClick={() => {
-                                        window.open(
-                                            'https://archive.org/create/',
-                                            '_blank'
-                                        )
-                                    }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={<SiInternetarchive />}
                                 />
                             </Stack>
                         </ModalBody>
