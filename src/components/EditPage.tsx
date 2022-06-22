@@ -103,21 +103,21 @@ export const EditPage = () => {
     }, [postContent]);
 
     return (
-        <Box p='50px' w={{ base: '100%', md: '80%', lg: '70%' }}
-            h='100vh'
-            margin='auto'
-            display='flex' flexDirection='column' alignItems='left'
+        <Box w={{ base: '100%', md: '80%', lg: '70%' }}
+            h='80vh'
+            margin='0 auto'
+            display='flex'
+            flexDirection='column'
+            alignItems='left'
             onMouseMove={(event) => {
                 setRecentlyTypedCount(0);
             }}>
-            <br></br>
-            <div data-color-mode={colorMode} style={{height: "80vh" }}>
+            <Box data-color-mode={colorMode} padding="60px" style={{ height: "100vh", overflow: scroll }}>
                 <MDEditor
                     preview='edit'
                     autoFocus={true}
                     hideToolbar={hideMdToolbar}
                     height='650'
-                    // height='70vh'
                     value={postContent}
                     visibleDragbar={false}
                     onKeyDown={async (event) => {
@@ -127,12 +127,11 @@ export const EditPage = () => {
                             handleKeyAudio(key);
                         }
                     }}
-
                     onChange={(text) => setPostContent(text)}
                     style={{
-                        // "padding": "50px",
-                        "background": "unset",
-                        "boxShadow": "unset"
+                        // paddingLeft: "100px",
+                        background: "unset",
+                        boxShadow: "unset",
                     }}
                     textareaProps={
                         {
@@ -140,8 +139,7 @@ export const EditPage = () => {
                         }
                     }
                 />
-                <br></br>
-            </div>
+            </Box>
 
             <FloatingControls
                 postContent={postContent}
