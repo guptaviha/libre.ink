@@ -14,31 +14,24 @@ export const ViewPage = (props: ViewPageProps) => {
     setTitle(post);
 
     return (
-        <Box p='60px' w={{ base: '100%', md: '80%', lg: '70%' }}
+        <Box w={{ base: '100%', md: '80%', lg: '70%' }}
             h='100vh'
-            margin='auto'
-            overflow='hidden'
-            display='flex' flexDirection='column' alignItems='left'
+            margin='0 auto'
+            display='flex'
+            flexDirection='column'
+            alignItems='left'
+            data-color-mode={colorMode}
         >
-            <br></br>
-
-            <div style={{
-                overflow: "auto",
-                // background: 'maroon', 
-                height: "80vh"
-            }} >
-                <div data-color-mode={colorMode} >
-                    <MDEditor.Markdown
-                        source={post}
-                        // height='6000px'
-                        style={{
-                            // "padding": "50px",
-                            "background": "unset",
-                            "boxShadow": "unset"
-                        }}
-                    />
-                </div>
-            </div>
+            <MDEditor.Markdown
+                source={post}
+                style={{
+                    margin: "70px 0 0",
+                    padding: "50px",
+                    background: "unset",
+                    boxShadow: "unset",
+                    overflow: "auto"
+                }}
+            />
 
             <FloatingControls
                 editMode={false}
