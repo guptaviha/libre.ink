@@ -35,8 +35,6 @@ type FloatingControlsProps = {
 
 export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar } = props;
-    const [statsBoxOpen, setStatsBoxOpen] = useState(false);
-    const [bobaBoxOpen, setBobaBoxOpen] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
     const { colorMode, toggleColorMode } = useColorMode();
@@ -44,9 +42,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure();
     const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure();
     const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
-    const btnPadding = 50;
-    const pageMargin = 10;
-    let currBtnPageMargin = 10;
 
 
     return (
@@ -62,13 +57,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <PopoverTrigger>
                         <IconButton
                             _focus={{ outline: "none" }}
-                            onClick={() => setBobaBoxOpen(!bobaBoxOpen)}
                             position='fixed'
                             bottom='10px'
                             left='10px'
                             aria-label='stats-count'
                             variant='ghost'
-                            // size='lg'
                             fontSize='30px'
                             isRound={true}
                             icon={<GiBoba />}
@@ -392,7 +385,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalBody>
                             <FormControl display='flex' alignItems='center'>
                                 <FormLabel htmlFor='markdown-toolbar' mb='0'>
-                                    Show Markdown Toolbar?
+                                    Show Markdown Toolbar
                                 </FormLabel>
                                 <Switch id='markdown-toolbar'
                                     defaultChecked={hideMdToolbar ? false : true}
@@ -416,13 +409,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <PopoverTrigger>
                         <IconButton
                             _focus={{ outline: "none" }}
-                            onClick={() => setStatsBoxOpen(!statsBoxOpen)}
                             position='fixed'
                             bottom='10px'
                             left='10px'
                             aria-label='stats-count'
                             variant='ghost'
-                            // size='lg'
                             fontSize='30px'
                             isRound={true}
                             icon={<FiBarChart2 />}
