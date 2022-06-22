@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Heading, Link } from '@chakra-ui/react';
+import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Heading, Link } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -13,6 +13,9 @@ import { useDisclosure } from '@chakra-ui/react'
 import { PublishButton } from './PublishButton';
 import Typewriter from 'typewriter-effect';
 import { APP_TITLE } from '../constants';
+import { GiBoba } from 'react-icons/gi';
+import GitHubButton from 'react-github-btn'
+
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -34,6 +37,7 @@ type FloatingControlsProps = {
 export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar } = props;
     const [statsBoxOpen, setStatsBoxOpen] = useState(false);
+    const [bobaBoxOpen, setBobaBoxOpen] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
     const { colorMode, toggleColorMode } = useColorMode();
@@ -45,6 +49,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const pageMargin = 10;
     let currBtnPageMargin = 10;
 
+
     return (
         <>
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
@@ -52,6 +57,62 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 localStorage.setItem('storedPost', postContent);
                 window.location.search = `?post=${encodedPost}`;
             }} /> : null}
+
+            {!editMode ?
+                <Popover>
+                    <PopoverTrigger>
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={() => setBobaBoxOpen(!bobaBoxOpen)}
+                            position='fixed'
+                            bottom='10px'
+                            left='10px'
+                            aria-label='stats-count'
+                            variant='ghost'
+                            // size='lg'
+                            fontSize='30px'
+                            isRound={true}
+                            icon={<GiBoba />}
+                        />
+                    </PopoverTrigger>
+                    <PopoverContent left='10px' _focus={{ outline: "none" }}>
+                        <PopoverHeader pt={4} fontWeight="bold" border="0">
+                            Help keep the lights on
+                        </PopoverHeader>
+                        <PopoverArrow />
+                        <PopoverCloseButton />
+                        <PopoverBody>
+                            If you like what you see, consider supporting us.
+
+                        </PopoverBody>
+                        <PopoverFooter
+                            border="0"
+                            d="flex"
+                            alignItems="center"
+                            justifyContent="space-between"
+                            pb={4}
+                        >
+                            <ButtonGroup size="sm">
+                                <Button
+                                    size="sm"
+                                    fontSize="12.5px"
+                                    colorScheme="green"
+                                    onClick={() =>
+                                        window.open(
+                                            'https://www.buymeacoffee.com/vihagupta99',
+                                            '_blank'
+                                        )
+                                    }
+                                >Buy us a Boba</Button>
+                                <GitHubButton href="https://github.com/guptaviha/libre.ink" data-show-count="true" data-size="large">
+                                    Star us on GitHub
+                                </GitHubButton>
+
+                            </ButtonGroup>
+                        </PopoverFooter>
+                    </PopoverContent>
+                </Popover>
+                : null}
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
 

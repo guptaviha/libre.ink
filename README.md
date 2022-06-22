@@ -16,7 +16,7 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Increase default text size for editor - Karan
  - [ ] Url shortening icon with a popup text field that pops up and is precopied
  - [ ] Add Reader-mode button to hide other floating btns
- - [ ] Buy me a boba button
+ - [x] Buy me a boba button
 
 ### Feature List - Later
  - [ ] Analytics dashboard
@@ -37,6 +37,7 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] HTML title/preview
  - [ ] When sharing, the link on whatsapp sometimes isnt clickable (see phone chat on Notes)
  - [ ] Edit btn logic needs to display data from the url and not rely on local storage - b/c if link is shared and opened on a new devide, it wont be there in local storage
+ - [ ] Emoji support or error handling
 
 
 distraction free
