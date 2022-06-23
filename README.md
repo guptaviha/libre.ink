@@ -18,9 +18,9 @@ The application does not talk to a database or server of any kind. All the conte
  - [x] Buy me a boba button
 
 ### Feature List - Later
- - [ ] Analytics dashboard
+ - [ ] Analytics dashboard - umami?
  - [ ] Chome extension
- - [ ] Markdown toolbar with floating version
+ - [ ] Markdown toolbar with floating functionality
  - [ ] Store array of published urls in local storage and show them
  - [ ] Clean slate button
  - [ ] Enable reader-mode compatibility - need to research with other nyt articles. article tag?
@@ -29,16 +29,14 @@ The application does not talk to a database or server of any kind. All the conte
 
 
 ### Bugs To Fix
- - [ ] Fix archive.org button for end-to-end save
- - [ ] Fix typewriter sounds on mobile
- - [ ] Fix the padding for mobile
- - [ ] Make the height fixed and only the textarea scrollable
- - [ ] Textarea is coming under the top controls
- - [ ] Html title needs to be set so sharing looks good
- - [ ] HTML title/preview
+ - [ ] Fix typewriter sounds on mobile - iphone works, need to check android
+ - [ ] Make the height fixed and only the textarea scrollable - Karan
+ - [ ] Textarea is coming under the top controls - Karan
+ - [ ] Find a way to show title when sharing
  - [ ] When sharing, the link on whatsapp sometimes isnt clickable (see phone chat on Notes)
  - [ ] Edit btn logic needs to display data from the url and not rely on local storage - b/c if link is shared and opened on a new devide, it wont be there in local storage
  - [x] Emoji support or error handling
+ - [ ] Markdown toolbar on mobile looks buggy
 
 
 distraction free
