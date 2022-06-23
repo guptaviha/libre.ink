@@ -15,7 +15,6 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Edit Markdown intro in placeholder - Karan
  - [ ] Increase default text size for editor - Karan
  - [ ] Url shortening icon with a popup text field that pops up and is precopied
- - [ ] Add Reader-mode button to hide other floating btns
  - [x] Buy me a boba button
 
 ### Feature List - Later
@@ -25,6 +24,8 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Store array of published urls in local storage and show them
  - [ ] Clean slate button
  - [ ] Enable reader-mode compatibility - need to research with other nyt articles. article tag?
+ - [ ] Keyboard shortcuts for markdown
+ - [ ] Add Reader-mode button to hide other floating btns / hide on scroll
 
 
 ### Bugs To Fix
@@ -37,7 +38,7 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] HTML title/preview
  - [ ] When sharing, the link on whatsapp sometimes isnt clickable (see phone chat on Notes)
  - [ ] Edit btn logic needs to display data from the url and not rely on local storage - b/c if link is shared and opened on a new devide, it wont be there in local storage
- - [ ] Emoji support or error handling
+ - [x] Emoji support or error handling
 
 
 distraction free

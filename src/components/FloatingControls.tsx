@@ -47,7 +47,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     return (
         <>
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
-                const encodedPost = btoa(postContent);
+                const encodedPost = btoa(encodeURIComponent(postContent));
                 localStorage.setItem('storedPost', postContent);
                 window.location.search = `?post=${encodedPost}`;
             }} /> : null}

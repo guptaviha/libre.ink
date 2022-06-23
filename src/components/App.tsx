@@ -11,7 +11,7 @@ export const App = () => {
     let decodedPost = '';
 
     if (post) {
-        decodedPost = atob(post);
+        decodedPost = decodeURIComponent(atob(post));
     }
 
     return (
