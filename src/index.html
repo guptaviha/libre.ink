@@ -6,10 +6,55 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>libre.ink</title>
     <meta name='viewport' content='width=device-width, initial-scale=1, max-width=1.0 user-scalable=0'>
+    <link rel='icon' href='../assets/icons/noun-ghost-120578.svg'>
     <script type='module' src='index.tsx'></script>
     <style>
         body {
             overflow: hidden;
+        }
+
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) {
+            .w-md-editor-show-edit .w-md-editor-input {
+                padding: 0 20px;
+            }
+
+            .wmde-markdown.wmde-markdown-color {
+                padding: 0 20px;
+            }
+        }
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) {
+            .w-md-editor-show-edit .w-md-editor-input {
+                padding: 0 50px;
+            }
+
+            .wmde-markdown.wmde-markdown-color {
+                padding: 0 50px 50px;
+            }
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            .w-md-editor-show-edit .w-md-editor-input {
+                padding: 0 150px;
+            }
+
+            .wmde-markdown.wmde-markdown-color {
+                padding: 0 150px 50px;
+            }
+        }
+
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .w-md-editor-show-edit .w-md-editor-input {
+                padding: 0 170px;
+            }
+
+            .wmde-markdown-color {
+                padding: 0 170px 50px;
+            }
         }
     </style>
 </head>
