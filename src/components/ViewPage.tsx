@@ -14,7 +14,8 @@ export const ViewPage = (props: ViewPageProps) => {
     setTitle(post);
 
     return (
-        <Box w={{ base: '100%', md: '80%', lg: '70%' }}
+        <Box
+            w='100%'
             h='100vh'
             margin='0 auto'
             display='flex'
@@ -26,7 +27,6 @@ export const ViewPage = (props: ViewPageProps) => {
                 source={post}
                 style={{
                     margin: "70px 0 0",
-                    padding: "0 50px 50px",
                     background: "unset",
                     boxShadow: "unset",
                     overflow: "auto"

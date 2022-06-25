@@ -1,4 +1,4 @@
-import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Heading, Link } from '@chakra-ui/react';
+import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -10,11 +10,9 @@ import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
 import { PublishButton } from './PublishButton';
-import Typewriter from 'typewriter-effect';
-import { APP_TITLE } from '../constants';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
-
+import { Logo } from './Logo';
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -99,7 +97,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 <GitHubButton href="https://github.com/guptaviha/libre.ink" data-show-count="true" data-size="large">
                                     Star us on GitHub
                                 </GitHubButton>
-
                             </ButtonGroup>
                         </PopoverFooter>
                     </PopoverContent>
@@ -108,19 +105,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
 
-                <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
-                    <Heading size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' position='fixed' top='24px' left='24px' title='Your favorite anonymous publishing platform'>
-                        <Typewriter
-                            options={{
-                                strings: [APP_TITLE],
-                                autoStart: true,
-                                loop: false,
-                                pauseFor: 90000000,
-                            }}
-
-                        />
-                    </Heading>
-                </Link>
+                <Logo />
 
                 {/* Dark Mode Btn */}
                 <IconButton
