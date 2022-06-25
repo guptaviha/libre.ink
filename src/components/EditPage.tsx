@@ -112,7 +112,8 @@ export const EditPage = () => {
     }, [postContent]);
 
     return (
-        <Box w={{ base: '100%', md: '80%', lg: '70%' }}
+        <Box
+            w='100%'
             h='100vh'
             margin='0 auto'
             // background={'maroon'}
@@ -139,7 +140,6 @@ export const EditPage = () => {
                 onChange={(text) => setPostContent(text)}
                 style={{
                     margin: "70px 0 0",
-                    padding: "0 50px",
                     background: "unset",
                     boxShadow: "unset",
                     // overflow: "auto",
@@ -150,7 +150,6 @@ export const EditPage = () => {
                     }
                 }
             />
-
             <FloatingControls
                 postContent={postContent}
                 stats={stats}

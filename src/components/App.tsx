@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from '@chakra-ui/react';
 import { EditPage } from './EditPage';
 import { ViewPage } from './ViewPage';
 import theme from '../theme';
