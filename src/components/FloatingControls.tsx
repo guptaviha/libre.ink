@@ -332,7 +332,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     _focus={{ outline: "none" }}
                     onClick={() => {
                         localStorage.setItem('storedPost', postContent);
-                        window.location.href = '/'
+                        window.location.href = '/';
                     }}
                     position='fixed'
                     top='12px'
