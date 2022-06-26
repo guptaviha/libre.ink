@@ -1,4 +1,4 @@
-import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderTrack } from '@chakra-ui/react';
+import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -385,20 +385,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         <SliderMark value={18} {...labelStyles}>18</SliderMark>
                                         <SliderMark value={20} {...labelStyles}>20</SliderMark>
                                         <SliderMark value={22} {...labelStyles}>22</SliderMark>
-                                        <SliderMark
-                                            value={fontSizeSlider}
-                                            textAlign='center'
-                                            bg='blue.500'
-                                            color='white'
-                                            mt='-10'
-                                            ml='-5'
-                                            w='12'
-                                        >
-                                            {fontSizeSlider}
-                                        </SliderMark>
                                         <SliderTrack>
                                             <SliderFilledTrack />
                                         </SliderTrack>
+                                        <SliderThumb />
                                     </Slider>
                                 </Box>
                                 <Box display='flex' alignItems='center' marginBottom='20px'>
