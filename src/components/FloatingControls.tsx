@@ -331,6 +331,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 {!editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={() => {
+                        localStorage.setItem('storedPost', postContent);
                         window.location.href = '/'
                     }}
                     position='fixed'
