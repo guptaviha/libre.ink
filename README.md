@@ -26,6 +26,8 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Enable reader-mode compatibility - need to research with other nyt articles. article tag?
  - [ ] Keyboard shortcuts for markdown
  - [ ] Add Reader-mode button to hide other floating btns / hide on scroll
+ - [ ] Update local storage on type
+ - [ ] Update local storage on edit click to be the edit post
 
 
 ### Bugs To Fix
