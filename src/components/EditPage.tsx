@@ -110,9 +110,9 @@ export const EditPage = () => {
 
     const calculateStats = useCallback(() => {
         setStats({
-            wordCount: postContent.split(' ').length,
+            wordCount: postContent.length > 0 ? postContent.split(' ').length : 0,
             characterCount: postContent.length,
-            sentenceCount: postContent.split('.').length,
+            sentenceCount: postContent.length > 0 ? postContent.split('.').filter((sent) => sent.length > 0).length : 0,
         });
     }, [postContent]);
 
