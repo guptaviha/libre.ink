@@ -21,7 +21,7 @@ const camelToTitleCase = (text: string) => {
 };
 
 type FloatingControlsProps = {
-    postContent?: string;
+    postContent: string;
     stats?: StatsType;
     show: boolean;
     soundOn?: boolean;

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Typewriter from 'typewriter-effect';
 import { Box, Heading, Image, Link } from '@chakra-ui/react';
 import { APP_TITLE } from '../constants';
-import ghostIconSW from '../../assets/icons/noun-ghost-straight-sw.svg';
-import ghostIconC from '../../assets/icons/noun-ghost-straight-c.svg';
-import ghostIconSE from '../../assets/icons/noun-ghost-straight-se.svg';
-import ghostIconE from '../../assets/icons/noun-ghost-straight-e.svg';
-import ghostIconW from '../../assets/icons/noun-ghost-straight-w.svg';
-import ghostIconNW from '../../assets/icons/noun-ghost-straight-nw.svg';
-import ghostIconNE from '../../assets/icons/noun-ghost-straight-nw.svg';
+import ghostIconSW from '../../assets/icons/noun-ghost-sneaky-sw.svg';
+import ghostIconC from '../../assets/icons/noun-ghost-sneaky-c.svg';
+import ghostIconSE from '../../assets/icons/noun-ghost-sneaky-se.svg';
+import ghostIconE from '../../assets/icons/noun-ghost-sneaky-e.svg';
+import ghostIconW from '../../assets/icons/noun-ghost-sneaky-w.svg';
+import ghostIconNW from '../../assets/icons/noun-ghost-sneaky-nw.svg';
+import ghostIconNE from '../../assets/icons/noun-ghost-sneaky-ne.svg';
 
 export const Logo = () => {
     const [icon, setIcon] = useState(ghostIconSE);
@@ -16,19 +16,19 @@ export const Logo = () => {
         function handleMouseMove(e) {
             const x = e.x;
             const y = e.y;
-            if (x < 30 && y < 30 && x > 20 && y > 20) {
+            if (x < 35 && y < 35 && x > 25 && y > 25) {
                 setIcon(ghostIconC);
-            } else if (x > 30 && y < 30) {
+            } else if (x > 35 && y > 25 && y < 45) {
                 setIcon(ghostIconE);
-            } else if (x < 30 && y > 30) {
+            } else if (x < 25 && y > 35) {
                 setIcon(ghostIconSW);
-            } else if (x < 20 && y < 20) {
+            } else if (x < 25 && y < 25) {
                 setIcon(ghostIconNW);
-            } else if (x > 20 && y < 20) {
+            } else if (x > 25 && y < 25) {
                 setIcon(ghostIconNE);
-            } else if (x < 20 && y < 40 && y > 20) {
+            } else if (x < 25 && y < 45 && y > 25) {
                 setIcon(ghostIconW);
-            } else {
+            } else if (x > 35 && y > 35) {
                 setIcon(ghostIconSE);
             }
         }
