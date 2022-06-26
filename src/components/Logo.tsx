@@ -16,19 +16,19 @@ export const Logo = () => {
         function handleMouseMove(e) {
             const x = e.x;
             const y = e.y;
-            if (x < 35 && y < 35 && x > 25 && y > 25) {
+            if (x < 40 && y < 40 && x > 30 && y > 30) {
                 setIcon(ghostIconC);
-            } else if (x > 35 && y > 25 && y < 45) {
+            } else if (x > 40 && y > 30 && y < 50) {
                 setIcon(ghostIconE);
-            } else if (x < 25 && y > 35) {
+            } else if (x < 30 && y > 40) {
                 setIcon(ghostIconSW);
-            } else if (x < 25 && y < 25) {
+            } else if (x < 30 && y < 30) {
                 setIcon(ghostIconNW);
-            } else if (x > 25 && y < 25) {
+            } else if (x > 30 && y < 30) {
                 setIcon(ghostIconNE);
-            } else if (x < 25 && y < 45 && y > 25) {
+            } else if (x < 30 && y < 50 && y > 30) {
                 setIcon(ghostIconW);
-            } else if (x > 35 && y > 35) {
+            } else if (x > 40 && y > 40) {
                 setIcon(ghostIconSE);
             }
         }
