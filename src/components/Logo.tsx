@@ -16,19 +16,19 @@ export const Logo = () => {
         function handleMouseMove(e) {
             const x = e.x;
             const y = e.y;
-            if (x < 40 && y < 40 && x > 30 && y > 30) {
+            if (x < 40 && y < 34 && x > 30 && y > 24) {
                 setIcon(ghostIconC);
-            } else if (x > 40 && y > 30 && y < 50) {
+            } else if (x > 40 && y > 24 && y < 44) {
                 setIcon(ghostIconE);
-            } else if (x < 30 && y > 40) {
+            } else if (x < 30 && y > 34) {
                 setIcon(ghostIconSW);
-            } else if (x < 30 && y < 30) {
+            } else if (x < 30 && y < 24) {
                 setIcon(ghostIconNW);
-            } else if (x > 30 && y < 30) {
+            } else if (x > 30 && y < 24) {
                 setIcon(ghostIconNE);
-            } else if (x < 30 && y < 50 && y > 30) {
+            } else if (x < 30 && y < 44 && y > 24) {
                 setIcon(ghostIconW);
-            } else if (x > 40 && y > 40) {
+            } else if (x > 40 && y > 34) {
                 setIcon(ghostIconSE);
             }
         }
@@ -39,7 +39,7 @@ export const Logo = () => {
     }, []);
     return (
         <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
-            <Box position='fixed' top='24px' left='10px' display='flex' alignItems='center'>
+            <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                 <Image src={icon} width='40px' paddingRight='5px' />
                 <Heading size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
                     <Typewriter
