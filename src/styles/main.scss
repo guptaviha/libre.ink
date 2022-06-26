@@ -51,22 +51,22 @@ body {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .w-md-editor-show-edit .w-md-editor-input {
-        padding: 0 20px;
+        padding: 0 40px;
     }
 
     .wmde-markdown.wmde-markdown-color {
-        padding: 0 20px;
+        padding: 0 40px 50px;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .w-md-editor-show-edit .w-md-editor-input {
-        padding: 0 50px;
+        padding: 0 100px;
     }
 
     .wmde-markdown.wmde-markdown-color {
-        padding: 0 50px 50px;
+        padding: 0 100px 50px;
     }
 }
 
