@@ -8,6 +8,7 @@ import ghostIconSE from '../../assets/icons/noun-ghost-straight-se.svg';
 import ghostIconE from '../../assets/icons/noun-ghost-straight-e.svg';
 import ghostIconW from '../../assets/icons/noun-ghost-straight-w.svg';
 import ghostIconNW from '../../assets/icons/noun-ghost-straight-nw.svg';
+import ghostIconNE from '../../assets/icons/noun-ghost-straight-nw.svg';
 
 export const Logo = () => {
     const [icon, setIcon] = useState(ghostIconSE);
@@ -23,6 +24,8 @@ export const Logo = () => {
                 setIcon(ghostIconSW);
             } else if (x < 20 && y < 20) {
                 setIcon(ghostIconNW);
+            } else if (x > 20 && y < 20) {
+                setIcon(ghostIconNE);
             } else if (x < 20 && y < 40 && y > 20) {
                 setIcon(ghostIconW);
             } else {

@@ -36,6 +36,7 @@ export const ViewPage = (props: ViewPageProps) => {
             <FloatingControls
                 editMode={false}
                 show={true}
+                postContent={post}
             />
 
         </Box>
