@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from '@uiw/react-md-editor';
 import { setTitle } from '../common';
+
+
+const localStorageFont = (localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
 
 type ViewPageProps = {
     post: string;
@@ -11,7 +14,12 @@ type ViewPageProps = {
 export const ViewPage = (props: ViewPageProps) => {
     const { post } = props;
     const { colorMode } = useColorMode();
+    const [fontSizeSlider, setFontSizeSlider] = useState(localStorageFont);
     setTitle(post);
+
+    useEffect(() => {
+        localStorage.setItem('fontSize', fontSizeSlider);
+    }, [fontSizeSlider]);
 
     return (
         <Box
@@ -29,7 +37,8 @@ export const ViewPage = (props: ViewPageProps) => {
                     margin: "70px 0 0",
                     background: "unset",
                     boxShadow: "unset",
-                    overflow: "auto"
+                    overflow: "auto",
+                    fontSize: `${fontSizeSlider}px`
                 }}
             />
 
@@ -37,6 +46,8 @@ export const ViewPage = (props: ViewPageProps) => {
                 editMode={false}
                 show={true}
                 postContent={post}
+                fontSizeSlider={fontSizeSlider}
+                setFontSizeSlider={setFontSizeSlider}
             />
 
         </Box>

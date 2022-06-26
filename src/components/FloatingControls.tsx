@@ -353,7 +353,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 /> : null}
 
                 {/* Font Btn */}
-                {editMode ? <IconButton
+                <IconButton
                     _focus={{ outline: "none" }}
                     onClick={onOpenFont}
                     position='fixed'
@@ -365,7 +365,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     // size='lg'
                     fontSize='30px'
                     icon={<RiFontSize />}
-                /> : null}
+                />
 
                 {/* Font Modal */}
                 <Modal isOpen={isOpenFont} onClose={onCloseFont} >
@@ -391,7 +391,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         <SliderThumb />
                                     </Slider>
                                 </Box>
-                                <Box display='flex' alignItems='center' marginBottom='20px'>
+                                {editMode ? <Box display='flex' alignItems='center' marginBottom='20px'>
                                     <FormLabel htmlFor='markdown-toolbar' mb='0'>
                                         Show Markdown Toolbar
                                     </FormLabel>
@@ -401,7 +401,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                             setHideMdToolbar(!hideMdToolbar)
                                             console.log(hideMdToolbar)
                                         }} />
-                                </Box>
+                                </Box> : null}
                             </FormControl>
                         </ModalBody>
                         {/* <ModalFooter>
