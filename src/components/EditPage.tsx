@@ -11,6 +11,7 @@ export type StatsType = {
 };
 
 const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : '');
+const localStorageFont = (localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
 const placeholderText = `# Quick guide to using libre.ink
 
 Hello internet! 
@@ -80,7 +81,7 @@ export const EditPage = () => {
     const [postContent, setPostContent]: [string, any] = useState(localStoragePost);
     const [soundOn, setSoundOn] = useState(true);
     const [hideMdToolbar, setHideMdToolbar] = useState(true);
-    const [fontSizeSlider, setFontSizeSlider] = useState(16);
+    const [fontSizeSlider, setFontSizeSlider] = useState(localStorageFont);
     const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
@@ -88,6 +89,10 @@ export const EditPage = () => {
         characterCount: 0,
         sentenceCount: 0,
     });
+
+    useEffect(() => {
+        localStorage.setItem('fontSize', fontSizeSlider);
+    }, [fontSizeSlider]);
 
     useEffect(() => {
         calculateStats();
