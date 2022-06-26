@@ -80,6 +80,7 @@ export const EditPage = () => {
     const [postContent, setPostContent]: [string, any] = useState(localStoragePost);
     const [soundOn, setSoundOn] = useState(true);
     const [hideMdToolbar, setHideMdToolbar] = useState(true);
+    const [fontSizeSlider, setFontSizeSlider] = useState(16);
     const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
@@ -115,10 +116,7 @@ export const EditPage = () => {
             w='100%'
             h='100vh'
             margin='0 auto'
-            // background={'maroon'}
-            // position='fixed'
-            // top='0px'
-            // padding="60px"
+            className={`font-size-wrapper-${fontSizeSlider}`}
             data-color-mode={colorMode}
             onTouchMove={() => setRecentlyTypedCount(0)}
             onMouseMove={() => setRecentlyTypedCount(0)}>
@@ -141,7 +139,7 @@ export const EditPage = () => {
                     margin: "70px 0 0",
                     background: "unset",
                     boxShadow: "unset",
-                    // overflow: "auto",
+                    fontSize: fontSizeSlider,
                 }}
                 textareaProps={
                     {
@@ -155,6 +153,8 @@ export const EditPage = () => {
                 show={recentlyTypedCount < 2}
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
+                fontSizeSlider={fontSizeSlider}
+                setFontSizeSlider={setFontSizeSlider}
                 editMode={true}
                 hideMdToolbar={hideMdToolbar}
                 setHideMdToolbar={setHideMdToolbar}

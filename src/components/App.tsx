@@ -3,6 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { EditPage } from './EditPage';
 import { ViewPage } from './ViewPage';
 import theme from '../theme';
+import '../styles/main.scss';
 
 export const App = () => {
     const queryString = window.location.search;

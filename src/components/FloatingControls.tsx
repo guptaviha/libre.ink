@@ -1,4 +1,4 @@
-import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode } from '@chakra-ui/react';
+import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -26,15 +26,22 @@ type FloatingControlsProps = {
     show: boolean;
     soundOn?: boolean;
     setSoundOn?: (soundOn: boolean) => void;
+    fontSizeSlider: number;
+    setFontSizeSlider: (fontSizeSlider: number) => void;
     editMode: boolean;
     hideMdToolbar?: boolean;
     setHideMdToolbar?: (hideMdToolbar: boolean) => void;
 };
 
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar } = props;
+    const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar, fontSizeSlider, setFontSizeSlider } = props;
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
+    const labelStyles = {
+        mt: '2',
+        ml: '-2.5',
+        fontSize: 'sm',
+    };
     const { colorMode, toggleColorMode } = useColorMode();
     const toast = useToast()
     const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure();
@@ -369,24 +376,52 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            <FormControl display='flex' alignItems='center'>
-                                <FormLabel htmlFor='markdown-toolbar' mb='0'>
-                                    Show Markdown Toolbar
-                                </FormLabel>
-                                <Switch id='markdown-toolbar'
-                                    defaultChecked={hideMdToolbar ? false : true}
-                                    onChange={() => {
-                                        setHideMdToolbar(!hideMdToolbar)
-                                        console.log(hideMdToolbar)
-
-                                    }} />
+                            <FormControl>
+                                <Text>Font Size</Text>
+                                <Slider aria-label='slider-ex-6' step={2} min={14} max={22} onChange={(val) => setFontSizeSlider(val)} marginBottom='25px'>
+                                    <SliderMark value={16} {...labelStyles}>
+                                        16
+                                    </SliderMark>
+                                    <SliderMark value={18} {...labelStyles}>
+                                        18
+                                    </SliderMark>
+                                    <SliderMark value={20} {...labelStyles}>
+                                        20
+                                    </SliderMark>
+                                    <SliderMark
+                                        value={fontSizeSlider}
+                                        textAlign='center'
+                                        bg='blue.500'
+                                        color='white'
+                                        mt='-10'
+                                        ml='-5'
+                                        w='12'
+                                    >
+                                        {fontSizeSlider}
+                                    </SliderMark>
+                                    <SliderTrack>
+                                        <SliderFilledTrack />
+                                    </SliderTrack>
+                                    <SliderThumb />
+                                </Slider>
+                                <Box display='flex' alignItems='center' marginBottom='10px'>
+                                    <FormLabel htmlFor='markdown-toolbar' mb='0'>
+                                        Show Markdown Toolbar
+                                    </FormLabel>
+                                    <Switch id='markdown-toolbar'
+                                        defaultChecked={hideMdToolbar ? false : true}
+                                        onChange={() => {
+                                            setHideMdToolbar(!hideMdToolbar)
+                                            console.log(hideMdToolbar)
+                                        }} />
+                                </Box>
                             </FormControl>
                         </ModalBody>
-                        <ModalFooter>
+                        {/* <ModalFooter>
                             <Button colorScheme='whatsapp' onClick={onCloseFont}>
                                 Apply
                             </Button>
-                        </ModalFooter>
+                        </ModalFooter> */}
                     </ModalContent>
                 </Modal>
 

@@ -1,0 +1,93 @@
+body {
+    overflow: hidden;
+}
+
+.font-size-wrapper-14 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 14px !important;
+        line-height: 18px !important;
+    }
+    textarea {
+        font-size: 14px;
+    }
+}
+.font-size-wrapper-16 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 16px !important;
+        line-height: 20px !important;
+    }
+    textarea {
+        font-size: 16px;
+    }
+}
+.font-size-wrapper-18 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 18px !important;
+        line-height: 22px !important;
+    }
+    textarea {
+        font-size: 18px;
+    }
+}
+.font-size-wrapper-20 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 20px !important;
+        line-height: 24px !important;
+    }
+    textarea {
+        font-size: 20px;
+    }
+}
+.font-size-wrapper-22 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 22px !important;
+        line-height: 26px !important;
+    }
+    textarea {
+        font-size: 22px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .w-md-editor-show-edit .w-md-editor-input {
+        padding: 0 20px;
+    }
+
+    .wmde-markdown.wmde-markdown-color {
+        padding: 0 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .w-md-editor-show-edit .w-md-editor-input {
+        padding: 0 50px;
+    }
+
+    .wmde-markdown.wmde-markdown-color {
+        padding: 0 50px 50px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .w-md-editor-show-edit .w-md-editor-input {
+        padding: 0 150px;
+    }
+
+    .wmde-markdown.wmde-markdown-color {
+        padding: 0 150px 50px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .w-md-editor-show-edit .w-md-editor-input {
+        padding: 0 170px;
+    }
+
+    .wmde-markdown.wmde-markdown-color {
+        padding: 0 170px 50px;
+    }
+}
