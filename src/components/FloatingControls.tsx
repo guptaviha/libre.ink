@@ -1,5 +1,5 @@
 import { Link, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
@@ -39,6 +39,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar, fontSizeSlider, setFontSizeSlider } = props;
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
+    const [typewriterTimedout, setTypewriterTimedout] = useState(false);
     const labelStyles = {
         mt: '2',
         ml: '-1.5',
@@ -50,6 +51,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure();
     const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
 
+    useEffect(() => {
+        setTimeout(() => setTypewriterTimedout(true), 3000);
+    }, []);
 
     return (
         <>
@@ -116,19 +120,18 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
 
-                
+
                 <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
-
                         <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
-                            <Typewriter
+                            {!typewriterTimedout ? <Typewriter
                                 options={{
                                     strings: [APP_TITLE],
                                     autoStart: true,
                                     loop: false,
                                     pauseFor: 90000000,
                                 }}
-                            />
+                            /> : <div>{APP_TITLE}</div>}
                         </Heading>
                     </Box>
                 </Link>
