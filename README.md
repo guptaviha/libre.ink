@@ -41,6 +41,25 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Markdown toolbar on mobile looks buggy
 
 
+1. Change text
+2. Keep ghost around even while typing
+3. Remove logo cursor
+4. Make logo typing faster?
+5. Make header buttons part of one div
+6. Change i to question mark
+7. Does the boba light up?
+8. Set print styles to match dark mode
+9. Add pdf button to the save modal?
+10. Make Font size button look like Safari's Big A and Small A UI
+11. Should we compress all settings into one gear icon on the top left?
+12. Make boba pulse over 10 seconds maybe
+
+Edit btn should come down
+Add gif in info tab
+Markdown toolbar width does not match div
+Markdown toolbar does nto persist
+Webiste abuse legal disclaimer?
+
 distraction free
 give it a whirl
 distraction free

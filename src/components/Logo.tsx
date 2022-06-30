@@ -41,7 +41,7 @@ export const Logo = () => {
         <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
             <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                 <Image src={icon} width='40px' paddingRight='5px' />
-                <Heading size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
+                {/* <Heading size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
                     <Typewriter
                         options={{
                             strings: [APP_TITLE],
@@ -50,7 +50,7 @@ export const Logo = () => {
                             pauseFor: 90000000,
                         }}
                     />
-                </Heading>
+                </Heading> */}
             </Box>
         </Link>
     )

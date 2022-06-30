@@ -1,17 +1,19 @@
-import { PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/react';
+import { Link, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
 import { AiOutlineSave } from 'react-icons/ai';
-import { BsInfo, BsGithub, BsTwitter } from 'react-icons/bs';
+import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
 import { PublishButton } from './PublishButton';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
+import Typewriter from 'typewriter-effect';
+import { APP_TITLE } from '../constants';
 import { Logo } from './Logo';
 
 const camelToTitleCase = (text: string) => {
@@ -110,9 +112,26 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Popover>
                 : null}
 
+            <Logo />
+
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
 
-                <Logo />
+                
+                <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+                    <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
+
+                        <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
+                            <Typewriter
+                                options={{
+                                    strings: [APP_TITLE],
+                                    autoStart: true,
+                                    loop: false,
+                                    pauseFor: 90000000,
+                                }}
+                            />
+                        </Heading>
+                    </Box>
+                </Link>
 
                 {/* Dark Mode Btn */}
                 <IconButton
@@ -246,7 +265,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     isRound={true}
                     // size='lg'
                     fontSize='30px'
-                    icon={<BsInfo />}
+                    icon={<BsQuestion />}
                 /> : null}
 
                 {/* Info Modal */}
