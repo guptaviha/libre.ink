@@ -4,7 +4,7 @@ import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } f
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
-import { AiOutlineSave } from 'react-icons/ai';
+import { AiOutlineSave, AiOutlineFilePdf } from 'react-icons/ai';
 import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
@@ -242,6 +242,20 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     fontSize='30px'
                                     aria-label='audio-toggle'
                                     icon={<FiPocket />}
+                                />
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={() => {
+                                        // !onCloseSave;
+                                        // const url = window.location.href;
+                                        // window.print();
+                                    }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={<AiOutlineFilePdf />}
                                 />
                             </Stack>
                         </ModalBody>
