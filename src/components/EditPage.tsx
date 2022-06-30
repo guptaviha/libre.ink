@@ -3,6 +3,7 @@ import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
 import { setTitle } from '../common';
+import { PLACEHOLDER_TEXT } from '../constants';
 
 export type StatsType = {
     wordCount: number;
@@ -10,32 +11,9 @@ export type StatsType = {
     sentenceCount: number;
 };
 
-const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : '');
+const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : PLACEHOLDER_TEXT);
 const localStorageFont = (localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
-const placeholderText = `# Quick guide to using libre.ink
 
-Hello internet! 
-Use this tool to write your heart out - we support markdown too!
-
-### Use any number (1-6) of hashtags to specify your title size
-
-**You can use bold like this**
-
-*Or italics like this*
-
-[Here you can add a link](https://www.markdownguide.org/cheat-sheet/)
-
-> You can add a blockquote like this
-
-1. Making a list is easy
-2. Use numbers for an ordered list
-- or hyphens for an unordered list
-
-What to add lines to segment your post? Use three hyphens like this:
-
----
-
-\`You can even add code segments inside of backticks\``
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0;
 
@@ -148,7 +126,7 @@ export const EditPage = () => {
                 }}
                 textareaProps={
                     {
-                        "placeholder": placeholderText
+                        placeholder: "You got this! Just type to your heart's content and hit publish!"
                     }
                 }
             />
