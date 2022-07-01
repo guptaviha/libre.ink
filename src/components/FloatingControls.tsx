@@ -246,7 +246,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     aria-label='audio-toggle'
                                     icon={<FiPocket />}
                                 />
-                                <IconButton
+                                {/* <IconButton
                                     _focus={{ outline: "none" }}
                                     onClick={() => {
                                         // !onCloseSave;
@@ -259,7 +259,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     fontSize='30px'
                                     aria-label='audio-toggle'
                                     icon={<AiOutlineFilePdf />}
-                                />
+                                /> */}
                             </Stack>
                         </ModalBody>
                         <ModalFooter>
