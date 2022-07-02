@@ -15,6 +15,7 @@ import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
 import { APP_TITLE } from '../constants';
 import { Logo } from './Logo';
+import { encode } from '../common';
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -58,7 +59,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     return (
         <>
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
-                const encodedPost = btoa(encodeURIComponent(postContent));
+                const encodedPost = encode(postContent);
                 localStorage.setItem('storedPost', postContent);
                 window.location.search = `?post=${encodedPost}`;
             }} /> : null}
