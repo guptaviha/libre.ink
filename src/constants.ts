@@ -1,11 +1,20 @@
 export const APP_TITLE = 'libre.ink';
-export const PLACEHOLDER_TEXT = `Welcome to **Libre.ink**.
+export const STARTING_TEXT = `Welcome to **Libre.ink** - Instant anonymous blogging.
 
-Leave your username at the door to this instant-blog platform.
+No sign-up. No tracking. No kidding.
 
-You can start editing this post and hit the "Publish" button to give it a whirl.
+## Our novel approach
+We don't care about your data. So **we don't store anything**.
+We achieve **total privacy** by storing your blog post right *in the URL*.
+
+While this makes the URL a little bit ungainly, we think it has some serious advantages for those looking for total privacy.
+
+So leave your username at the door and edit this post to give it a whirl.
 `;
 
+export const PLACEHOLDER_TEXT = `Instant anonymous blogging.
+
+Write. Publish. Take it and go.`;
 
 const guideText = `# Quick guide to using libre.ink
 

@@ -3,7 +3,7 @@ import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
 import { setTitle } from '../common';
-import { PLACEHOLDER_TEXT } from '../constants';
+import { PLACEHOLDER_TEXT, STARTING_TEXT } from '../constants';
 
 export type StatsType = {
     wordCount: number;
@@ -11,7 +11,7 @@ export type StatsType = {
     sentenceCount: number;
 };
 
-const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : PLACEHOLDER_TEXT);
+const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
 const localStorageFont = (localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
 
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
@@ -126,7 +126,7 @@ export const EditPage = () => {
                 }}
                 textareaProps={
                     {
-                        placeholder: "You got this! Just type to your heart's content and hit publish!"
+                        placeholder: PLACEHOLDER_TEXT
                     }
                 }
             />

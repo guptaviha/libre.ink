@@ -128,7 +128,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     autoStart: true,
                                     loop: false,
                                     pauseFor: 90000000,
-                                    delay: 80,
                                     cursor: ''
                                 }}
                             /> : <div>{APP_TITLE}</div>}
