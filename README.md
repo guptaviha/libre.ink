@@ -39,6 +39,8 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Edit btn logic needs to display data from the url and not rely on local storage - b/c if link is shared and opened on a new devide, it wont be there in local storage
  - [x] Emoji support or error handling
  - [ ] Markdown toolbar on mobile looks buggy
+ - [ ] Change save floppy icon to share btn
+ - [ ] URL shortening (with a disclaimer on data being stored)
 
 
 1. Change text
