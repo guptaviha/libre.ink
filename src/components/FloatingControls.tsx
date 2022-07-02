@@ -52,7 +52,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
 
     useEffect(() => {
-        setTimeout(() => setTypewriterTimedout(true), 3000);
+        setTimeout(() => setTypewriterTimedout(true), 2200);
     }, []);
 
     return (
@@ -119,8 +119,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             <Logo />
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
-
-
                 <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                         <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
@@ -130,6 +128,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     autoStart: true,
                                     loop: false,
                                     pauseFor: 90000000,
+                                    delay: 80,
+                                    cursor: ''
                                 }}
                             /> : <div>{APP_TITLE}</div>}
                         </Heading>
