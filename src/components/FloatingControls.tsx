@@ -4,7 +4,7 @@ import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } f
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
-import { AiOutlineSave, AiOutlineFilePdf } from 'react-icons/ai';
+import { IoShareOutline } from 'react-icons/io5';
 import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
@@ -171,7 +171,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
                 /> : null}
 
-                {/* Save Btn */}
+                {/* Share Btn */}
                 {!editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={onOpenSave}
@@ -183,7 +183,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     isRound={true}
                     // size='lg'
                     fontSize='30px'
-                    icon={<AiOutlineSave />}
+                    icon={<IoShareOutline />}
                 /> : null}
 
                 {/* Save Modal */}
