@@ -4,6 +4,7 @@ import { EditPage } from './EditPage';
 import { ViewPage } from './ViewPage';
 import theme from '../theme';
 import '../styles/main.scss';
+import { decode } from '../common';
 
 export const App = () => {
     const queryString = window.location.search;
@@ -12,7 +13,7 @@ export const App = () => {
     let decodedPost = '';
 
     if (post) {
-        decodedPost = decodeURIComponent(atob(post));
+        decodedPost = decode(post);
     }
 
     return (

@@ -4,7 +4,7 @@ import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } f
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
-import { AiOutlineSave, AiOutlineFilePdf } from 'react-icons/ai';
+import { IoShareOutline } from 'react-icons/io5';
 import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
@@ -15,6 +15,7 @@ import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
 import { APP_TITLE } from '../constants';
 import { Logo } from './Logo';
+import { encode } from '../common';
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
@@ -52,13 +53,13 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
 
     useEffect(() => {
-        setTimeout(() => setTypewriterTimedout(true), 3000);
+        setTimeout(() => setTypewriterTimedout(true), 2200);
     }, []);
 
     return (
         <>
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
-                const encodedPost = btoa(encodeURIComponent(postContent));
+                const encodedPost = encode(postContent);
                 localStorage.setItem('storedPost', postContent);
                 window.location.search = `?post=${encodedPost}`;
             }} /> : null}
@@ -119,8 +120,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             <Logo />
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
-
-
                 <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                         <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
@@ -130,6 +129,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     autoStart: true,
                                     loop: false,
                                     pauseFor: 90000000,
+                                    cursor: ''
                                 }}
                             /> : <div>{APP_TITLE}</div>}
                         </Heading>
@@ -171,7 +171,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
                 /> : null}
 
-                {/* Save Btn */}
+                {/* Share Btn */}
                 {!editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={onOpenSave}
@@ -183,7 +183,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     isRound={true}
                     // size='lg'
                     fontSize='30px'
-                    icon={<AiOutlineSave />}
+                    icon={<IoShareOutline />}
                 /> : null}
 
                 {/* Save Modal */}
