@@ -23,12 +23,12 @@ export const TWITTER_SHARE_LINK = `https://twitter.com/intent/tweet?text=Check%2
 export const TINY_URL_LINK = `https://tinyurl.com/`
 
 export const APP_TITLE_TOOLTIP = `Your favorite anonymous publishing platform`
-// export const MUTE_BTN_ON_TOOLTIP = `Sound Off`
-// export const MUTE_BTN_OFF_TOOLTIP = `Sound On`
+export const MUTE_BTN_ON_TOOLTIP = `Sound Off`
+export const MUTE_BTN_OFF_TOOLTIP = `Sound On`
 export const SHARE_BTN_TOOLTIP = `Share`
 export const FONT_BTN_TOOLTIP = `Font`
-// export const DARK_MODE_BTN_ON_TOOLTIP = `Lights Off`
-// export const DARK_MODE_BTN_OFF_TOOLTIP = `Lights On`
+export const DARK_MODE_BTN_ON_TOOLTIP = `Lights Off`
+export const DARK_MODE_BTN_OFF_TOOLTIP = `Lights On`
 export const INFO_BTN_TOOLTIP = `Info`
 export const CLIPBOARD_TOOLTIP = `Copy to Clipboard`
 export const TINY_URL_TOOLTIP = `URL Shortening with TinyURL`
@@ -49,7 +49,7 @@ export const TAG2_TEXT = `serverless`
 export const TAG3_TEXT = `markdown-supported`
 
 export const FONT_HEADER_TEXT = `Font Settings`
-export const FONT_SIZE_LABEL_TEXT = `Font Size`
+export const FONT_SIZE_LABEL_TEXT = `Text Size`
 export const MD_TOOLBAR_LABEL_TEXT = `Show Markdown Toolbar`
 
 export const SHARE_HEADER_TEXT = `Share URL`

@@ -20,7 +20,7 @@ import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT
     , FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP
     , SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP
-    , CLIPBOARD_TOAST_TEXT
+    , CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP
 } from '../constants';
 import { Logo } from './Logo';
 import { encode } from '../common';
@@ -148,7 +148,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     {/* Mute Btn */}
                     {editMode ?
                         <>
-                            <Tooltip label={soundOn === true ? 'Sound Off' : 'Sound On'} hasArrow openDelay={1000}>
+                            <Tooltip label={soundOn === true ? MUTE_BTN_ON_TOOLTIP : MUTE_BTN_OFF_TOOLTIP} hasArrow openDelay={1000}>
                                 <IconButton
                                     _focus={{ outline: "none" }}
                                     onClick={() => setSoundOn(!soundOn)}
@@ -207,7 +207,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     </Tooltip>
 
                     {/* Dark Mode Btn */}
-                    <Tooltip label={colorMode === 'dark' ? 'Lights On' : 'Lights Off'} hasArrow openDelay={1000}>
+                    <Tooltip label={colorMode === 'dark' ? DARK_MODE_BTN_OFF_TOOLTIP : DARK_MODE_BTN_ON_TOOLTIP} hasArrow openDelay={1000}>
                         <IconButton
                             _focus={{ outline: "none" }}
                             onClick={() => toggleColorMode()}
@@ -239,7 +239,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                             navigator.clipboard.writeText(window.location.href);
                                             setIsCopied(true);
                                             toast({
-                                                title: { CLIPBOARD_TOAST_TEXT },
+                                                title: CLIPBOARD_TOAST_TEXT,
                                                 status: 'success',
                                                 duration: 2500,
                                                 position: 'top',
@@ -396,7 +396,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalCloseButton />
                         <ModalBody>
                             <FormControl>
-                                <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>Font Size</FormLabel>
+                                <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>{FONT_SIZE_LABEL_TEXT}</FormLabel>
                                 <Box display='flex' marginBottom='25px' justifyContent='space-between' alignItems='center'>
                                     <IconButton
                                         _focus={{ outline: "none" }}
