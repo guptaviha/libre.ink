@@ -2,6 +2,15 @@ body {
     overflow: hidden;
 }
 
+.font-size-wrapper-12 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 12px !important;
+        line-height: 16px !important;
+    }
+    textarea {
+        font-size: 12px;
+    }
+}
 .font-size-wrapper-14 {
     .w-md-editor-text, .w-md-editor-text-pre > code {
         font-size: 14px !important;
@@ -45,6 +54,15 @@ body {
     }
     textarea {
         font-size: 22px;
+    }
+}
+.font-size-wrapper-24 {
+    .w-md-editor-text, .w-md-editor-text-pre > code {
+        font-size: 24px !important;
+        line-height: 28px !important;
+    }
+    textarea {
+        font-size: 24px;
     }
 }
 
