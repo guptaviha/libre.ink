@@ -61,7 +61,7 @@ export const EditPage = () => {
     const [postContent, setPostContent]: [string, any] = useState(localStoragePost);
     const [soundOn, setSoundOn] = useState(localStorageSound);
     const [hideMdToolbar, setHideMdToolbar] = useState(localStorageToolbar);
-    const [fontSizeSlider, setFontSizeSlider] = useState(localStorageFont);
+    const [fontSize, setFontSize] = useState(localStorageFont);
     const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
@@ -71,8 +71,8 @@ export const EditPage = () => {
     });
 
     useEffect(() => {
-        localStorage.setItem('fontSize', fontSizeSlider);
-    }, [fontSizeSlider]);
+        localStorage.setItem('fontSize', fontSize);
+    }, [fontSize]);
 
     useEffect(() => {
         localStorage.setItem('storedSound', soundOn);
@@ -109,7 +109,7 @@ export const EditPage = () => {
             w='100%'
             h='100vh'
             margin='0 auto'
-            className={`font-size-wrapper-${fontSizeSlider}`}
+            className={`font-size-wrapper-${fontSize}`}
             data-color-mode={colorMode}
             onTouchMove={() => setRecentlyTypedCount(0)}
             onMouseMove={() => setRecentlyTypedCount(0)}>
@@ -132,7 +132,7 @@ export const EditPage = () => {
                     margin: "70px 0 0",
                     background: "unset",
                     boxShadow: "unset",
-                    fontSize: fontSizeSlider,
+                    fontSize: fontSize,
                 }}
                 textareaProps={
                     {
@@ -146,8 +146,8 @@ export const EditPage = () => {
                 show={recentlyTypedCount < 2}
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
-                fontSizeSlider={fontSizeSlider}
-                setFontSizeSlider={setFontSizeSlider}
+                fontSize={fontSize}
+                setFontSize={setFontSize}
                 editMode={true}
                 hideMdToolbar={hideMdToolbar}
                 setHideMdToolbar={setHideMdToolbar}

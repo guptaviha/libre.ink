@@ -37,23 +37,18 @@ type FloatingControlsProps = {
     show: boolean;
     soundOn?: boolean;
     setSoundOn?: (soundOn: boolean) => void;
-    fontSizeSlider: number;
-    setFontSizeSlider: (fontSizeSlider: number) => void;
+    fontSize: number;
+    setFontSize: (fontSize: number) => void;
     editMode: boolean;
     hideMdToolbar?: boolean;
     setHideMdToolbar?: (hideMdToolbar: boolean) => void;
 };
 
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar, fontSizeSlider, setFontSizeSlider } = props;
+    const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar, fontSize, setFontSize } = props;
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
     const [typewriterTimedout, setTypewriterTimedout] = useState(false);
-    const labelStyles = {
-        mt: '2',
-        ml: '-1.5',
-        fontSize: 'sm',
-    };
     const { colorMode, toggleColorMode } = useColorMode();
     const toast = useToast()
     const { isOpen: isOpenInfo, onOpen: onOpenInfo, onClose: onCloseInfo } = useDisclosure();
@@ -406,9 +401,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
-                                            setFontSizeSlider(fontSizeSlider - 2)
+                                            setFontSize(fontSize - 2)
                                         }}
-                                        disabled={fontSizeSlider < 14}
+                                        disabled={fontSize < 14}
                                         aria-label='audio-toggle'
                                         variant='outline'
                                         isRound={false}
@@ -416,13 +411,13 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         width='100%'
                                         icon={<AiOutlineMinus />}
                                     />
-                                    <Text width='100%' textAlign='center'>{fontSizeSlider}pt</Text>
+                                    <Text width='100%' textAlign='center'>{fontSize}pt</Text>
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
-                                            setFontSizeSlider(fontSizeSlider + 2)
+                                            setFontSize(fontSize + 2)
                                         }}
-                                        disabled={fontSizeSlider > 22}
+                                        disabled={fontSize > 22}
                                         aria-label='audio-toggle'
                                         variant='outline'
                                         isRound={false}
