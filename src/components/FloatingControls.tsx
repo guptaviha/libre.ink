@@ -16,7 +16,12 @@ import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
 
-import { APP_TITLE } from '../constants';
+import {
+    APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT
+    , FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP
+    , SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP
+    , CLIPBOARD_TOAST_TEXT
+} from '../constants';
 import { Logo } from './Logo';
 import { encode } from '../common';
 
@@ -60,7 +65,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     }, []);
 
 
-
     return (
         <>
             {/* Publish button */}
@@ -90,12 +94,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     </PopoverTrigger>
                     <PopoverContent left='10px' _focus={{ outline: "none" }}>
                         <PopoverHeader pt={4} fontWeight="bold" border="0">
-                            Help keep the lights on
+                            {BOBA_HEADER_TEXT}
                         </PopoverHeader>
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverBody>
-                            If you like what you see, consider supporting us.
+                            {BOBA_BODY_TEXT}
 
                         </PopoverBody>
                         <PopoverFooter
@@ -106,19 +110,17 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             pb={4}
                         >
                             <ButtonGroup size="sm">
+                            <Link href={BUY_ME_A_BOBA_LINK} isExternal>
                                 <Button
                                     size="sm"
                                     fontSize="12.5px"
                                     colorScheme="green"
-                                    onClick={() =>
-                                        window.open(
-                                            'https://www.buymeacoffee.com/vihagupta99',
-                                            '_blank'
-                                        )
-                                    }
-                                >Buy us a Boba</Button>
-                                <GitHubButton href="https://github.com/guptaviha/libre.ink" data-show-count="true" data-size="large">
-                                    Star us on GitHub
+                                >
+                                    {BOBA_BTN_TEXT}
+                                </Button>
+                                </Link>
+                                <GitHubButton href={GITHUB_LINK} data-show-count="true" data-size="large">
+                                    {GITHUB_STAR_BTN_TEXT}
                                 </GitHubButton>
                             </ButtonGroup>
                         </PopoverFooter>
@@ -131,7 +133,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
                 <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
-                        <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title='Your favorite anonymous publishing platform'>
+                        <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title={APP_TITLE_TOOLTIP}>
                             {!typewriterTimedout ? <Typewriter
                                 options={{
                                     strings: [APP_TITLE],
@@ -149,59 +151,80 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <Box display='flex' gap={{ base: '1px', md: '4px', sm: '1px' }} position='fixed' top='14px' right='10px'>
 
                     {/* Mute Btn */}
-                    {editMode ? <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={() => setSoundOn(!soundOn)}
-                        aria-label='audio-toggle'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
-                    /> : null}
+                    {editMode ?
+                        <>
+                            <Tooltip label={soundOn === true ? 'Sound Off' : 'Sound On'} hasArrow openDelay={1000}>
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={() => setSoundOn(!soundOn)}
+                                    aria-label='audio-toggle'
+                                    variant='ghost'
+                                    isRound={true}
+                                    fontSize='30px'
+                                    icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
+                                />
+                            </Tooltip>
+                        </>
+                        : null}
+
 
                     {/* Share Btn */}
-                    {!editMode ? <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={onOpenSave}
-                        aria-label='audio-toggle'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={<IoShareOutline />}
-                    /> : null}
+                    {!editMode ?
+                        <>
+                            <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}>
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    onClick={onOpenSave}
+                                    aria-label='audio-toggle'
+                                    variant='ghost'
+                                    isRound={true}
+                                    fontSize='30px'
+                                    icon={<IoShareOutline />}
+                                />
+                            </Tooltip>
+                        </>
+                        : null}
 
                     {/* Font Btn */}
-                    <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={onOpenFont}
-                        aria-label='font-settings'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={<RiFontSize />}
-                    />
-
+                    <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}>
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={onOpenFont}
+                            aria-label='audio-toggle'
+                            variant='ghost'
+                            isRound={true}
+                            fontSize='30px'
+                            icon={<RiFontSize />}
+                        />
+                    </Tooltip>
+                    
                     {/* Info Btn */}
-                    <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={onOpenInfo}
-                        aria-label='info-button'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='36px'
-                        icon={<BsQuestion />}
-                    />
+                    <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}>
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={onOpenInfo}
+                            aria-label='audio-toggle'
+                            variant='ghost'
+                            isRound={true}
+                            fontSize='36px'
+                            icon={<BsQuestion />}
+                        />
+                    </Tooltip>
 
                     {/* Dark Mode Btn */}
-                    <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={() => toggleColorMode()}
-                        aria-label='dark-mode'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
-                    />
+                    <Tooltip label={colorMode === 'dark' ? 'Lights On' : 'Lights Off'} hasArrow openDelay={1000}>
+                        <IconButton
+                            _focus={{ outline: "none" }}
+                            onClick={() => toggleColorMode()}
+                            aria-label='audio-toggle'
+                            variant='ghost'
+                            isRound={true}
+                            fontSize='30px'
+                            icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                        />
+                    </Tooltip>
+
+                    
                 </Box>
 
                 {/* Share Modal */}
@@ -209,19 +232,19 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
-                            Share URL
+                            {SHARE_HEADER_TEXT}
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
                             <Stack spacing={6} direction='row' align='center'>
-                                <Tooltip label='Copy to Clipboard' hasArrow>
+                                <Tooltip label={CLIPBOARD_TOOLTIP} hasArrow>
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
                                             navigator.clipboard.writeText(window.location.href);
                                             setIsCopied(true);
                                             toast({
-                                                title: 'URL copied to clipboard.',
+                                                title: { CLIPBOARD_TOAST_TEXT },
                                                 status: 'success',
                                                 duration: 2500,
                                                 position: 'top',
@@ -236,8 +259,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         icon={isCopied ? <BsClipboardCheck /> : <BsClipboard />}
                                     />
                                 </Tooltip>
-                                <Tooltip label='URL Shortening with TinyURL' hasArrow>
-                                    <Link href='https://tinyurl.com/' isExternal>
+                                <Tooltip label={TINY_URL_TOOLTIP} hasArrow>
+                                    <Link href={TINY_URL_LINK} isExternal>
                                         <IconButton
                                             _focus={{ outline: "none" }}
                                             onClick={() => {
@@ -254,7 +277,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         />
                                     </Link>
                                 </Tooltip>
-                                <Tooltip label='Open Mail Client' hasArrow>
+                                <Tooltip label={EMAIL_TOOLTIP} hasArrow>
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
@@ -270,23 +293,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         icon={isEmailed ? <MdOutlineMarkEmailRead /> : <MdOutlineMailOutline />}
                                     />
                                 </Tooltip>
-                                {/* <IconButton
-                                    _focus={{ outline: "none" }}
-                                    onClick={() => {
-                                        const url = window.location.href;
-                                        window.open(`mailto:add@getpocket.com?subject=My%20Libre%20Ink&body=${url}`);
-                                    }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={<FiPocket />}
-                                /> */}
+
                             </Stack>
                         </ModalBody>
                         <ModalFooter>
-                            Generated URLs can be quite long. If you like, you can use a 3rd party URL-shortening service.
+                            {SHARE_FOOTER_TEXT}
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
@@ -296,82 +307,68 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
-                            Welcome to libre.ink!
+                            {INFO_MODAL_HEADER_TEXT}
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            The serverless instant-publish blog platform that lets you publish as fast as you can write.
-                            <br></br>
-                            <br></br>
-                            <b>Remember to save your blog URL</b> because all the content of your blog post lives in the URL. The application does not talk to a database or server of any kind.
+                            {INFO_MODAL_BODY_TEXT}
                             <br></br>
                             <br></br>
 
                             <Stack spacing={4} direction='row' align='center'>
                                 <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    open-source
+                                    {TAG1_TEXT}
                                 </Button>
                                 <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    serverless
+                                    {TAG2_TEXT}
                                 </Button>
                                 <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    markdown-supported
+                                    {TAG3_TEXT}
                                 </Button>
                             </Stack>
                             <br></br>
 
+                            <Link href={GITHUB_LINK} isExternal>
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={<BsGithub />}
+                                />
+                            </Link>
 
-                            <IconButton
-                                _focus={{ outline: "none" }}
-                                onClick={() =>
-                                    window.open(
-                                        'https://github.com/guptaviha/libre.ink',
-                                        '_blank'
-                                    )
-                                }
-                                variant='ghost'
-                                isRound={true}
-                                size='lg'
-                                fontSize='30px'
-                                aria-label='audio-toggle'
-                                icon={<BsGithub />}
-                            />
-                            <IconButton
-                                _focus={{ outline: "none" }}
-                                onClick={() =>
-                                    window.open(
-                                        'https://twitter.com/intent/tweet?text=Check%20this%20out!%20Minimalistic%20and%20quick%20blogging%20is%20here:%20libre.ink',
-                                        '_blank'
-                                    )
-                                }
-                                variant='ghost'
-                                isRound={true}
-                                size='lg'
-                                fontSize='30px'
-                                aria-label='audio-toggle'
-                                icon={<BsTwitter />}
-                            />
-                            <IconButton
-                                _focus={{ outline: "none" }}
-                                onClick={() =>
-                                    window.open(
-                                        'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flibre.ink%2F&amp;src=sdkpreparse',
-                                        '_blank'
-                                    )
-                                }
-                                variant='ghost'
-                                isRound={true}
-                                size='lg'
-                                fontSize='30px'
-                                aria-label='audio-toggle'
-                                icon={<BsFacebook />}
-                            />
+                            <Link href={TWITTER_SHARE_LINK} isExternal>
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={<BsTwitter />}
+                                />
+                            </Link>
+
+                            <Link href={FB_SHARE_LINK} isExternal>
+                                <IconButton
+                                    _focus={{ outline: "none" }}
+                                    variant='ghost'
+                                    isRound={true}
+                                    size='lg'
+                                    fontSize='30px'
+                                    aria-label='audio-toggle'
+                                    icon={<BsFacebook />}
+                                />
+                            </Link>
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme='whatsapp' onClick={onCloseInfo}>
+                            {/* <Button colorScheme='whatsapp' onClick={onCloseInfo}>
                                 Got it!
-                            </Button>
+                            </Button> */}
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
@@ -399,7 +396,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
-                            Text Settings
+                            {FONT_HEADER_TEXT}
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
@@ -436,7 +433,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 </Box>
                                 {editMode ? <Box display='flex' alignItems='center' marginBottom='20px'>
                                     <FormLabel htmlFor='markdown-toolbar' mb='0'>
-                                        Show Markdown Toolbar
+                                        {MD_TOOLBAR_LABEL_TEXT}
                                     </FormLabel>
                                     <Switch id='markdown-toolbar'
                                         defaultChecked={hideMdToolbar ? false : true}

@@ -1,5 +1,6 @@
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { BsFileText } from 'react-icons/bs';
+import { PUBLISH_BTN_TEXT } from '../constants';
 
 export const PublishButton = (props: ButtonProps) => {
     return (
@@ -14,7 +15,7 @@ export const PublishButton = (props: ButtonProps) => {
                 _active={{ background: "unset", outline: "none" }}
                 _focus={{ outline: "none" }}
                 onClick={props.onClick}>
-                Publish
+                {PUBLISH_BTN_TEXT}
             </Button>
         </>
     )
