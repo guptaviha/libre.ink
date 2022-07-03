@@ -1,10 +1,11 @@
-import { Link, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack } from '@chakra-ui/react';
+import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
 import { IoShareOutline } from 'react-icons/io5';
+import { RiLinkUnlinkM } from 'react-icons/ri';
 import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
@@ -13,6 +14,7 @@ import { PublishButton } from './PublishButton';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
+
 import { APP_TITLE } from '../constants';
 import { Logo } from './Logo';
 import { encode } from '../common';
@@ -186,7 +188,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     icon={<IoShareOutline />}
                 /> : null}
 
-                {/* Save Modal */}
+                {/* Share Modal */}
                 <Modal isOpen={isOpenSave} onClose={onCloseSave} >
                     <ModalOverlay />
                     <ModalContent>
@@ -198,42 +200,64 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             Remember to save your URL.
                             <br></br>
                             <br></br>
-                            <Stack spacing={4} direction='row' align='center'>
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(window.location.href);
-                                        setIsCopied(true);
-                                        toast({
-                                            title: 'URL copied to clipboard.',
-                                            status: 'success',
-                                            duration: 2500,
-                                            position: 'top',
-                                            isClosable: true,
-                                        })
-                                    }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={isCopied ? <BsClipboardCheck /> : <BsClipboard />}
-                                />
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    onClick={() => {
-                                        const url = window.location.href;
-                                        window.open(`mailto:?subject=My%20MLibre%20Ink&body=${url}`);
-                                        setIsEmailed(true);
-                                    }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={isEmailed ? <MdOutlineMarkEmailRead /> : <MdOutlineMailOutline />}
-                                />
-                                <IconButton
+                            <Stack spacing={6} direction='row' align='center'>
+                                <Tooltip label='Copy to Clipboard' hasArrow>
+                                    <IconButton
+                                        _focus={{ outline: "none" }}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(window.location.href);
+                                            setIsCopied(true);
+                                            toast({
+                                                title: 'URL copied to clipboard.',
+                                                status: 'success',
+                                                duration: 2500,
+                                                position: 'top',
+                                                isClosable: true,
+                                            })
+                                        }}
+                                        variant='ghost'
+                                        isRound={true}
+                                        size='lg'
+                                        fontSize='30px'
+                                        aria-label='audio-toggle'
+                                        icon={isCopied ? <BsClipboardCheck /> : <BsClipboard />}
+                                    />
+                                </Tooltip>
+                                <Tooltip label='URL Shortening with TinyURL' hasArrow>
+                                    <Link href='https://tinyurl.com/' isExternal>
+                                        <IconButton
+                                            _focus={{ outline: "none" }}
+                                            onClick={() => {
+                                                // !onCloseSave;
+                                                // const url = window.location.href;
+                                                // window.print();
+                                            }}
+                                            variant='ghost'
+                                            isRound={true}
+                                            size='lg'
+                                            fontSize='30px'
+                                            aria-label='url-shorten'
+                                            icon={<RiLinkUnlinkM />}
+                                        />
+                                    </Link>
+                                </Tooltip>
+                                <Tooltip label='Open Mail Client' hasArrow>
+                                    <IconButton
+                                        _focus={{ outline: "none" }}
+                                        onClick={() => {
+                                            const url = window.location.href;
+                                            window.open(`mailto:?subject=My%20MLibre%20Ink&body=${url}`);
+                                            setIsEmailed(true);
+                                        }}
+                                        variant='ghost'
+                                        isRound={true}
+                                        size='lg'
+                                        fontSize='30px'
+                                        aria-label='audio-toggle'
+                                        icon={isEmailed ? <MdOutlineMarkEmailRead /> : <MdOutlineMailOutline />}
+                                    />
+                                </Tooltip>
+                                {/* <IconButton
                                     _focus={{ outline: "none" }}
                                     onClick={() => {
                                         const url = window.location.href;
@@ -245,27 +269,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     fontSize='30px'
                                     aria-label='audio-toggle'
                                     icon={<FiPocket />}
-                                />
-                                {/* <IconButton
-                                    _focus={{ outline: "none" }}
-                                    onClick={() => {
-                                        // !onCloseSave;
-                                        // const url = window.location.href;
-                                        // window.print();
-                                    }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={<AiOutlineFilePdf />}
                                 /> */}
                             </Stack>
                         </ModalBody>
                         <ModalFooter>
-                            <Button colorScheme='whatsapp' onClick={onCloseSave}>
-                                Done
-                            </Button>
+                            Generated URLs can be quite long. If you like, you can use a 3rd party URL-shortening service.
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
@@ -440,11 +448,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 </Box> : null}
                             </FormControl>
                         </ModalBody>
-                        {/* <ModalFooter>
-                            <Button colorScheme='whatsapp' onClick={onCloseFont}>
-                                Apply
-                            </Button>
-                        </ModalFooter> */}
                     </ModalContent>
                 </Modal>
 
