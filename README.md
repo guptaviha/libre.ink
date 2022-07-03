@@ -39,7 +39,7 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Dynamically show title when sharing
  - [ ] Markdown toolbar on mobile buggy
  - [x] Markdown toolbar does not persist
- - [ ] Md toolbar extra padding
+ - [x] Md toolbar extra padding
 
 
 
