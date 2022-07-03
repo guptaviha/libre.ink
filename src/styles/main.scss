@@ -48,6 +48,28 @@ body {
     }
 }
 
+// luminous boba btn for light mode
+.css-mtu0yw:hover {
+    background: #FFE900 !important;
+    opacity: 0.5;
+    transition: 2s ease-in;
+}
+
+.css-mtu0yw {
+    transition: 1s ease-in !important;
+}
+
+// luminous boba btn for dark mode
+.css-wzwgot:hover {
+    background: #F6BE00 !important;
+    opacity: 0.8;
+    transition: 2s ease-in;
+}
+
+.css-wzwgot {
+    transition: 1s ease-in !important;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 250px) {
     .w-md-editor-show-edit .w-md-editor-input {
