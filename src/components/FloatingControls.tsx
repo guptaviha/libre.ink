@@ -76,6 +76,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <PopoverTrigger>
                         <IconButton
                             name="luminous-boba"
+                            className='luminous-boba'
                             _focus={{ outline: "none" }}
                             position='fixed'
                             bottom='10px'
@@ -173,33 +174,33 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenFont}
-                        aria-label='audio-toggle'
+                        aria-label='font-settings'
                         variant='ghost'
                         isRound={true}
                         fontSize='30px'
                         icon={<RiFontSize />}
                     />
 
-                    {/* Dark Mode Btn */}
-                    <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={() => toggleColorMode()}
-                        aria-label='audio-toggle'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
-                    />
-
                     {/* Info Btn */}
                     <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenInfo}
-                        aria-label='audio-toggle'
+                        aria-label='info-button'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='36px'
+                        icon={<BsQuestion />}
+                    />
+
+                    {/* Dark Mode Btn */}
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={() => toggleColorMode()}
+                        aria-label='dark-mode'
                         variant='ghost'
                         isRound={true}
                         fontSize='30px'
-                        icon={<BsQuestion />}
+                        icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
                     />
                 </Box>
 

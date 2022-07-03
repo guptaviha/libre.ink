@@ -49,25 +49,15 @@ body {
 }
 
 // luminous boba btn for light mode
-.css-mtu0yw:hover {
-    background: #FFE900 !important;
-    opacity: 0.5;
-    transition: 2s ease-in;
-}
-
-.css-mtu0yw {
-    transition: 1s ease-in !important;
-}
-
-// luminous boba btn for dark mode
-.css-wzwgot:hover[name="luminous-boba"] {
-    background: #F6BE00 !important;
-    opacity: 0.8;
-    transition: 2s ease-in;
-}
-
-.css-wzwgot[name="luminous-boba"] {
-    transition: 1s ease-in !important;
+.luminous-boba {
+    svg {
+        transition: fill 1s ease-in;
+    }
+    &:hover {
+        svg {
+            fill: #FFE900;
+        }
+    }
 }
 
 /* Small devices (landscape phones, 576px and up) */
