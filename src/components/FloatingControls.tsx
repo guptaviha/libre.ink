@@ -58,6 +58,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         setTimeout(() => setTypewriterTimedout(true), 2200);
     }, []);
 
+
+
     return (
         <>
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
@@ -170,7 +172,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     isRound={true}
                     // size='lg'
                     fontSize='30px'
-                    icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
+                    icon={soundOn===true ? <BsVolumeUp /> : <BsVolumeMute />}
                 /> : null}
 
                 {/* Share Btn */}
