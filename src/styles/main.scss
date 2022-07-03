@@ -48,6 +48,28 @@ body {
     }
 }
 
+// luminous boba btn for light mode
+.css-mtu0yw:hover {
+    background: #FFE900 !important;
+    opacity: 0.5;
+    transition: 2s ease-in;
+}
+
+.css-mtu0yw {
+    transition: 1s ease-in !important;
+}
+
+// luminous boba btn for dark mode
+.css-wzwgot:hover[name="luminous-boba"] {
+    background: #F6BE00 !important;
+    opacity: 0.8;
+    transition: 2s ease-in;
+}
+
+.css-wzwgot[name="luminous-boba"] {
+    transition: 1s ease-in !important;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 250px) {
     .w-md-editor-show-edit .w-md-editor-input {
@@ -56,6 +78,7 @@ body {
 
     .w-md-editor-show-edit .w-md-editor-toolbar {
         margin: 0 49px;
+        padding: 0px;
     }
 
     .wmde-markdown.wmde-markdown-color {
@@ -71,6 +94,7 @@ body {
 
     .w-md-editor-show-edit .w-md-editor-toolbar {
         margin: 0 100px;
+        padding: 0px;
     }
 
     .wmde-markdown.wmde-markdown-color {
@@ -86,6 +110,7 @@ body {
 
     .w-md-editor-show-edit .w-md-editor-toolbar {
         margin: 0 150px;
+        padding: 0px;
     }
 
     .wmde-markdown.wmde-markdown-color {
@@ -101,6 +126,7 @@ body {
 
     .w-md-editor-show-edit .w-md-editor-toolbar {
         margin: 0 170px;
+        padding: 0px;
     }
 
     .wmde-markdown.wmde-markdown-color {

@@ -13,6 +13,8 @@ export type StatsType = {
 
 const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
 const localStorageFont = (localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
+const localStorageSound = (localStorage.getItem('storedSound') ? (localStorage.getItem('storedSound') === 'true') : true );
+const localStorageToolbar = (localStorage.getItem('storedHideToolbar') ? (localStorage.getItem('storedHideToolbar') === 'true') : true );
 
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0;
@@ -57,8 +59,8 @@ async function handleKeyAudio(keyCode: number) {
 
 export const EditPage = () => {
     const [postContent, setPostContent]: [string, any] = useState(localStoragePost);
-    const [soundOn, setSoundOn] = useState(true);
-    const [hideMdToolbar, setHideMdToolbar] = useState(true);
+    const [soundOn, setSoundOn] = useState(localStorageSound);
+    const [hideMdToolbar, setHideMdToolbar] = useState(localStorageToolbar);
     const [fontSizeSlider, setFontSizeSlider] = useState(localStorageFont);
     const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
@@ -71,6 +73,14 @@ export const EditPage = () => {
     useEffect(() => {
         localStorage.setItem('fontSize', fontSizeSlider);
     }, [fontSizeSlider]);
+
+    useEffect(() => {
+        localStorage.setItem('storedSound', soundOn);
+    }, [soundOn]);
+
+    useEffect(() => {
+        localStorage.setItem('storedHideToolbar', hideMdToolbar);
+    }, [hideMdToolbar]);
 
     useEffect(() => {
         calculateStats();

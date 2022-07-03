@@ -59,8 +59,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         setTimeout(() => setTypewriterTimedout(true), 2200);
     }, []);
 
+
+
     return (
         <>
+            {/* Publish button */}
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
                 const encodedPost = encode(postContent);
                 localStorage.setItem('storedPost', postContent);
@@ -72,11 +75,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <Popover>
                     <PopoverTrigger>
                         <IconButton
+                            name="luminous-boba"
                             _focus={{ outline: "none" }}
                             position='fixed'
                             bottom='10px'
                             left='10px'
-                            aria-label='stats-count'
+                            aria-label='luminous-boba'
                             variant='ghost'
                             fontSize='30px'
                             isRound={true}
@@ -142,26 +146,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
                 {/* Toolbar Buttons */}
                 <Box display='flex' gap={{ base: '1px', md: '4px', sm: '1px' }} position='fixed' top='14px' right='10px'>
-                    {/* Font Btn */}
-                    <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={onOpenFont}
-                        aria-label='audio-toggle'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={<RiFontSize />}
-                    />
-                    {/* Info Btn */}
-                    {editMode ? <IconButton
-                        _focus={{ outline: "none" }}
-                        onClick={onOpenInfo}
-                        aria-label='audio-toggle'
-                        variant='ghost'
-                        isRound={true}
-                        fontSize='30px'
-                        icon={<BsQuestion />}
-                    /> : null}
 
                     {/* Mute Btn */}
                     {editMode ? <IconButton
@@ -185,6 +169,17 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         icon={<IoShareOutline />}
                     /> : null}
 
+                    {/* Font Btn */}
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenFont}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={<RiFontSize />}
+                    />
+
                     {/* Dark Mode Btn */}
                     <IconButton
                         _focus={{ outline: "none" }}
@@ -194,6 +189,17 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         isRound={true}
                         fontSize='30px'
                         icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                    />
+
+                    {/* Info Btn */}
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenInfo}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={<BsQuestion />}
                     />
                 </Box>
 

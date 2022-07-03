@@ -3,14 +3,14 @@ export const STARTING_TEXT = `Welcome to **Libre.ink** - Instant anonymous blogg
 
 No sign-up. No tracking. No kidding.
 
-## Our novel approach
-We don't care about your data. So **we don't store anything**.
-We achieve **total privacy** by storing your blog post right *in the URL*.
-
-While this makes the URL a little bit ungainly, we think it has some serious advantages for those looking for total privacy.
-
 So leave your username at the door and edit this post to give it a whirl.
 `;
+
+// ## Our novel approach
+// We don't care about your data. So **we don't store anything**.
+// We achieve **total privacy** by storing your blog post right *in the URL*.
+
+// While this makes the URL a little bit ungainly, we think it has some serious advantages for those looking for total privacy.
 
 export const PLACEHOLDER_TEXT = `Instant anonymous blogging.
 
