@@ -14,9 +14,9 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Edit github (Add gif in info tab)
  - [ ] Edit About Page (include keyboard shortcuts for markdown)
  - [ ] URL shortening (with a disclaimer on data being stored)
- - [ ] Make boba luminous
+ - [x] Make boba luminous
  - [ ] Find a way to track page views?
- - [ ] Enable reader-mode compatibility
+ - [ ] Enable reader-mode compatibility - cant sent article tag dynamically around class wmde-markdown wmde-markdown-color 
  - [ ] Webiste abuse legal disclaimer?
  - [ ] 
 
@@ -38,8 +38,8 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Fix typewriter sounds on mobile - iphone works, need to check android
  - [ ] Dynamically show title when sharing
  - [ ] Markdown toolbar on mobile buggy
- - [ ] Markdown toolbar does nto persist
- - [ ] 
+ - [x] Markdown toolbar does not persist
+ - [ ] Md toolbar extra padding
 
 
 
