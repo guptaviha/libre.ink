@@ -54,6 +54,10 @@ body {
         padding: 0 40px;
     }
 
+    .w-md-editor-show-edit .w-md-editor-toolbar {
+        margin: 0 40px;
+    }
+
     .wmde-markdown.wmde-markdown-color {
         padding: 0 40px 50px;
     }
@@ -65,6 +69,10 @@ body {
         padding: 0 100px;
     }
 
+    .w-md-editor-show-edit .w-md-editor-toolbar {
+        margin: 0 100px;
+    }
+
     .wmde-markdown.wmde-markdown-color {
         padding: 0 100px 50px;
     }
@@ -72,8 +80,12 @@ body {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .w-md-editor-show-edit .w-md-editor-input {
+    .w-md-editor-show-edit .w-md-editor-input, .w-md-editor-show-edit .w-md-editor-toolbar {
         padding: 0 150px;
+    }
+
+    .w-md-editor-show-edit .w-md-editor-toolbar {
+        margin: 0 150px;
     }
 
     .wmde-markdown.wmde-markdown-color {
@@ -85,6 +97,10 @@ body {
 @media (min-width: 1200px) {
     .w-md-editor-show-edit .w-md-editor-input {
         padding: 0 170px;
+    }
+
+    .w-md-editor-show-edit .w-md-editor-toolbar {
+        margin: 0 170px;
     }
 
     .wmde-markdown.wmde-markdown-color {

@@ -38,7 +38,6 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Fix typewriter sounds on mobile - iphone works, need to check android
  - [ ] Dynamically show title when sharing
  - [ ] Markdown toolbar on mobile buggy
- - [ ] Markdown toolbar width does not match div
  - [ ] Markdown toolbar does nto persist
  - [ ] 
 
