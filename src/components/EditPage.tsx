@@ -4,8 +4,6 @@ import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
 import { setTitle } from '../common';
 import { PLACEHOLDER_TEXT, STARTING_TEXT } from '../constants';
-import {Helmet} from "react-helmet";
-
 
 export type StatsType = {
     wordCount: number;
@@ -97,58 +95,53 @@ export const EditPage = () => {
     }, [postContent]);
 
     return (
-        <>
-            <Helmet>
-                <meta property="og:title" content="viha" />
-            </Helmet>
-            <Box
-                w='100%'
-                h='100vh'
-                margin='0 auto'
-                className={`font-size-wrapper-${fontSizeSlider}`}
-                data-color-mode={colorMode}
-                onTouchMove={() => setRecentlyTypedCount(0)}
-                onMouseMove={() => setRecentlyTypedCount(0)}>
-                <MDEditor
-                    preview='edit'
-                    autoFocus={true}
-                    hideToolbar={hideMdToolbar}
-                    height={windowHeight - 100}
-                    value={postContent}
-                    visibleDragbar={false}
-                    onKeyDown={async (event) => {
-                        setRecentlyTypedCount(recentlyTypedCount + 1);
-                        const key = event.keyCode;
-                        if (soundOn) {
-                            handleKeyAudio(key);
-                        }
-                    }}
-                    onChange={(text) => setPostContent(text)}
-                    style={{
-                        margin: "70px 0 0",
-                        background: "unset",
-                        boxShadow: "unset",
-                        fontSize: fontSizeSlider,
-                    }}
-                    textareaProps={
-                        {
-                            placeholder: PLACEHOLDER_TEXT
-                        }
+        <Box
+            w='100%'
+            h='100vh'
+            margin='0 auto'
+            className={`font-size-wrapper-${fontSizeSlider}`}
+            data-color-mode={colorMode}
+            onTouchMove={() => setRecentlyTypedCount(0)}
+            onMouseMove={() => setRecentlyTypedCount(0)}>
+            <MDEditor
+                preview='edit'
+                autoFocus={true}
+                hideToolbar={hideMdToolbar}
+                height={windowHeight - 100}
+                value={postContent}
+                visibleDragbar={false}
+                onKeyDown={async (event) => {
+                    setRecentlyTypedCount(recentlyTypedCount + 1);
+                    const key = event.keyCode;
+                    if (soundOn) {
+                        handleKeyAudio(key);
                     }
-                />
-                <FloatingControls
-                    postContent={postContent}
-                    stats={stats}
-                    show={recentlyTypedCount < 2}
-                    soundOn={soundOn}
-                    setSoundOn={setSoundOn}
-                    fontSizeSlider={fontSizeSlider}
-                    setFontSizeSlider={setFontSizeSlider}
-                    editMode={true}
-                    hideMdToolbar={hideMdToolbar}
-                    setHideMdToolbar={setHideMdToolbar}
-                />
-            </Box>
-        </>
+                }}
+                onChange={(text) => setPostContent(text)}
+                style={{
+                    margin: "70px 0 0",
+                    background: "unset",
+                    boxShadow: "unset",
+                    fontSize: fontSizeSlider,
+                }}
+                textareaProps={
+                    {
+                        placeholder: PLACEHOLDER_TEXT
+                    }
+                }
+            />
+            <FloatingControls
+                postContent={postContent}
+                stats={stats}
+                show={recentlyTypedCount < 2}
+                soundOn={soundOn}
+                setSoundOn={setSoundOn}
+                fontSizeSlider={fontSizeSlider}
+                setFontSizeSlider={setFontSizeSlider}
+                editMode={true}
+                hideMdToolbar={hideMdToolbar}
+                setHideMdToolbar={setHideMdToolbar}
+            />
+        </Box>
     );
 };
