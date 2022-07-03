@@ -12,7 +12,7 @@ export type StatsType = {
 };
 
 const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
-const localStorageFont = (localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
+const localStorageFont = Number(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
 const localStorageSound = (localStorage.getItem('storedSound') ? (localStorage.getItem('storedSound') === 'true') : true );
 const localStorageToolbar = (localStorage.getItem('storedHideToolbar') ? (localStorage.getItem('storedHideToolbar') === 'true') : true );
 

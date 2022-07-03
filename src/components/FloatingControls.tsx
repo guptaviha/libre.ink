@@ -402,7 +402,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalBody>
                             <FormControl>
                                 <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>{FONT_SIZE_LABEL_TEXT}</FormLabel>
-                                <Box display='flex' marginBottom='15px' justifyContent='space-between' alignItems='center'>
+                                <Box display='flex' marginBottom='25px' justifyContent='space-between' alignItems='center'>
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
