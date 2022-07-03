@@ -1,10 +1,11 @@
-import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay } from '@chakra-ui/react';
+import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
 import { IoShareOutline } from 'react-icons/io5';
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { RiLinkUnlinkM } from 'react-icons/ri';
 import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
@@ -391,24 +392,40 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
-                            Font Settings
+                            Text Settings
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
                             <FormControl>
-                                <FormLabel htmlFor='font-size'>Font Size</FormLabel>
-                                <Box padding='14px'>
-                                    <Slider id='font-size' aria-label='slider-ex-6' defaultValue={fontSizeSlider} step={2} min={14} max={22} onChange={(val) => setFontSizeSlider(val)} marginBottom='35px'>
-                                        <SliderMark value={14} {...labelStyles}>14</SliderMark>
-                                        <SliderMark value={16} {...labelStyles}>16</SliderMark>
-                                        <SliderMark value={18} {...labelStyles}>18</SliderMark>
-                                        <SliderMark value={20} {...labelStyles}>20</SliderMark>
-                                        <SliderMark value={22} {...labelStyles}>22</SliderMark>
-                                        <SliderTrack>
-                                            <SliderFilledTrack />
-                                        </SliderTrack>
-                                        <SliderThumb />
-                                    </Slider>
+                                <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>Font Size</FormLabel>
+                                <Box display='flex' marginBottom='15px' justifyContent='space-between' alignItems='center'>
+                                    <IconButton
+                                        _focus={{ outline: "none" }}
+                                        onClick={() => {
+                                            setFontSizeSlider(fontSizeSlider - 2)
+                                        }}
+                                        disabled={fontSizeSlider < 14}
+                                        aria-label='audio-toggle'
+                                        variant='outline'
+                                        isRound={false}
+                                        fontSize='30px'
+                                        width='100%'
+                                        icon={<AiOutlineMinus />}
+                                    />
+                                    <Text width='100%' textAlign='center'>{fontSizeSlider}pt</Text>
+                                    <IconButton
+                                        _focus={{ outline: "none" }}
+                                        onClick={() => {
+                                            setFontSizeSlider(fontSizeSlider + 2)
+                                        }}
+                                        disabled={fontSizeSlider > 22}
+                                        aria-label='audio-toggle'
+                                        variant='outline'
+                                        isRound={false}
+                                        fontSize='30px'
+                                        width='100%'
+                                        icon={<AiOutlinePlus />}
+                                    />
                                 </Box>
                                 {editMode ? <Box display='flex' alignItems='center' marginBottom='20px'>
                                     <FormLabel htmlFor='markdown-toolbar' mb='0'>
