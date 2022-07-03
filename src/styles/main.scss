@@ -60,13 +60,13 @@ body {
 }
 
 // luminous boba btn for dark mode
-.css-wzwgot:hover {
+.css-wzwgot:hover[name="luminous-boba"] {
     background: #F6BE00 !important;
     opacity: 0.8;
     transition: 2s ease-in;
 }
 
-.css-wzwgot {
+.css-wzwgot[name="luminous-boba"] {
     transition: 1s ease-in !important;
 }
 

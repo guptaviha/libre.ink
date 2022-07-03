@@ -73,11 +73,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <Popover>
                     <PopoverTrigger>
                         <IconButton
+                            name="luminous-boba"
                             _focus={{ outline: "none" }}
                             position='fixed'
                             bottom='10px'
                             left='10px'
-                            aria-label='stats-count'
+                            aria-label='luminous-boba'
                             variant='ghost'
                             fontSize='30px'
                             isRound={true}
