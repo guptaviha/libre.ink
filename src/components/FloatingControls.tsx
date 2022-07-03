@@ -68,6 +68,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 window.location.search = `?post=${encodedPost}`;
             }} /> : null}
 
+            {/* Boba button */}
             {!editMode ?
                 <Popover>
                     <PopoverTrigger>
@@ -140,68 +141,72 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     </Box>
                 </Link>
 
-                {/* Dark Mode Btn */}
-                <IconButton
-                    _focus={{ outline: "none" }}
-                    onClick={() => toggleColorMode()}
-                    position='fixed'
-                    // top={{ base: '16px', sm: '10px' }}
-                    // right={{ base: '16px', sm: '10px' }}
-                    top='12px'
-                    right={{ base: '10px', sm: '10px' }}
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    // size={{ base: 'md', sm: 'lg' }}
-                    // fontSize={{ base: '20px', sm: '30px' }}
-                    // size='lg'
-                    fontSize='30px'
-                    icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
-                />
+                {/* Toolbar Buttons */}
+                <Box display='flex' gap={{ base: '1px', md: '4px', sm: '1px' }} position='fixed' top='14px' right='10px'>
+                    {/* Font Btn */}
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenFont}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={<RiFontSize />}
+                    />
+                    {/* Info Btn */}
+                    {editMode ? <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenInfo}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={<BsQuestion />}
+                    /> : null}
 
+                    {/* Mute Btn */}
+                    {editMode ? <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={() => setSoundOn(!soundOn)}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={soundOn ? <BsVolumeUp /> : <BsVolumeMute />}
+                    /> : null}
 
-                {/* Mute Btn */}
-                {editMode ? <IconButton
-                    _focus={{ outline: "none" }}
-                    onClick={() => setSoundOn(!soundOn)}
-                    position='fixed'
-                    top='12px'
-                    right={{ base: '54px', sm: '60px' }}
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    // size='lg'
-                    fontSize='30px'
-                    icon={soundOn===true ? <BsVolumeUp /> : <BsVolumeMute />}
-                /> : null}
+                    {/* Share Btn */}
+                    {!editMode ? <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenSave}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={<IoShareOutline />}
+                    /> : null}
 
-                {/* Share Btn */}
-                {!editMode ? <IconButton
-                    _focus={{ outline: "none" }}
-                    onClick={onOpenSave}
-                    position='fixed'
-                    top='12px'
-                    right={{ base: '50px', sm: '60px' }}
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    // size='lg'
-                    fontSize='30px'
-                    icon={<IoShareOutline />}
-                /> : null}
+                    {/* Dark Mode Btn */}
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={() => toggleColorMode()}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                    />
+                </Box>
 
                 {/* Share Modal */}
                 <Modal isOpen={isOpenSave} onClose={onCloseSave} >
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>
-                            Save URL
+                            Share URL
                         </ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            Remember to save your URL.
-                            <br></br>
-                            <br></br>
                             <Stack spacing={6} direction='row' align='center'>
                                 <Tooltip label='Copy to Clipboard' hasArrow>
                                     <IconButton
@@ -279,21 +284,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
-
-                {/* Info Btn */}
-                {editMode ? <IconButton
-                    _focus={{ outline: "none" }}
-                    onClick={onOpenInfo}
-                    position='fixed'
-                    top='12px'
-                    right={{ base: '90px', sm: '110px' }}
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    // size='lg'
-                    fontSize='30px'
-                    icon={<BsQuestion />}
-                /> : null}
 
                 {/* Info Modal */}
                 <Modal isOpen={isOpenInfo} onClose={onCloseInfo} >
@@ -381,7 +371,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Modal>
 
                 {/* Edit Btn */}
-                {!editMode ? <IconButton
+                {/* {!editMode ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={() => {
                         localStorage.setItem('storedPost', postContent);
@@ -396,22 +386,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     // size='lg'
                     fontSize='30px'
                     icon={<FiEdit2 />}
-                /> : null}
-
-                {/* Font Btn */}
-                <IconButton
-                    _focus={{ outline: "none" }}
-                    onClick={onOpenFont}
-                    position='fixed'
-                    top='12px'
-                    right={{ base: '130px', sm: '160px' }}
-                    aria-label='audio-toggle'
-                    variant='ghost'
-                    isRound={true}
-                    // size='lg'
-                    fontSize='30px'
-                    icon={<RiFontSize />}
-                />
+                /> : null} */}
 
                 {/* Font Modal */}
                 <Modal isOpen={isOpenFont} onClose={onCloseFont} >
