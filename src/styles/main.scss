@@ -1,5 +1,10 @@
 body {
     overflow: hidden;
+    transition: background 0.4s ease-in !important;
+
+    &.chakra-ui-dark {
+        background: var(--chakra-colors-gray-800);
+    }
 }
 
 .font-size-wrapper-12 {
