@@ -105,14 +105,14 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             pb={4}
                         >
                             <ButtonGroup size="sm">
-                            <Link href={BUY_ME_A_BOBA_LINK} isExternal>
-                                <Button
-                                    size="sm"
-                                    fontSize="12.5px"
-                                    colorScheme="green"
-                                >
-                                    {BOBA_BTN_TEXT}
-                                </Button>
+                                <Link href={BUY_ME_A_BOBA_LINK} isExternal>
+                                    <Button
+                                        size="sm"
+                                        fontSize="12.5px"
+                                        colorScheme="green"
+                                    >
+                                        {BOBA_BTN_TEXT}
+                                    </Button>
                                 </Link>
                                 <GitHubButton href={GITHUB_LINK} data-show-count="true" data-size="large">
                                     {GITHUB_STAR_BTN_TEXT}
@@ -192,7 +192,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             icon={<RiFontSize />}
                         />
                     </Tooltip>
-                    
+
                     {/* Info Btn */}
                     <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}>
                         <IconButton
@@ -219,12 +219,15 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         />
                     </Tooltip>
 
-                    
+
                 </Box>
 
                 {/* Share Modal */}
-                <Modal isOpen={isOpenSave} onClose={onCloseSave} >
-                    <ModalOverlay />
+                <Modal isOpen={isOpenSave} onClose={onCloseSave}>
+                    <ModalOverlay
+                        bg='blackAlpha.300'
+                        backdropFilter='blur(10px)' 
+                    />
                     <ModalContent>
                         <ModalHeader>
                             {SHARE_HEADER_TEXT}
@@ -298,13 +301,16 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Modal>
 
                 {/* Info Modal */}
-                <Modal isOpen={isOpenInfo} onClose={onCloseInfo} >
-                    <ModalOverlay />
+                <Modal isOpen={isOpenInfo} onClose={onCloseInfo} size='xl' >
+                    <ModalOverlay
+                        bg='blackAlpha.300'
+                        backdropFilter='blur(10px)' 
+                    />
                     <ModalContent>
                         <ModalHeader>
                             {INFO_MODAL_HEADER_TEXT}
                         </ModalHeader>
-                        <ModalCloseButton />
+                        <ModalCloseButton _focus={{ outline: "none" }} />
                         <ModalBody>
                             {INFO_MODAL_BODY_TEXT}
                             <br></br>
@@ -323,6 +329,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             </Stack>
                             <br></br>
 
+                            Check out the source code on 
                             <Link href={GITHUB_LINK} isExternal>
                                 <IconButton
                                     _focus={{ outline: "none" }}
@@ -335,7 +342,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 />
                             </Link>
 
-                            <Link href={TWITTER_SHARE_LINK} isExternal>
+                            <br />
+
+                            Made with 🎧, 🦄 and 🌈 by <Link isExternal href='https://twitter.com/veehaaaaa'>@veehaaaaa</Link> and <Link isExternal href='https://twitter.com/karanrajpal_'>@karanrajpal_</Link>
+
+                            {/* <Link href={TWITTER_SHARE_LINK} isExternal>
                                 <IconButton
                                     _focus={{ outline: "none" }}
                                     variant='ghost'
@@ -357,7 +368,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     aria-label='audio-toggle'
                                     icon={<BsFacebook />}
                                 />
-                            </Link>
+                            </Link> */}
                         </ModalBody>
 
                         <ModalFooter>
