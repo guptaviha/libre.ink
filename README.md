@@ -17,7 +17,7 @@ The application does not talk to a database or server of any kind. All the conte
  - [x] Make boba luminous
  - [?] Enable reader-mode compatibility - cant sent article tag dynamically around class wmde-markdown wmde-markdown-color 
  - [ ] Webiste abuse legal disclaimer?
- - [ ] 
+ - [ ] Max post size error message on Publish
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard - umami?
