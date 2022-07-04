@@ -8,6 +8,13 @@ const config: ThemeConfig = {
 };
 
 // 3. extend the theme
-const theme = extendTheme({ config });
+const theme = extendTheme({
+    config,
+    colors: {
+        gray: {
+            800: '#171923',
+        }
+    }
+});
 
 export default theme;
