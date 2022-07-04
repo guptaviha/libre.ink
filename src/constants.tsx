@@ -1,9 +1,10 @@
+import React from 'react';
 export const APP_TITLE = 'libre.ink';
 export const STARTING_TEXT = `Welcome to **Libre.ink** - Instant anonymous blogging.
 
 No sign-up. No tracking. No kidding.
 
-So leave your username at the door and edit this post to give it a whirl.
+Leave your username at the door and edit this post to give it a whirl.
 `;
 
 // ## Our novel approach
@@ -41,8 +42,19 @@ export const BOBA_BODY_TEXT = `If you like what you see, consider supporting us.
 export const BOBA_BTN_TEXT = `Buy us a Boba`
 export const GITHUB_STAR_BTN_TEXT = `Star us on GitHub`
 
-export const INFO_MODAL_HEADER_TEXT = `Welcome to libre.ink!`
-export const INFO_MODAL_BODY_TEXT = `The serverless instant-publish blog platform that lets you publish as fast as you can write.\n\nRemember to save your blog URL because all the content of your blog post lives in the URL. The application does not talk to a database or server of any kind.`
+export const INFO_MODAL_HEADER_TEXT = `What is libre.ink?`
+export const INFO_MODAL_BODY_TEXT = (<div>Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk. We store your blog post right in the URL.
+    <br /><br />
+    <h3 style={{ fontWeight: 'bold' }}>In the URL?</h3>
+    That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking, no database and no server of any kind.
+    <br /><br />
+    <h3 style={{ fontWeight: 'bold' }}>Why is my post's URL so long?</h3>
+    Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
+    URLs also have size limits so the app won't work above a certain post size (Something like 20,000 words)
+    <br /><br />
+    <h3 style={{ fontWeight: 'bold' }}>Markdown and shortcuts</h3>
+    We support Markdown and some common editing shortcuts for things like <b>Bold</b> and <i>Italics</i>.
+</div>);
 
 export const TAG1_TEXT = `open-source`
 export const TAG2_TEXT = `serverless`
