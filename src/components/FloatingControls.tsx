@@ -226,7 +226,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <Modal isOpen={isOpenSave} onClose={onCloseSave}>
                     <ModalOverlay
                         bg='blackAlpha.300'
-                        backdropFilter='blur(10px)' 
+                        backdropFilter='blur(10px)'
                     />
                     <ModalContent>
                         <ModalHeader>
@@ -304,7 +304,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <Modal isOpen={isOpenInfo} onClose={onCloseInfo} size='xl' >
                     <ModalOverlay
                         bg='blackAlpha.300'
-                        backdropFilter='blur(10px)' 
+                        backdropFilter='blur(10px)'
                     />
                     <ModalContent>
                         <ModalHeader>
@@ -329,7 +329,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             </Stack>
                             <br></br>
 
-                            Check out the source code on 
+                            Check out the source code on
                             <Link href={GITHUB_LINK} isExternal>
                                 <IconButton
                                     _focus={{ outline: "none" }}
@@ -407,35 +407,25 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalCloseButton />
                         <ModalBody>
                             <FormControl>
-                                <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>{FONT_SIZE_LABEL_TEXT}</FormLabel>
-                                <Box display='flex' marginBottom='25px' justifyContent='space-between' alignItems='center'>
-                                    <IconButton
-                                        _focus={{ outline: "none" }}
-                                        onClick={() => {
-                                            setFontSize(fontSize - 2)
-                                        }}
-                                        disabled={fontSize < 14}
-                                        aria-label='audio-toggle'
-                                        variant='outline'
-                                        isRound={false}
-                                        fontSize='30px'
-                                        width='100%'
-                                        icon={<AiOutlineMinus />}
-                                    />
-                                    <Text width='100%' textAlign='center'>{fontSize}pt</Text>
-                                    <IconButton
-                                        _focus={{ outline: "none" }}
-                                        onClick={() => {
-                                            setFontSize(fontSize + 2)
-                                        }}
-                                        disabled={fontSize > 22}
-                                        aria-label='audio-toggle'
-                                        variant='outline'
-                                        isRound={false}
-                                        fontSize='30px'
-                                        width='100%'
-                                        icon={<AiOutlinePlus />}
-                                    />
+                                <Box padding='14px'>
+                                    <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>{FONT_SIZE_LABEL_TEXT}</FormLabel>
+                                    <Slider id='font-size' aria-label='slider-ex-6' defaultValue={fontSize} step={2} min={14} max={22} onChange={(val) => setFontSize(val)} marginBottom='35px'>
+                                        <SliderMark
+                                            value={fontSize}
+                                            textAlign='center'
+                                            bg='blue.500'
+                                            color='white'
+                                            mt='-10'
+                                            ml='-5'
+                                            w='12'
+                                        >
+                                            {fontSize}
+                                        </SliderMark>
+                                        <SliderTrack>
+                                            <SliderFilledTrack />
+                                        </SliderTrack>
+                                        <SliderThumb />
+                                    </Slider>
                                 </Box>
                                 {editMode ? <Box display='flex' alignItems='center' marginBottom='20px'>
                                     <FormLabel htmlFor='markdown-toolbar' mb='0'>
