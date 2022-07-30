@@ -12,12 +12,13 @@ The application does not talk to a database or server of any kind. All the conte
 
 ### Feature List - MVP
  - [ ] Edit github (Add gif in info tab)
- - [ ] Edit About Page (include keyboard shortcuts for markdown)
- - [ ] URL shortening (with a disclaimer on data being stored)
- - [x] Make boba luminous
- - [?] Enable reader-mode compatibility - cant sent article tag dynamically around class wmde-markdown wmde-markdown-color 
- - [ ] Webiste abuse legal disclaimer?
- - [ ] Max post size error message on Publish
+ - [ ] Webiste abuse legal disclaimer - viha
+ Disclaimer Section in About:
+ Due to the technical implementation of not storing any information, we are not responsible for any misuse of this tool
+ - [ ] Max post size error message on Publish - viha
+ - [ ] Remove Analytics in Vercel - viha
+ - [ ] Change post encoding to an object - karan
+ - [ ] 
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard - umami?
@@ -31,7 +32,8 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Set print styles to match dark mode
  - [ ] Make Font size button look like Safari's Big A and Small A UI
  - [ ] Compress all settings into one gear icon on the top left
- - [ ] 
+ - [?] Enable reader-mode compatibility - cant sent article tag dynamically around class wmde-markdown wmde-markdown-color 
+ - [ ] URL shortening (with a disclaimer on data being stored)
 
 ### Bugs To Fix
  - [ ] Fix typewriter sounds on mobile - iphone works, need to check android
@@ -39,6 +41,7 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Markdown toolbar on mobile buggy
  - [x] Markdown toolbar does not persist
  - [x] Md toolbar extra padding
+
 
 
 
