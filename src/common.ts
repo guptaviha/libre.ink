@@ -7,10 +7,20 @@ export const setTitle = (postContent: string) => {
     document.title = title;
 };
 
-export function encode(str: string) {
+export function encode(str: string): string {
     return LZString.compressToEncodedURIComponent(str);
 }
 
-export function decode(str: string) {
+export function decode(str: string): string {
     return LZString.decompressFromEncodedURIComponent(str);
+}
+
+export type PostObject = {
+    postContent: string;
+};
+
+export function createPostObject(postContent: string): PostObject {
+    return {
+        postContent,
+    };
 }

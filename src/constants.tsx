@@ -62,6 +62,7 @@ export const TAG3_TEXT = `markdown-supported`
 
 export const FONT_HEADER_TEXT = `Font Settings`
 export const FONT_SIZE_LABEL_TEXT = `Text Size`
+export const FONT_OPTIONS_LABEL_TEXT = `Font`
 export const MD_TOOLBAR_LABEL_TEXT = `Show Markdown Toolbar`
 
 export const SHARE_HEADER_TEXT = `Share URL`

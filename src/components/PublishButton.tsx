@@ -14,7 +14,8 @@ export const PublishButton = (props: ButtonProps) => {
                 // _hover={{ background: "unset" }} 
                 _active={{ background: "unset", outline: "none" }}
                 _focus={{ outline: "none" }}
-                onClick={props.onClick}>
+                onClick={props.onClick}
+            >
                 {PUBLISH_BTN_TEXT}
             </Button>
         </>
