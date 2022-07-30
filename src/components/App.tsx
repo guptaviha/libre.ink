@@ -17,9 +17,8 @@ export const App = () => {
             decodedPost = (JSON.parse(decode(encodedPostObject)));
         } catch (e) {
             decodedPost = {
-                postContent: `## Post Not Valid
-                
-                The post seems to be an invalid format. Please check with the author to give you a valid libre.ink link`,
+                postContent: `## Invalid Post
+Something doesn't look right with the link. Please check with the author to give you a valid libre.ink link`,
             };
         }
     }
