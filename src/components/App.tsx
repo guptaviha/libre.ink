@@ -13,7 +13,15 @@ export const App = () => {
     let decodedPost;
 
     if (encodedPostObject) {
-        decodedPost = (JSON.parse(decode(encodedPostObject)));
+        try {
+            decodedPost = (JSON.parse(decode(encodedPostObject)));
+        } catch (e) {
+            decodedPost = {
+                postContent: `## Post Not Valid
+                
+                The post seems to be an invalid format. Please check with the author to give you a valid libre.ink link`,
+            };
+        }
     }
 
     return (
