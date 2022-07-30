@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
-import { FiBarChart2, FiPocket, FiEdit2 } from 'react-icons/fi';
+import { FiBarChart2 } from 'react-icons/fi';
 import { IoShareOutline } from 'react-icons/io5';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { RiLinkUnlinkM } from 'react-icons/ri';
 import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
 import { StatsType } from './EditPage';
@@ -20,16 +19,26 @@ import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT
     , FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP
     , SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP
-    , CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP
+    , CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT
 } from '../constants';
 import { Logo } from './Logo';
-import { encode } from '../common';
+import { createPostObject, encode } from '../common';
 
 const camelToTitleCase = (text: string) => {
     const result = text.replace(/([A-Z])/g, " $1");
     const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
     return finalResult;
 };
+
+const fontOptions = [{
+    fontName: 'Helvetica',
+}, {
+    fontName: 'Monospace',
+}, {
+    fontName: 'Times New Roman',
+}, {
+    fontName: 'Cursive'
+}];
 
 type FloatingControlsProps = {
     postContent: string;
@@ -64,9 +73,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         <>
             {/* Publish button */}
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
-                const encodedPost = encode(postContent);
+                const postObject = createPostObject(postContent);
+                const encodedPostObject = encode(JSON.stringify(postObject));
                 localStorage.setItem('storedPost', postContent);
-                window.location.search = `?post=${encodedPost}`;
+                window.location.search = `?post=${encodedPostObject}`;
             }} /> : null}
 
             {/* Boba button */}
@@ -407,7 +417,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalCloseButton />
                         <ModalBody>
                             <FormControl>
-                                <Box padding='14px'>
+                                <Box padding='14px 0'>
                                     <FormLabel as='h3' fontWeight='bold' htmlFor='font-size'>{FONT_SIZE_LABEL_TEXT}</FormLabel>
                                     <Slider id='font-size' aria-label='slider-ex-6' defaultValue={fontSize} step={2} min={14} max={22} onChange={(val) => setFontSize(val)} marginBottom='35px'>
                                         <SliderMark
@@ -427,7 +437,29 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         <SliderThumb />
                                     </Slider>
                                 </Box>
-                                {editMode ? <Box display='flex' alignItems='center' marginBottom='20px'>
+                                {/* {editMode ? <Box>
+                                    <FormLabel as='h3' fontWeight='bold'>{FONT_OPTIONS_LABEL_TEXT}</FormLabel>
+                                    <Box display='flex' justifyContent='space-between' flexWrap='wrap'>
+                                        {fontOptions.map((font) => (
+                                            <Button
+                                                key={font.fontName}
+                                                borderRadius='2px'
+                                                width='48%'
+                                                padding='15px'
+                                                textAlign='center'
+                                                marginBottom='10px'
+                                                background={colorMode === 'dark' ? 'darkslategray' : 'lavenderblush'}
+                                                className={`font-${font.fontName}`}
+                                                fontFamily={font.fontName}
+                                                fontWeight='normal'
+                                                // onClick={setFontFamily}
+                                            >
+                                                {font.fontName}
+                                            </Button>
+                                        ))}
+                                    </Box>
+                                </Box> : null} */}
+                                {editMode ? <Box display='flex' alignItems='center' margin='20px 0'>
                                     <FormLabel htmlFor='markdown-toolbar' mb='0'>
                                         {MD_TOOLBAR_LABEL_TEXT}
                                     </FormLabel>
