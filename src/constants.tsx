@@ -18,7 +18,7 @@ export const PLACEHOLDER_TEXT = `Instant anonymous blogging.
 Write. Publish. Take it and go.`;
 
 export const INVALID_POST_TEXT = `## Invalid Post
-Something doesn't look right with the link. Please check with the author to give you a valid libre.ink link`;
+Something doesn't look right with the link. Please check with the author to give you a valid libre.ink link.`;
 
 export const BUY_ME_A_BOBA_LINK = 'https://www.buymeacoffee.com/vihagupta99';
 export const GITHUB_LINK = 'https://github.com/guptaviha/libre.ink';
