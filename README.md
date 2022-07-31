@@ -12,13 +12,6 @@ The application does not talk to a database or server of any kind. All the conte
 
 ### Feature List - MVP
  - [ ] Edit github (Add gif in info tab)
- - [ ] Webiste abuse legal disclaimer - viha
- Disclaimer Section in About:
- Due to the technical implementation of not storing any information, we are not responsible for any misuse of this tool
- - [ ] Max post size error message on Publish - viha
- - [ ] Remove Analytics in Vercel - viha
- - [ ] Change post encoding to an object - karan
- - [ ] 
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard - umami?
@@ -28,7 +21,6 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Clean slate button
  - [ ] Add Reader-mode button to hide other floating btns / hide on scroll
  - [?] Add pdf button to the save modal - modal comes in the pdf too
- - [x] Make header buttons part of one div
  - [ ] Set print styles to match dark mode
  - [ ] Make Font size button look like Safari's Big A and Small A UI
  - [ ] Compress all settings into one gear icon on the top left
@@ -39,8 +31,6 @@ The application does not talk to a database or server of any kind. All the conte
  - [ ] Fix typewriter sounds on mobile - iphone works, need to check android
  - [?] Dynamically show title when sharing - limitation?
  - [ ] Markdown toolbar on mobile buggy
- - [x] Markdown toolbar does not persist
- - [x] Md toolbar extra padding
 
 
 

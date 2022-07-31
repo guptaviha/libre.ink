@@ -1,4 +1,4 @@
-import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text } from '@chakra-ui/react';
+import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text, Center } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -73,10 +73,19 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         <>
             {/* Publish button */}
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
+                localStorage.setItem('storedPost', postContent);
                 const postObject = createPostObject(postContent);
                 const encodedPostObject = encode(JSON.stringify(postObject));
-                localStorage.setItem('storedPost', postContent);
-                window.location.search = `?post=${encodedPostObject}`;
+                encodedPostObject.length <= 15000 ? 
+                window.location.search = `?post=${encodedPostObject}`:
+                toast({
+                    title: `Oh no, your post is too long! The max URL length is 15000 but yours is ${encodedPostObject.length}. Please shorten your post and try again.`,
+                    status: 'error',
+                    duration: 15000,
+                    position: 'top',
+                    isClosable: true,
+                })
+                // alert(encodedPostObject.length)
             }} /> : null}
 
             {/* Boba button */}
@@ -176,7 +185,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     {/* Share Btn */}
                     {!editMode ?
                         <>
-                            <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}>
+                            {/* <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}> */}
                                 <IconButton
                                     _focus={{ outline: "none" }}
                                     onClick={onOpenSave}
@@ -186,12 +195,12 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     fontSize='30px'
                                     icon={<IoShareOutline />}
                                 />
-                            </Tooltip>
+                            {/* </Tooltip> */}
                         </>
                         : null}
 
                     {/* Font Btn */}
-                    <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}>
+                    {/* <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
                         <IconButton
                             _focus={{ outline: "none" }}
                             onClick={onOpenFont}
@@ -201,10 +210,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             fontSize='30px'
                             icon={<RiFontSize />}
                         />
-                    </Tooltip>
+                    {/* </Tooltip> */}
 
                     {/* Info Btn */}
-                    <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}>
+                    {/* <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
                         <IconButton
                             _focus={{ outline: "none" }}
                             onClick={onOpenInfo}
@@ -214,7 +223,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             fontSize='36px'
                             icon={<BsQuestion />}
                         />
-                    </Tooltip>
+                    {/* </Tooltip> */}
 
                     {/* Dark Mode Btn */}
                     <Tooltip label={colorMode === 'dark' ? DARK_MODE_BTN_OFF_TOOLTIP : DARK_MODE_BTN_ON_TOOLTIP} hasArrow openDelay={1000}>
@@ -324,68 +333,54 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalBody>
                             {INFO_MODAL_BODY_TEXT}
                             <br></br>
-                            <br></br>
-
-                            <Stack spacing={4} direction='row' align='center'>
-                                <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    {TAG1_TEXT}
-                                </Button>
-                                <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    {TAG2_TEXT}
-                                </Button>
-                                <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
-                                    {TAG3_TEXT}
-                                </Button>
-                            </Stack>
-                            <br></br>
-
-                            Check out the source code on
-                            <Link href={GITHUB_LINK} isExternal>
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={<BsGithub />}
-                                />
-                            </Link>
+                            <Center>
+                                <Stack spacing={4} direction='row' align='center'>
+                                    <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                        {TAG1_TEXT}
+                                    </Button>
+                                    <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                        {TAG2_TEXT}
+                                    </Button>
+                                    <Button _focus={{ outline: "none" }} colorScheme='teal' size='xs'>
+                                        {TAG3_TEXT}
+                                    </Button>
+                                </Stack>
+                            </Center>
 
                             <br />
 
-                            Made with 🎧, 🦄 and 🌈 by <Link isExternal href='https://twitter.com/veehaaaaa'>@veehaaaaa</Link> and <Link isExternal href='https://twitter.com/karanrajpal_'>@karanrajpal_</Link>
+                            <Text fontSize='md'><i><b>Disclaimer</b>: Due to the technical implications of our strict no-storage policy, we do not bear the responsibility for any misuse of this tool.</i></Text>
 
-                            {/* <Link href={TWITTER_SHARE_LINK} isExternal>
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={<BsTwitter />}
-                                />
-                            </Link>
+                            <br />
 
-                            <Link href={FB_SHARE_LINK} isExternal>
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    variant='ghost'
-                                    isRound={true}
-                                    size='lg'
-                                    fontSize='30px'
-                                    aria-label='audio-toggle'
-                                    icon={<BsFacebook />}
-                                />
-                            </Link> */}
+                            <Center>
+                                <Text>Check out the source code on
+                                    <Link href={GITHUB_LINK} isExternal>
+                                        <IconButton
+                                            _focus={{ outline: "none" }}
+                                            variant='ghost'
+                                            isRound={true}
+                                            size='lg'
+                                            fontSize='30px'
+                                            aria-label='audio-toggle'
+                                            icon={<BsGithub />}
+                                        />
+                                    </Link>
+                                </Text>
+                            </Center>
+
+                            {/* <br /> */}
+
+                            <Center>
+                                <Text>
+                                    Made with 🎧, 🦄 and 🌈 by <Link isExternal href='https://twitter.com/veehaaaaa'>@veehaaaaa</Link> and <Link isExternal href='https://twitter.com/karanrajpal_'>@karanrajpal_</Link>
+                                </Text>
+                            </Center>
+
+                            <br /><br />
+
+
                         </ModalBody>
-
-                        <ModalFooter>
-                            {/* <Button colorScheme='whatsapp' onClick={onCloseInfo}>
-                                Got it!
-                            </Button> */}
-                        </ModalFooter>
                     </ModalContent>
                 </Modal>
 
