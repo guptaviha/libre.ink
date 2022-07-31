@@ -79,9 +79,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 encodedPostObject.length <= 15000 ? 
                 window.location.search = `?post=${encodedPostObject}`:
                 toast({
-                    title: `Oh no! You've hit the max character limit for a libre.ink URL. Remove some words and please try again. (${encodedPostObject.length} of 15000)`,
+                    title: `Oh no, your post is too long! The max URL length is 15000 but yours is ${encodedPostObject.length}. Please shorten your post and try again.`,
                     status: 'error',
-                    duration: 6500,
+                    duration: 150000,
                     position: 'top',
                     isClosable: true,
                 })
