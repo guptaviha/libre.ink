@@ -12,7 +12,6 @@ The application does not talk to a database or server of any kind. All the conte
 
 ### Feature List - MVP
  - [ ] Edit github (Add gif in info tab)
- - [ ] Max post size error message on Publish - viha
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard - umami?
