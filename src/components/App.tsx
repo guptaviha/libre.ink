@@ -18,7 +18,7 @@ export const App = () => {
         } catch (e) {
             decodedPost = {
                 postContent: `## Invalid Post
-Something doesn't look right with the link. Please check with the author to give you a valid libre.ink link`,
+Something doesn't look right with the link. Please check with the author to give you a valid libre.ink link.`,
             };
         }
     }

@@ -50,7 +50,7 @@ export const INFO_MODAL_BODY_TEXT = (<div>Libre.ink is a truly anonymous instant
     <br /><br />
     <h3 style={{ fontWeight: 'bold' }}>Why is my post's URL so long?</h3>
     Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
-    URLs also have size limits so the app won't work above a certain post size (Something like 20,000 words).
+    URLs also have size limits so the app won't work above a certain post size (Something like 20,000 characters).
     <br /><br />
     <h3 style={{ fontWeight: 'bold' }}>Markdown and shortcuts</h3>
     We support Markdown and some common editing shortcuts for things like <b>Bold</b> and <i>Italics</i>.

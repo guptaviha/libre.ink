@@ -73,10 +73,19 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         <>
             {/* Publish button */}
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
+                localStorage.setItem('storedPost', postContent);
                 const postObject = createPostObject(postContent);
                 const encodedPostObject = encode(JSON.stringify(postObject));
-                localStorage.setItem('storedPost', postContent);
-                window.location.search = `?post=${encodedPostObject}`;
+                encodedPostObject.length <= 15000 ? 
+                window.location.search = `?post=${encodedPostObject}`:
+                toast({
+                    title: `Oh no! You've hit the max character limit for a libre.ink URL. Remove some words and please try again. (${encodedPostObject.length} of 15000)`,
+                    status: 'error',
+                    duration: 6500,
+                    position: 'top',
+                    isClosable: true,
+                })
+                // alert(encodedPostObject.length)
             }} /> : null}
 
             {/* Boba button */}
