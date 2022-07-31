@@ -81,7 +81,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 toast({
                     title: `Oh no, your post is too long! The max URL length is 15000 but yours is ${encodedPostObject.length}. Please shorten your post and try again.`,
                     status: 'error',
-                    duration: 150000,
+                    duration: 15000,
                     position: 'top',
                     isClosable: true,
                 })
