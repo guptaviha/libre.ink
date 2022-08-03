@@ -20,7 +20,7 @@ import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT,
     FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP,
     SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
-    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT
+    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT, TINY_URL_TOAST_TEXT
 } from '../constants';
 import { Logo } from './Logo';
 import { createPostObject, encode } from '../common';
@@ -40,6 +40,10 @@ const fontOptions = [{
 }, {
     fontName: 'Cursive'
 }];
+
+function timeout(delay: number) {
+    return new Promise(res => setTimeout(res, delay));
+}
 
 type FloatingControlsProps = {
     postContent: string;
@@ -277,22 +281,37 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     />
                                 </Tooltip>
                                 <Tooltip label={TINY_URL_TOOLTIP} hasArrow>
-                                    <Link href={TINY_URL_LINK} isExternal>
-                                        <IconButton
-                                            _focus={{ outline: "none" }}
-                                            onClick={() => {
-                                                // !onCloseSave;
-                                                // const url = window.location.href;
-                                                // window.print();
-                                            }}
-                                            variant='ghost'
-                                            isRound={true}
-                                            size='lg'
-                                            fontSize='30px'
-                                            aria-label='url-shorten'
-                                            icon={<RiLinkUnlinkM />}
-                                        />
-                                    </Link>
+                                    {/* <Link href={TINY_URL_LINK} isExternal> */}
+                                    <IconButton
+                                        _focus={{ outline: "none" }}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(window.location.href);
+
+                                            toast({
+                                                title: TINY_URL_TOAST_TEXT,
+                                                status: 'success',
+                                                duration: 2500,
+                                                position: 'top',
+                                                isClosable: true,
+                                            })
+
+                                            setTimeout(() => {
+                                                window.open(
+                                                    TINY_URL_LINK,
+                                                    '_blank'
+                                                )
+                                            },
+                                                2800)
+
+                                        }}
+                                        variant='ghost'
+                                        isRound={true}
+                                        size='lg'
+                                        fontSize='30px'
+                                        aria-label='url-shorten'
+                                        icon={<RiLinkUnlinkM />}
+                                    />
+                                    {/* </Link> */}
                                 </Tooltip>
                                 <Tooltip label={EMAIL_TOOLTIP} hasArrow>
                                     <IconButton
@@ -397,7 +416,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         <br />
                                         Add <b>images</b> like this ![Text](https://xyz.png)
                                         <br /><br />
-                                        
+
 
 
 
