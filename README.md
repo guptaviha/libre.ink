@@ -12,36 +12,34 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
 
 ### Feature List - MVP
  - [ ] Edit github (Add gif in info tab)
+ - [ ] Remove Libre.ink from the title
+ - [ ] Add "Made by Libre.ink" to the bottom
+ - [ ] Put cursor at the end of the text on page load
+ - [ ] Edit the "no server" text
+ - [ ] Remove the pre-filled text
+ - [ ] Re-write the placeholder text to mention markdown
+ - [ ] iOS scroll fix needs to be perfected
+ - [ ] Readme needs to include the GIF inside an accordion.
+ - [ ] Move current text into accordion FAQ
+ - [ ] Fix email link.
+ - [ ] Should it be "Copy and go to tinyURL?" - Redirect to tinyURL after a delay.
+ - [ ] Fix enter line issue?
+ - [ ] How do we show the Edit button? Save everything in local storage, and detect if this is the author?
+ - [ ] Fix height bug in view page
 
 ### Feature List - Later
- - [ ] Page views/ Analytics dashboard - umami?
+ - [ ] Page views/ Analytics dashboard
  - [ ] Chome extension
  - [ ] Markdown toolbar with auto hide
  - [ ] Store array of published urls in local storage and show them
  - [ ] Clean slate button
  - [ ] Add Reader-mode button to hide other floating btns / hide on scroll
- - [?] Add pdf button to the save modal - modal comes in the pdf too
- - [ ] Set print styles to match dark mode
- - [ ] Make Font size button look like Safari's Big A and Small A UI
+ - [ ] Add pdf button to the save modal
  - [ ] Compress all settings into one gear icon on the top left
- - [?] Enable reader-mode compatibility - cant sent article tag dynamically around class wmde-markdown wmde-markdown-color 
- - [ ] URL shortening (with a disclaimer on data being stored)
+ - [ ] Enable reader-mode compatibility
+ - [ ] History button if we are storing the previous posts
 
 ### Bugs To Fix
- - [ ] Fix typewriter sounds on mobile - iphone works, need to check android
- - [?] Dynamically show title when sharing - limitation?
- - [ ] Markdown toolbar on mobile buggy
+ - [ ] Dynamically show title when sharing to WhatsApp
+ - [ ] Markdown toolbar on mobile is buggy
 
-
-
-
-
-
-
-
-
-
-
-
-
-look-up local first apps/ pwa apps
