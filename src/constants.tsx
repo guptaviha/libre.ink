@@ -49,7 +49,7 @@ export const INFO_MODAL_HEADER_TEXT = 'What is libre.ink?';
 export const INFO_MODAL_BODY_TEXT = (<div>Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk. We store your blog post right in the URL.
     <br /><br />
     <h3 style={{ fontWeight: 'bold' }}>In the URL?</h3>
-    That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking, no database and no server of any kind.
+    That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking and no database of any kind.
     <br /><br />
     <h3 style={{ fontWeight: 'bold' }}>Why is my post's URL so long?</h3>
     Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
