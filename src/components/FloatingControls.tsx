@@ -1,4 +1,4 @@
-import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text, Center } from '@chakra-ui/react';
+import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text, Center, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -76,15 +76,15 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 localStorage.setItem('storedPost', postContent);
                 const postObject = createPostObject(postContent);
                 const encodedPostObject = encode(JSON.stringify(postObject));
-                encodedPostObject.length <= 15000 ? 
-                window.location.search = `?post=${encodedPostObject}`:
-                toast({
-                    title: `Oh no, your post is too long! The max URL length is 15000 but yours is ${encodedPostObject.length}. Please shorten your post and try again.`,
-                    status: 'error',
-                    duration: 15000,
-                    position: 'top',
-                    isClosable: true,
-                })
+                encodedPostObject.length <= 15000 ?
+                    window.location.search = `?post=${encodedPostObject}` :
+                    toast({
+                        title: `Oh no, your post is too long! The max URL length is 15000 but yours is ${encodedPostObject.length}. Please shorten your post and try again.`,
+                        status: 'error',
+                        duration: 15000,
+                        position: 'top',
+                        isClosable: true,
+                    })
                 // alert(encodedPostObject.length)
             }} /> : null}
 
@@ -186,43 +186,43 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     {!editMode ?
                         <>
                             {/* <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}> */}
-                                <IconButton
-                                    _focus={{ outline: "none" }}
-                                    onClick={onOpenSave}
-                                    aria-label='audio-toggle'
-                                    variant='ghost'
-                                    isRound={true}
-                                    fontSize='30px'
-                                    icon={<IoShareOutline />}
-                                />
+                            <IconButton
+                                _focus={{ outline: "none" }}
+                                onClick={onOpenSave}
+                                aria-label='audio-toggle'
+                                variant='ghost'
+                                isRound={true}
+                                fontSize='30px'
+                                icon={<IoShareOutline />}
+                            />
                             {/* </Tooltip> */}
                         </>
                         : null}
 
                     {/* Font Btn */}
                     {/* <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
-                        <IconButton
-                            _focus={{ outline: "none" }}
-                            onClick={onOpenFont}
-                            aria-label='audio-toggle'
-                            variant='ghost'
-                            isRound={true}
-                            fontSize='30px'
-                            icon={<RiFontSize />}
-                        />
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenFont}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='30px'
+                        icon={<RiFontSize />}
+                    />
                     {/* </Tooltip> */}
 
                     {/* Info Btn */}
                     {/* <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
-                        <IconButton
-                            _focus={{ outline: "none" }}
-                            onClick={onOpenInfo}
-                            aria-label='audio-toggle'
-                            variant='ghost'
-                            isRound={true}
-                            fontSize='36px'
-                            icon={<BsQuestion />}
-                        />
+                    <IconButton
+                        _focus={{ outline: "none" }}
+                        onClick={onOpenInfo}
+                        aria-label='audio-toggle'
+                        variant='ghost'
+                        isRound={true}
+                        fontSize='36px'
+                        icon={<BsQuestion />}
+                    />
                     {/* </Tooltip> */}
 
                     {/* Dark Mode Btn */}
@@ -331,7 +331,53 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton _focus={{ outline: "none" }} />
                         <ModalBody>
-                            {INFO_MODAL_BODY_TEXT}
+                            {/* {INFO_MODAL_BODY_TEXT} */}
+                            Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk. We store your blog post right in the URL.
+                            <br /><br />
+                            
+                            <br /><br />
+                            <Accordion allowToggle>
+                                <AccordionItem>
+                                    <AccordionButton>
+                                        <Box flex='1' textAlign='left'>
+                                            <h3 style={{ fontWeight: 'bold' }}>
+                                                In the URL?
+                                            </h3>
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                    <AccordionPanel pb={4}>
+                                        That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking, no database and no server of any kind.
+                                    </AccordionPanel>
+                                </AccordionItem>
+                                <AccordionItem>
+                                    <AccordionButton>
+                                        <Box flex='1' textAlign='left'>
+                                            <h3 style={{ fontWeight: 'bold' }}>
+                                            Why is my post's URL so long?
+                                            </h3>
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                    <AccordionPanel pb={4}>
+                                        Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable. 
+                                        URLs also have size limits so the app won't work above a certain post size (Something like 20,000 characters).
+                                    </AccordionPanel>
+                                </AccordionItem>
+                                <AccordionItem>
+                                    <AccordionButton>
+                                        <Box flex='1' textAlign='left'>
+                                            <h3 style={{ fontWeight: 'bold' }}>
+                                            Markdown and shortcuts
+                                            </h3>
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                    <AccordionPanel pb={4}>
+                                        We support Markdown and some common editing shortcuts for things like <b>Bold</b> and <i>Italics</i>.
+                                    </AccordionPanel>
+                                </AccordionItem>
+                            </Accordion>
                             <br></br>
                             <Center>
                                 <Stack spacing={4} direction='row' align='center'>

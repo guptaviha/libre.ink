@@ -113,6 +113,7 @@ export const EditPage = () => {
             data-color-mode={colorMode}
             onTouchMove={() => setRecentlyTypedCount(0)}
             onMouseMove={() => setRecentlyTypedCount(0)}>
+            <div id="tst"></div>
             <MDEditor
                 preview='edit'
                 autoFocus={true}
@@ -139,6 +140,8 @@ export const EditPage = () => {
                         placeholder: PLACEHOLDER_TEXT
                     }
                 }
+                // enableScroll={false}
+                // overflow={true}
             />
             <FloatingControls
                 postContent={postContent}

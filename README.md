@@ -3,7 +3,7 @@ libre.ink is a serverless instant-publish blogging platform that lets you publis
 
 The application does not talk to a database or server of any kind. All the content of your blog post lives in the URL using base64 encoding, so just remember to save your blog URL!
 
-
+![Quick Tutorial](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 ### Contributors
 
