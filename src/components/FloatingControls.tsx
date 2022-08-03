@@ -365,13 +365,41 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                Markdown and shortcuts
+                                                Formatting with Markdown
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        We support Markdown and some common editing shortcuts for things like <b>Bold</b> and <i>Italics</i>.
+                                        We support Markdown. Here's a quick guide.
+                                        <br /><br />
+                                        <b>Heading</b> sizes range in hashes from 1 to 6 (#, ##, ..., ######)
+                                        <br />
+                                        <b>Italics</b> uses single asterisks like *this*
+                                        <br />
+                                        <b>Bold</b> uses double asterisks like **this**
+                                        <br />
+                                        <b>Strikethrough</b> uses double tildes like ~~this~~
+                                        <br />
+                                        <b>Horizontal</b> line uses triple hyphen like this: ---
+                                        <br />
+                                        Add a <b>blockquote</b> using >
+                                        <br />
+                                        <b>Code highlighting</b> uses single backticks like `this`
+                                        <br /><br />
+                                        1. Use <b>ordered lists</b> using numbers
+                                        <br />
+                                        - Or use <b>unordered lists</b> using single hyphens
+                                        <br /><br />
+                                        Add <b>links</b> like this: [Text](https://www.xyz.com)
+                                        <br />
+                                        Add <b>images</b> like this ![Text](https://xyz.png)
+                                        <br /><br />
+                                        
+
+
+
+
                                     </AccordionPanel>
                                 </AccordionItem>
                             </Accordion>
