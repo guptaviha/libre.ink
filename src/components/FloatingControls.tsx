@@ -333,8 +333,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             {/* {INFO_MODAL_BODY_TEXT} */}
                             Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk. We store your blog post right in the URL.
                             <br /><br />
-                            
-                            <br /><br />
                             <Accordion allowToggle>
                                 <AccordionItem>
                                     <AccordionButton>
@@ -353,13 +351,13 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                            Why is my post's URL so long?
+                                                Why is my post's URL so long?
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable. 
+                                        Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
                                         URLs also have size limits so the app won't work above a certain post size (Something like 20,000 characters).
                                     </AccordionPanel>
                                 </AccordionItem>
@@ -367,7 +365,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                            Markdown and shortcuts
+                                                Markdown and shortcuts
                                             </h3>
                                         </Box>
                                         <AccordionIcon />

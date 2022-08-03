@@ -11,7 +11,8 @@ export type StatsType = {
     sentenceCount: number;
 };
 
-const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
+// const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
+const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : '');
 const localStorageFont = Number(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
 const localStorageSound = (localStorage.getItem('storedSound') ? (localStorage.getItem('storedSound') === 'true') : true);
 const localStorageToolbar = (localStorage.getItem('storedHideToolbar') ? (localStorage.getItem('storedHideToolbar') === 'true') : true);
