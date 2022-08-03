@@ -17,12 +17,10 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
  - [ ] Re-write the placeholder text to mention markdown
  - [ ] iOS scroll fix needs to be perfected
  - [ ] Readme needs to include the GIF inside an accordion.
- - [ ] Fix email link.
  - [ ] Should it be "Copy and go to tinyURL?" - Redirect to tinyURL after a delay.
  - [ ] Fix enter line issue?
  - [ ] How do we show the Edit button? Save everything in local storage, and detect if this is the author?
  - [ ] Fix height bug in view page for mobile
- - [ ] Add Markdown Info in Accordian
  - [ ] 
  - [ ] 
 

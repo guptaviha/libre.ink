@@ -14,6 +14,7 @@ import { PublishButton } from './PublishButton';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
+import { setTitle } from '../common';
 
 import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT,
@@ -298,7 +299,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
                                             const url = window.location.href;
-                                            window.open(`mailto:?subject=My%20MLibre%20Ink&body=${url}`);
+                                            const title = document.title;
+                                            window.open(`mailto:?subject=${title}&body=${url}`);
                                             setIsEmailed(true);
                                         }}
                                         variant='ghost'
