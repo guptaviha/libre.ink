@@ -68,7 +68,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
         setTimeout(() => setTypewriterTimedout(true), 2200);
     }, []);
 
-
     return (
         <>
             {/* Publish button */}

@@ -13,8 +13,8 @@ export type StatsType = {
 
 const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
 const localStorageFont = Number(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
-const localStorageSound = (localStorage.getItem('storedSound') ? (localStorage.getItem('storedSound') === 'true') : true );
-const localStorageToolbar = (localStorage.getItem('storedHideToolbar') ? (localStorage.getItem('storedHideToolbar') === 'true') : true );
+const localStorageSound = (localStorage.getItem('storedSound') ? (localStorage.getItem('storedSound') === 'true') : true);
+const localStorageToolbar = (localStorage.getItem('storedHideToolbar') ? (localStorage.getItem('storedHideToolbar') === 'true') : true);
 
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0;
@@ -44,10 +44,13 @@ async function handleKeyAudio(keyCode: number) {
     }
     // default to all printing keys
     // http://gcctech.org/csc/javascript/javascript_keycodes.htm
+    // 229 is a special case for a long-time known bug for android browsers that returns 229 for all characters.
     else if ((key >= 48 && key <= 90)
         || (key >= 96 && key <= 111)
         || (key >= 186 && key <= 192)
-        || (key >= 219 && key <= 222)) {
+        || (key >= 219 && key <= 222)
+        || (key === 229)
+    ) {
         if (keyCount >= 2) {
             keyCount = 0
         } else {

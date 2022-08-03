@@ -4,7 +4,8 @@ import { EditPage } from './EditPage';
 import { ViewPage } from './ViewPage';
 import theme from '../theme';
 import '../styles/main.scss';
-import { decode, PostObject } from '../common';
+import { decode } from '../common';
+import * as constants from '../constants';
 
 export const App = () => {
     const queryString = window.location.search;
@@ -17,8 +18,7 @@ export const App = () => {
             decodedPost = (JSON.parse(decode(encodedPostObject)));
         } catch (e) {
             decodedPost = {
-                postContent: `## Invalid Post
-Something doesn't look right with the link. Please check with the author to give you a valid libre.ink link.`,
+                postContent: constants.INVALID_POST_TEXT,
             };
         }
     }
