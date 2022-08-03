@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
@@ -68,6 +68,7 @@ export const EditPage = () => {
     const [fontSize, setFontSize] = useState(localStorageFont);
     const { colorMode } = useColorMode();
     const [recentlyTypedCount, setRecentlyTypedCount] = useState(0);
+    // const editorRef = useRef();
     const [stats, setStats]: [StatsType, (stats: StatsType) => void] = useState({
         wordCount: 0,
         characterCount: 0,
@@ -95,6 +96,7 @@ export const EditPage = () => {
     useEffect(() => {
         function handleResize() {
             setWindowHeight(window.innerHeight);
+            // editorRef.current.scrollIntoView(false);
         }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -116,8 +118,9 @@ export const EditPage = () => {
             className={`font-size-wrapper-${fontSize}`}
             data-color-mode={colorMode}
             onTouchMove={() => setRecentlyTypedCount(0)}
-            onMouseMove={() => setRecentlyTypedCount(0)}>
-            <div id="tst"></div>
+            onMouseMove={() => setRecentlyTypedCount(0)}
+            // ref={editorRef}
+        >
             <MDEditor
                 preview='edit'
                 autoFocus={true}
@@ -125,6 +128,8 @@ export const EditPage = () => {
                 height={windowHeight - 100}
                 value={postContent}
                 visibleDragbar={false}
+                enableScroll={false}
+                overflow={true}
                 onKeyDown={async (event) => {
                     setRecentlyTypedCount(recentlyTypedCount + 1);
                     const key = event.keyCode;
