@@ -41,10 +41,6 @@ const fontOptions = [{
     fontName: 'Cursive'
 }];
 
-function timeout(delay: number) {
-    return new Promise(res => setTimeout(res, delay));
-}
-
 type FloatingControlsProps = {
     postContent: string;
     stats?: StatsType;

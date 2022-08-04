@@ -13,10 +13,9 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
 ### Feature List - MVP
  - [ ] Put cursor at the end of the text on page load
  - [ ] Re-write the placeholder text to mention markdown
- - [ ] iOS scroll fix needs to be perfected
+ - [ ] iOS scroll fix needs to be perfected for edit page
  - [ ] About modal needs to include the GIF inside an accordion.
  - [ ] How do we show the Edit button? Save everything in local storage, and detect if this is the author?
- - [ ] Fix height bug in view page for mobile
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard

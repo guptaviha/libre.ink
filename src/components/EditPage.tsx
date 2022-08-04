@@ -11,7 +11,6 @@ export type StatsType = {
     sentenceCount: number;
 };
 
-// const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : STARTING_TEXT);
 const localStoragePost = (localStorage.getItem('storedPost') ? localStorage.getItem('storedPost') : '');
 const localStorageFont = Number(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
 const localStorageSound = (localStorage.getItem('storedSound') ? (localStorage.getItem('storedSound') === 'true') : true);
@@ -19,7 +18,6 @@ const localStorageToolbar = (localStorage.getItem('storedHideToolbar') ? (localS
 
 const keySounds = ["key-audio-1", "key-audio-2", "key-audio-3"];
 var keyCount = 0;
-
 
 async function playAudio(id) {
     var x = document.getElementById(id) as HTMLAudioElement;
@@ -128,8 +126,8 @@ export const EditPage = () => {
                 height={windowHeight - 100}
                 value={postContent}
                 visibleDragbar={false}
-                enableScroll={false}
-                overflow={true}
+                // enableScroll={false}
+                // overflow={true}
                 onKeyDown={async (event) => {
                     setRecentlyTypedCount(recentlyTypedCount + 1);
                     const key = event.keyCode;
@@ -144,13 +142,9 @@ export const EditPage = () => {
                     boxShadow: "unset",
                     fontSize: fontSize,
                 }}
-                textareaProps={
-                    {
-                        placeholder: PLACEHOLDER_TEXT
-                    }
-                }
-            // enableScroll={false}
-            // overflow={true}
+                textareaProps={{
+                    placeholder: PLACEHOLDER_TEXT
+                }}
             />
             <FloatingControls
                 postContent={postContent}
