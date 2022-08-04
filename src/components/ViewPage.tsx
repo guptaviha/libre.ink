@@ -3,9 +3,7 @@ import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from '@uiw/react-md-editor';
 import { PostObject, setTitle } from '../common';
-
-
-const localStorageFont = Number(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 16);
+import { Logo } from './Logo';
 
 type ViewPageProps = {
     postObject: PostObject;
@@ -14,12 +12,7 @@ type ViewPageProps = {
 export const ViewPage = (props: ViewPageProps) => {
     const { postObject } = props;
     const { colorMode } = useColorMode();
-    const [fontSize, setFontSize] = useState(localStorageFont);
     setTitle(postObject.postContent);
-
-    useEffect(() => {
-        localStorage.setItem('fontSize', fontSize);
-    }, [fontSize]);
 
     return (
         <Box
@@ -38,16 +31,18 @@ export const ViewPage = (props: ViewPageProps) => {
                     background: "unset",
                     boxShadow: "unset",
                     overflow: "auto",
-                    fontSize: `${fontSize}px`
+                    fontSize: `${postObject.fontSize}px`
                 }}
             />
+
+            <Box display='flex' alignItems='center' justifyContent='center'>Made with
+                <Logo sizePx={30}/>Libre.ink
+            </Box>
 
             <FloatingControls
                 editMode={false}
                 show={true}
                 postContent={postObject.postContent}
-                fontSize={fontSize}
-                setFontSize={setFontSize}
             />
 
         </Box>
