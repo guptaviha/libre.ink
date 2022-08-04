@@ -46,8 +46,8 @@ type FloatingControlsProps = {
     show: boolean;
     soundOn?: boolean;
     setSoundOn?: (soundOn: boolean) => void;
-    fontSize: number;
-    setFontSize: (fontSize: number) => void;
+    fontSize?: number;
+    setFontSize?: (fontSize: number) => void;
     editMode: boolean;
     hideMdToolbar?: boolean;
     setHideMdToolbar?: (hideMdToolbar: boolean) => void;
@@ -73,7 +73,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             {/* Publish button */}
             {editMode ? <PublishButton id="publish-btn" onClick={() => {
                 localStorage.setItem('storedPost', postContent);
-                const postObject = createPostObject(postContent);
+                const postObject = createPostObject(postContent, String(fontSize));
                 const encodedPostObject = encode(JSON.stringify(postObject));
                 encodedPostObject.length <= 15000 ?
                     window.location.search = `?post=${encodedPostObject}` :
@@ -141,10 +141,11 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Popover>
                 : null}
 
-            <Logo />
+            {editMode ? <Logo fixedLocationX={10} fixedLocationY={18} /> : null}
+            {editMode ? <Logo fixedLocationX={10} fixedLocationY={18} /> : null}
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
-                <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+                {editMode ? <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                         <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title={APP_TITLE_TOOLTIP}>
                             {!typewriterTimedout ? <Typewriter
@@ -158,7 +159,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             /> : <div>{APP_TITLE}</div>}
                         </Heading>
                     </Box>
-                </Link>
+                </Link> : null}
 
                 {/* Toolbar Buttons */}
                 <Box display='flex' gap={{ base: '1px', md: '4px', sm: '1px' }} position='fixed' top='14px' right='10px'>
@@ -200,7 +201,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
                     {/* Font Btn */}
                     {/* <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
-                    <IconButton
+                    {editMode ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenFont}
                         aria-label='audio-toggle'
@@ -208,7 +209,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         isRound={true}
                         fontSize='30px'
                         icon={<RiFontSize />}
-                    />
+                    /> : null}
                     {/* </Tooltip> */}
 
                     {/* Info Btn */}

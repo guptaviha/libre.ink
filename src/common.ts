@@ -17,10 +17,12 @@ export function decode(str: string): string {
 
 export type PostObject = {
     postContent: string;
+    fontSize: string;
 };
 
-export function createPostObject(postContent: string): PostObject {
+export function createPostObject(postContent: string, fontSize: string): PostObject {
     return {
         postContent,
+        fontSize,
     };
 }
