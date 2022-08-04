@@ -20,7 +20,8 @@ import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT,
     FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP,
     SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
-    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT, TINY_URL_TOAST_TEXT
+    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT, TINY_URL_TOAST_TEXT,
+    INFO_MODAL_FAQ_HEAD1, INFO_MODAL_FAQ_BODY1, INFO_MODAL_FAQ_HEAD2, INFO_MODAL_FAQ_BODY2, INFO_MODAL_FAQ_HEAD3, INFO_MODAL_FAQ_BODY3, MD_GUIDE_TEXT
 } from '../constants';
 import { Logo } from './Logo';
 import { createPostObject, encode } from '../common';
@@ -89,7 +90,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         position: 'top',
                         isClosable: true,
                     })
-                // alert(encodedPostObject.length)
             }} /> : null}
 
             {/* Boba button */}
@@ -281,7 +281,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     />
                                 </Tooltip>
                                 <Tooltip label={TINY_URL_TOOLTIP} hasArrow>
-                                    {/* <Link href={TINY_URL_LINK} isExternal> */}
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
@@ -311,7 +310,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         aria-label='url-shorten'
                                         icon={<RiLinkUnlinkM />}
                                     />
-                                    {/* </Link> */}
                                 </Tooltip>
                                 <Tooltip label={EMAIL_TOOLTIP} hasArrow>
                                     <IconButton
@@ -351,76 +349,48 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton _focus={{ outline: "none" }} />
                         <ModalBody>
-                            {/* {INFO_MODAL_BODY_TEXT} */}
-                            Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk. We store your blog post right in the URL.
+                            {INFO_MODAL_BODY_TEXT}
                             <br /><br />
                             <Accordion allowToggle>
                                 <AccordionItem>
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                In the URL?
+                                                {INFO_MODAL_FAQ_HEAD1}
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking, no database and no server of any kind.
+                                        {INFO_MODAL_FAQ_BODY1}
                                     </AccordionPanel>
                                 </AccordionItem>
                                 <AccordionItem>
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                Why is my post's URL so long?
+                                                {INFO_MODAL_FAQ_HEAD2}
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
-                                        URLs also have size limits so the app won't work above a certain post size (Something like 20,000 characters).
+                                        {INFO_MODAL_FAQ_BODY2}
                                     </AccordionPanel>
                                 </AccordionItem>
                                 <AccordionItem>
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                Formatting with Markdown
+                                                {INFO_MODAL_FAQ_HEAD3}
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        We support Markdown. Here's a quick guide.
-                                        <br /><br />
-                                        <b>Heading</b> sizes range in hashes from 1 to 6 (#, ##, ..., ######)
-                                        <br />
-                                        <b>Italics</b> uses single asterisks like *this*
-                                        <br />
-                                        <b>Bold</b> uses double asterisks like **this**
-                                        <br />
-                                        <b>Strikethrough</b> uses double tildes like ~~this~~
-                                        <br />
-                                        <b>Horizontal</b> line uses triple hyphen like this: ---
-                                        <br />
-                                        Add a <b>blockquote</b> using >
-                                        <br />
-                                        <b>Code highlighting</b> uses single backticks like `this`
-                                        <br /><br />
-                                        1. Use <b>ordered lists</b> using numbers
-                                        <br />
-                                        - Or use <b>unordered lists</b> using single hyphens
-                                        <br /><br />
-                                        Add <b>links</b> like this: [Text](https://www.xyz.com)
-                                        <br />
-                                        Add <b>images</b> like this ![Text](https://xyz.png)
-                                        <br /><br />
-
-
-
-
-
+                                        <Text>
+                                            {INFO_MODAL_FAQ_BODY3}
+                                        </Text>
                                     </AccordionPanel>
                                 </AccordionItem>
                             </Accordion>
