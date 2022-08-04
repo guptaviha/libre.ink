@@ -81,6 +81,7 @@ export const INFO_MODAL_FAQ_BODY3 = (<div>We support Markdown. Heres a quick gui
     <br />
 </div>);
 
+export const INFO_MODAL_DISCL_TEXT = (<div><i><b>Disclaimer</b>: Due to the technical implications of our strict no-storage policy, we do not bear the responsibility for any misuse of this tool.</i></div>);
 
 export const TAG1_TEXT = `open-source`;
 export const TAG2_TEXT = `serverless`;

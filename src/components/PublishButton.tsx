@@ -11,7 +11,6 @@ export const PublishButton = (props: ButtonProps) => {
                 colorScheme='whatsapp'
                 fontSize='20px'
                 variant='ghost'
-                // _hover={{ background: "unset" }} 
                 _active={{ background: "unset", outline: "none" }}
                 _focus={{ outline: "none" }}
                 onClick={props.onClick}

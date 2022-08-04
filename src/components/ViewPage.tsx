@@ -36,7 +36,7 @@ export const ViewPage = (props: ViewPageProps) => {
             />
 
             <Box display='flex' alignItems='center' justifyContent='center'>Made with
-                <Logo sizePx={30}/>Libre.ink
+                <Logo sizePx={30} />Libre.ink
             </Box>
 
             <FloatingControls

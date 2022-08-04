@@ -3,7 +3,7 @@ import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from "@uiw/react-md-editor";
 import { setTitle } from '../common';
-import { PLACEHOLDER_TEXT, STARTING_TEXT } from '../constants';
+import { PLACEHOLDER_TEXT } from '../constants';
 
 export type StatsType = {
     wordCount: number;
@@ -119,7 +119,7 @@ export const EditPage = () => {
             data-color-mode={colorMode}
             onTouchMove={() => setRecentlyTypedCount(0)}
             onMouseMove={() => setRecentlyTypedCount(0)}
-            // ref={editorRef}
+        // ref={editorRef}
         >
             <MDEditor
                 preview='edit'
@@ -149,8 +149,8 @@ export const EditPage = () => {
                         placeholder: PLACEHOLDER_TEXT
                     }
                 }
-                // enableScroll={false}
-                // overflow={true}
+            // enableScroll={false}
+            // overflow={true}
             />
             <FloatingControls
                 postContent={postContent}

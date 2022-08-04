@@ -1,12 +1,12 @@
-import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text, Center, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
+import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, Text, Center, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
+import { BsVolumeUp, BsVolumeMute, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2 } from 'react-icons/fi';
 import { IoShareOutline } from 'react-icons/io5';
 import { RiLinkUnlinkM } from 'react-icons/ri';
-import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
+import { BsQuestion, BsGithub } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
@@ -14,14 +14,13 @@ import { PublishButton } from './PublishButton';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
-import { setTitle } from '../common';
 
 import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT,
-    FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP,
-    SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
-    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT, TINY_URL_TOAST_TEXT,
-    INFO_MODAL_FAQ_HEAD1, INFO_MODAL_FAQ_BODY1, INFO_MODAL_FAQ_HEAD2, INFO_MODAL_FAQ_BODY2, INFO_MODAL_FAQ_HEAD3, INFO_MODAL_FAQ_BODY3, MD_GUIDE_TEXT
+    FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP,
+    GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
+    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, TINY_URL_TOAST_TEXT,
+    INFO_MODAL_FAQ_HEAD1, INFO_MODAL_FAQ_BODY1, INFO_MODAL_FAQ_HEAD2, INFO_MODAL_FAQ_BODY2, INFO_MODAL_FAQ_HEAD3, INFO_MODAL_FAQ_BODY3, INFO_MODAL_DISCL_TEXT
 } from '../constants';
 import { Logo } from './Logo';
 import { createPostObject, encode } from '../common';
@@ -190,7 +189,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     {/* Share Btn */}
                     {!editMode ?
                         <>
-                            {/* <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}> */}
                             <IconButton
                                 _focus={{ outline: "none" }}
                                 onClick={onOpenSave}
@@ -200,12 +198,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 fontSize='30px'
                                 icon={<IoShareOutline />}
                             />
-                            {/* </Tooltip> */}
                         </>
                         : null}
 
                     {/* Font Btn */}
-                    {/* <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
                     {editMode ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenFont}
@@ -215,10 +211,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         fontSize='30px'
                         icon={<RiFontSize />}
                     /> : null}
-                    {/* </Tooltip> */}
 
                     {/* Info Btn */}
-                    {/* <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
                     <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenInfo}
@@ -228,7 +222,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         fontSize='36px'
                         icon={<BsQuestion />}
                     />
-                    {/* </Tooltip> */}
 
                     {/* Dark Mode Btn */}
                     <Tooltip label={colorMode === 'dark' ? DARK_MODE_BTN_OFF_TOOLTIP : DARK_MODE_BTN_ON_TOOLTIP} hasArrow openDelay={1000}>
@@ -242,7 +235,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
                         />
                     </Tooltip>
-
 
                 </Box>
 
@@ -412,7 +404,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
                             <br />
 
-                            <Text fontSize='md'><i><b>Disclaimer</b>: Due to the technical implications of our strict no-storage policy, we do not bear the responsibility for any misuse of this tool.</i></Text>
+                            <Text fontSize='md'>
+                                {INFO_MODAL_DISCL_TEXT}
+                            </Text>
 
                             <br />
 
