@@ -15,7 +15,6 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
  - [ ] Re-write the placeholder text to mention markdown
  - [ ] iOS scroll fix needs to be perfected
  - [ ] About modal needs to include the GIF inside an accordion.
- - [ ] Fix enter line issue
  - [ ] How do we show the Edit button? Save everything in local storage, and detect if this is the author?
  - [ ] Fix height bug in view page for mobile
 
@@ -32,4 +31,4 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
  - [ ] History button if we are storing the previous posts
  - [ ] Dynamically show title when sharing to WhatsApp
  - [ ] Markdown toolbar on mobile is buggy
-
+ - [ ] Fix enter line issue
