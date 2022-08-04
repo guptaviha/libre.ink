@@ -477,9 +477,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                             textAlign='center'
                                             bg='blue.500'
                                             color='white'
-                                            mt='-10'
-                                            ml='-5'
-                                            w='12'
+                                            mt='4'
+                                            ml='-4'
+                                            w='8'
                                         >
                                             {fontSize}
                                         </SliderMark>

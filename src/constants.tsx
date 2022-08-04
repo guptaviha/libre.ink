@@ -52,7 +52,7 @@ export const INFO_MODAL_BODY_TEXT = (<div>
     </div>);
 
 export const INFO_MODAL_FAQ_HEAD1 = `In the URL?`;
-export const INFO_MODAL_FAQ_BODY1 = `That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking, no database and no server of any kind.`;
+export const INFO_MODAL_FAQ_BODY1 = `That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking and no database of any kind.`;
 export const INFO_MODAL_FAQ_HEAD2 = `Why is my post's URL so long?`;
 export const INFO_MODAL_FAQ_BODY2 = (<div>
     Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
