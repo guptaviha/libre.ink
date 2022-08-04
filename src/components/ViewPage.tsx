@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, useColorMode } from '@chakra-ui/react';
+import { Box, Center, Stack, useColorMode, Text, Heading } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from '@uiw/react-md-editor';
 import { PostObject, setTitle } from '../common';
@@ -35,8 +35,10 @@ export const ViewPage = (props: ViewPageProps) => {
                 }}
             />
 
-            <Box display='flex' alignItems='center' justifyContent='center'>Made with
-                <Logo sizePx={30} />Libre.ink
+            <Box display='flex' alignItems='center' justifyContent='center' margin="20px">
+                <Text fontSize={14} >Made with </Text>
+                <Logo sizePx={30} /> 
+                <Text fontSize={14} fontFamily='monospace'> Libre.ink</Text>
             </Box>
 
             <FloatingControls

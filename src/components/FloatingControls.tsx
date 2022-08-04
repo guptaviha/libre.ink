@@ -343,7 +343,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         <ModalCloseButton _focus={{ outline: "none" }} />
                         <ModalBody>
                             {INFO_MODAL_BODY_TEXT}
-                            <br /><br />
+                            <br />
                             <Accordion allowToggle>
                                 <AccordionItem>
                                     <AccordionButton>
