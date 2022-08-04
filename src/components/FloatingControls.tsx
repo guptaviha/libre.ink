@@ -14,12 +14,13 @@ import { PublishButton } from './PublishButton';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
+import { setTitle } from '../common';
 
 import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT,
     FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP,
     SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
-    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT
+    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT, TINY_URL_TOAST_TEXT
 } from '../constants';
 import { Logo } from './Logo';
 import { createPostObject, encode } from '../common';
@@ -39,6 +40,10 @@ const fontOptions = [{
 }, {
     fontName: 'Cursive'
 }];
+
+function timeout(delay: number) {
+    return new Promise(res => setTimeout(res, delay));
+}
 
 type FloatingControlsProps = {
     postContent: string;
@@ -277,29 +282,45 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     />
                                 </Tooltip>
                                 <Tooltip label={TINY_URL_TOOLTIP} hasArrow>
-                                    <Link href={TINY_URL_LINK} isExternal>
-                                        <IconButton
-                                            _focus={{ outline: "none" }}
-                                            onClick={() => {
-                                                // !onCloseSave;
-                                                // const url = window.location.href;
-                                                // window.print();
-                                            }}
-                                            variant='ghost'
-                                            isRound={true}
-                                            size='lg'
-                                            fontSize='30px'
-                                            aria-label='url-shorten'
-                                            icon={<RiLinkUnlinkM />}
-                                        />
-                                    </Link>
+                                    {/* <Link href={TINY_URL_LINK} isExternal> */}
+                                    <IconButton
+                                        _focus={{ outline: "none" }}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(window.location.href);
+
+                                            toast({
+                                                title: TINY_URL_TOAST_TEXT,
+                                                status: 'success',
+                                                duration: 2500,
+                                                position: 'top',
+                                                isClosable: true,
+                                            })
+
+                                            setTimeout(() => {
+                                                window.open(
+                                                    TINY_URL_LINK,
+                                                    '_blank'
+                                                )
+                                            },
+                                                2800)
+
+                                        }}
+                                        variant='ghost'
+                                        isRound={true}
+                                        size='lg'
+                                        fontSize='30px'
+                                        aria-label='url-shorten'
+                                        icon={<RiLinkUnlinkM />}
+                                    />
+                                    {/* </Link> */}
                                 </Tooltip>
                                 <Tooltip label={EMAIL_TOOLTIP} hasArrow>
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
                                             const url = window.location.href;
-                                            window.open(`mailto:?subject=My%20MLibre%20Ink&body=${url}`);
+                                            const title = document.title;
+                                            window.open(`mailto:?subject=${title}&body=${url}`);
                                             setIsEmailed(true);
                                         }}
                                         variant='ghost'
@@ -366,13 +387,41 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                Markdown and shortcuts
+                                                Formatting with Markdown
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        We support Markdown and some common editing shortcuts for things like <b>Bold</b> and <i>Italics</i>.
+                                        We support Markdown. Here's a quick guide.
+                                        <br /><br />
+                                        <b>Heading</b> sizes range in hashes from 1 to 6 (#, ##, ..., ######)
+                                        <br />
+                                        <b>Italics</b> uses single asterisks like *this*
+                                        <br />
+                                        <b>Bold</b> uses double asterisks like **this**
+                                        <br />
+                                        <b>Strikethrough</b> uses double tildes like ~~this~~
+                                        <br />
+                                        <b>Horizontal</b> line uses triple hyphen like this: ---
+                                        <br />
+                                        Add a <b>blockquote</b> using >
+                                        <br />
+                                        <b>Code highlighting</b> uses single backticks like `this`
+                                        <br /><br />
+                                        1. Use <b>ordered lists</b> using numbers
+                                        <br />
+                                        - Or use <b>unordered lists</b> using single hyphens
+                                        <br /><br />
+                                        Add <b>links</b> like this: [Text](https://www.xyz.com)
+                                        <br />
+                                        Add <b>images</b> like this ![Text](https://xyz.png)
+                                        <br /><br />
+
+
+
+
+
                                     </AccordionPanel>
                                 </AccordionItem>
                             </Accordion>

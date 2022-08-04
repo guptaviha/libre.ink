@@ -39,6 +39,7 @@ export const TINY_URL_TOOLTIP = 'URL Shortening with TinyURL';
 export const EMAIL_TOOLTIP = 'Open Mail Client';
 
 export const CLIPBOARD_TOAST_TEXT = 'URL copied to clipboard.';
+export const TINY_URL_TOAST_TEXT = 'URL copied to clipboard, redirecting to tinyurl.com ...';
 
 export const BOBA_HEADER_TEXT = 'Help keep the lights on';
 export const BOBA_BODY_TEXT = 'If you like what you see, consider supporting us.\n';
