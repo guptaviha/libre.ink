@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from '@uiw/react-md-editor';
@@ -30,7 +30,7 @@ export const ViewPage = (props: ViewPageProps) => {
                     margin: "70px 0 0",
                     background: "unset",
                     boxShadow: "unset",
-                    overflow: "auto",
+                    overflow: 'auto',
                     fontSize: `${postObject.fontSize}px`
                 }}
             />
@@ -40,7 +40,7 @@ export const ViewPage = (props: ViewPageProps) => {
             </Box>
 
             <FloatingControls
-                editMode={false}
+                displayMode='view'
                 show={true}
                 postContent={postObject.postContent}
             />
