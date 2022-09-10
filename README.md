@@ -11,16 +11,11 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
 [![](https://github.com/karanrajpal.png?size=50)](https://github.com/karanrajpal)
 
 ### Feature List - MVP
- - [ ] Remove Libre.ink from the title and add "Made by Libre.ink" to the bottom
  - [ ] Put cursor at the end of the text on page load
- - [ ] Edit the "no server" text
  - [ ] Re-write the placeholder text to mention markdown
- - [ ] iOS scroll fix needs to be perfected
- - [ ] Readme needs to include the GIF inside an accordion.
- - [ ] Fix enter line issue?
+ - [ ] iOS scroll fix needs to be perfected for edit page
+ - [ ] About modal needs to include the GIF inside an accordion.
  - [ ] How do we show the Edit button? Save everything in local storage, and detect if this is the author?
- - [ ] Fix height bug in view page for mobile
- - [ ] 
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard
@@ -35,4 +30,4 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
  - [ ] History button if we are storing the previous posts
  - [ ] Dynamically show title when sharing to WhatsApp
  - [ ] Markdown toolbar on mobile is buggy
-
+ - [ ] Fix enter line issue

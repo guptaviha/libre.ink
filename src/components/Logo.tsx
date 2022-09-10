@@ -18,7 +18,7 @@ type LogoProps = {
 export const Logo = (props: LogoProps) => {
     const [icon, setIcon] = useState(ghostIconSE);
     const logoRef = useRef();
-    const { fixedLocationX, fixedLocationY, sizePx = 40} = props;
+    const { fixedLocationX, fixedLocationY, sizePx = 40 } = props;
     let positionX = logoRef?.current?.offsetLeft;
     let positionY = logoRef?.current?.offsetTop;
     useEffect(() => {

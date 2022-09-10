@@ -1,12 +1,12 @@
-import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, WrapItem, LinkOverlay, Text, Center, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
+import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, Text, Center, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { BsVolumeUp, BsVolumeMute, BsFacebook, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
+import { BsVolumeUp, BsVolumeMute, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
 import { RiFontSize } from 'react-icons/ri';
 import { FiBarChart2 } from 'react-icons/fi';
 import { IoShareOutline } from 'react-icons/io5';
 import { RiLinkUnlinkM } from 'react-icons/ri';
-import { BsQuestion, BsGithub, BsTwitter } from 'react-icons/bs';
+import { BsQuestion, BsGithub } from 'react-icons/bs';
 import { StatsType } from './EditPage';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react'
@@ -14,13 +14,13 @@ import { PublishButton } from './PublishButton';
 import { GiBoba } from 'react-icons/gi';
 import GitHubButton from 'react-github-btn'
 import Typewriter from 'typewriter-effect';
-import { setTitle } from '../common';
 
 import {
     APP_TITLE, BOBA_HEADER_TEXT, BOBA_BODY_TEXT, BOBA_BTN_TEXT, GITHUB_STAR_BTN_TEXT, INFO_MODAL_HEADER_TEXT, INFO_MODAL_BODY_TEXT, TAG1_TEXT, TAG2_TEXT, TAG3_TEXT,
-    FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP, INFO_BTN_TOOLTIP, FONT_BTN_TOOLTIP,
-    SHARE_BTN_TOOLTIP, GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, TWITTER_SHARE_LINK, FB_SHARE_LINK, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
-    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, FONT_OPTIONS_LABEL_TEXT, TINY_URL_TOAST_TEXT
+    FONT_HEADER_TEXT, FONT_SIZE_LABEL_TEXT, MD_TOOLBAR_LABEL_TEXT, SHARE_HEADER_TEXT, SHARE_FOOTER_TEXT, CLIPBOARD_TOOLTIP,
+    GITHUB_LINK, BUY_ME_A_BOBA_LINK, APP_TITLE_TOOLTIP, EMAIL_TOOLTIP, TINY_URL_LINK, TINY_URL_TOOLTIP,
+    CLIPBOARD_TOAST_TEXT, MUTE_BTN_ON_TOOLTIP, MUTE_BTN_OFF_TOOLTIP, DARK_MODE_BTN_ON_TOOLTIP, DARK_MODE_BTN_OFF_TOOLTIP, TINY_URL_TOAST_TEXT,
+    INFO_MODAL_FAQ_HEAD1, INFO_MODAL_FAQ_BODY1, INFO_MODAL_FAQ_HEAD2, INFO_MODAL_FAQ_BODY2, INFO_MODAL_FAQ_HEAD3, INFO_MODAL_FAQ_BODY3, INFO_MODAL_DISCL_TEXT
 } from '../constants';
 import { Logo } from './Logo';
 import { createPostObject, encode } from '../common';
@@ -40,10 +40,6 @@ const fontOptions = [{
 }, {
     fontName: 'Cursive'
 }];
-
-function timeout(delay: number) {
-    return new Promise(res => setTimeout(res, delay));
-}
 
 type FloatingControlsProps = {
     postContent?: string;
@@ -89,7 +85,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         position: 'top',
                         isClosable: true,
                     })
-                // alert(encodedPostObject.length)
             }} /> : null}
 
             {/* Boba button */}
@@ -189,7 +184,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     {/* Share Btn */}
                     {displayMode === 'view' ?
                         <>
-                            {/* <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}> */}
                             <IconButton
                                 _focus={{ outline: "none" }}
                                 onClick={onOpenSave}
@@ -199,12 +193,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                 fontSize='30px'
                                 icon={<IoShareOutline />}
                             />
-                            {/* </Tooltip> */}
                         </>
                         : null}
 
                     {/* Font Btn */}
-                    {/* <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
                     {displayMode === 'edit' ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenFont}
@@ -214,10 +206,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         fontSize='30px'
                         icon={<RiFontSize />}
                     /> : null}
-                    {/* </Tooltip> */}
 
                     {/* Info Btn */}
-                    {/* <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
                     {displayMode === 'edit' || displayMode === 'view' ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenInfo}
@@ -227,7 +217,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         fontSize='36px'
                         icon={<BsQuestion />}
                     /> : null}
-                    {/* </Tooltip> */}
 
                     {/* Dark Mode Btn */}
                     <Tooltip label={colorMode === 'dark' ? DARK_MODE_BTN_OFF_TOOLTIP : DARK_MODE_BTN_ON_TOOLTIP} hasArrow openDelay={1000}>
@@ -241,7 +230,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             icon={colorMode === 'dark' ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
                         />
                     </Tooltip>
-
 
                 </Box>
 
@@ -281,7 +269,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                     />
                                 </Tooltip>
                                 <Tooltip label={TINY_URL_TOOLTIP} hasArrow>
-                                    {/* <Link href={TINY_URL_LINK} isExternal> */}
                                     <IconButton
                                         _focus={{ outline: "none" }}
                                         onClick={() => {
@@ -311,7 +298,6 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         aria-label='url-shorten'
                                         icon={<RiLinkUnlinkM />}
                                     />
-                                    {/* </Link> */}
                                 </Tooltip>
                                 <Tooltip label={EMAIL_TOOLTIP} hasArrow>
                                     <IconButton
@@ -351,76 +337,48 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                         </ModalHeader>
                         <ModalCloseButton _focus={{ outline: "none" }} />
                         <ModalBody>
-                            {/* {INFO_MODAL_BODY_TEXT} */}
-                            Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk. We store your blog post right in the URL.
-                            <br /><br />
+                            {INFO_MODAL_BODY_TEXT}
+                            <br />
                             <Accordion allowToggle>
                                 <AccordionItem>
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                In the URL?
+                                                {INFO_MODAL_FAQ_HEAD1}
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        That's right. We encode your entire blog post and store it in the URL. This provides true anonymity. Remember to bookmark/share your blog URL because we don't store it anywhere. In fact, we have no tracking, no database and no server of any kind.
+                                        {INFO_MODAL_FAQ_BODY1}
                                     </AccordionPanel>
                                 </AccordionItem>
                                 <AccordionItem>
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                Why is my post's URL so long?
+                                                {INFO_MODAL_FAQ_HEAD2}
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        Since everything is stored in the URL, the generated URL can get fairly long depending on the size of your post, but you can always use a URL-shortener you trust to make it shareable.
-                                        URLs also have size limits so the app won't work above a certain post size (Something like 20,000 characters).
+                                        {INFO_MODAL_FAQ_BODY2}
                                     </AccordionPanel>
                                 </AccordionItem>
                                 <AccordionItem>
                                     <AccordionButton>
                                         <Box flex='1' textAlign='left'>
                                             <h3 style={{ fontWeight: 'bold' }}>
-                                                Formatting with Markdown
+                                                {INFO_MODAL_FAQ_HEAD3}
                                             </h3>
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     <AccordionPanel pb={4}>
-                                        We support Markdown. Here's a quick guide.
-                                        <br /><br />
-                                        <b>Heading</b> sizes range in hashes from 1 to 6 (#, ##, ..., ######)
-                                        <br />
-                                        <b>Italics</b> uses single asterisks like *this*
-                                        <br />
-                                        <b>Bold</b> uses double asterisks like **this**
-                                        <br />
-                                        <b>Strikethrough</b> uses double tildes like ~~this~~
-                                        <br />
-                                        <b>Horizontal</b> line uses triple hyphen like this: ---
-                                        <br />
-                                        Add a <b>blockquote</b> using >
-                                        <br />
-                                        <b>Code highlighting</b> uses single backticks like `this`
-                                        <br /><br />
-                                        1. Use <b>ordered lists</b> using numbers
-                                        <br />
-                                        - Or use <b>unordered lists</b> using single hyphens
-                                        <br /><br />
-                                        Add <b>links</b> like this: [Text](https://www.xyz.com)
-                                        <br />
-                                        Add <b>images</b> like this ![Text](https://xyz.png)
-                                        <br /><br />
-
-
-
-
-
+                                        <Text>
+                                            {INFO_MODAL_FAQ_BODY3}
+                                        </Text>
                                     </AccordionPanel>
                                 </AccordionItem>
                             </Accordion>
@@ -441,7 +399,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
                             <br />
 
-                            <Text fontSize='md'><i><b>Disclaimer</b>: Due to the technical implications of our strict no-storage policy, we do not bear the responsibility for any misuse of this tool.</i></Text>
+                            <Text fontSize='md'>
+                                {INFO_MODAL_DISCL_TEXT}
+                            </Text>
 
                             <br />
 
@@ -512,9 +472,9 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                             textAlign='center'
                                             bg='blue.500'
                                             color='white'
-                                            mt='-10'
-                                            ml='-5'
-                                            w='12'
+                                            mt='4'
+                                            ml='-4'
+                                            w='8'
                                         >
                                             {fontSize}
                                         </SliderMark>
