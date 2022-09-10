@@ -160,7 +160,7 @@ export const EditPage = () => {
                 setSoundOn={setSoundOn}
                 fontSize={fontSize}
                 setFontSize={setFontSize}
-                editMode={true}
+                displayMode='edit'
                 hideMdToolbar={hideMdToolbar}
                 setHideMdToolbar={setHideMdToolbar}
             />

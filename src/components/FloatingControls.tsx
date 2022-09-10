@@ -46,20 +46,20 @@ function timeout(delay: number) {
 }
 
 type FloatingControlsProps = {
-    postContent: string;
+    postContent?: string;
     stats?: StatsType;
     show: boolean;
     soundOn?: boolean;
     setSoundOn?: (soundOn: boolean) => void;
     fontSize?: number;
     setFontSize?: (fontSize: number) => void;
-    editMode: boolean;
+    displayMode: 'edit' | 'view' | 'landing';
     hideMdToolbar?: boolean;
     setHideMdToolbar?: (hideMdToolbar: boolean) => void;
 };
 
 export const FloatingControls = (props: FloatingControlsProps) => {
-    const { stats, show, soundOn, postContent, setSoundOn, editMode, hideMdToolbar, setHideMdToolbar, fontSize, setFontSize } = props;
+    const { stats, show, soundOn, postContent = '', setSoundOn, displayMode, hideMdToolbar, setHideMdToolbar, fontSize, setFontSize } = props;
     const [isCopied, setIsCopied] = useState(false);
     const [isEmailed, setIsEmailed] = useState(false);
     const [typewriterTimedout, setTypewriterTimedout] = useState(false);
@@ -76,7 +76,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     return (
         <>
             {/* Publish button */}
-            {editMode ? <PublishButton id="publish-btn" onClick={() => {
+            {displayMode === 'edit' ? <PublishButton id="publish-btn" onClick={() => {
                 localStorage.setItem('storedPost', postContent);
                 const postObject = createPostObject(postContent, String(fontSize));
                 const encodedPostObject = encode(JSON.stringify(postObject));
@@ -93,7 +93,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             }} /> : null}
 
             {/* Boba button */}
-            {!editMode ?
+            {displayMode === 'view' ?
                 <Popover>
                     <PopoverTrigger>
                         <IconButton
@@ -146,11 +146,10 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Popover>
                 : null}
 
-            {editMode ? <Logo fixedLocationX={10} fixedLocationY={18} /> : null}
-            {editMode ? <Logo fixedLocationX={10} fixedLocationY={18} /> : null}
+            {(displayMode === 'edit' || displayMode === 'landing') ? <Logo fixedLocationX={10} fixedLocationY={18} /> : null}
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
-                {editMode ? <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+                {(displayMode === 'edit' || displayMode === 'landing') ? <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                         <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title={APP_TITLE_TOOLTIP}>
                             {!typewriterTimedout ? <Typewriter
@@ -170,7 +169,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 <Box display='flex' gap={{ base: '1px', md: '4px', sm: '1px' }} position='fixed' top='14px' right='10px'>
 
                     {/* Mute Btn */}
-                    {editMode ?
+                    {displayMode === 'edit' ?
                         <>
                             <Tooltip label={soundOn === true ? MUTE_BTN_ON_TOOLTIP : MUTE_BTN_OFF_TOOLTIP} hasArrow openDelay={1000}>
                                 <IconButton
@@ -188,7 +187,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
 
                     {/* Share Btn */}
-                    {!editMode ?
+                    {displayMode === 'view' ?
                         <>
                             {/* <Tooltip label={SHARE_BTN_TOOLTIP} hasArrow closeOnClick={true} openDelay={1000}> */}
                             <IconButton
@@ -206,7 +205,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
                     {/* Font Btn */}
                     {/* <Tooltip label={FONT_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
-                    {editMode ? <IconButton
+                    {displayMode === 'edit' ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenFont}
                         aria-label='audio-toggle'
@@ -219,15 +218,15 @@ export const FloatingControls = (props: FloatingControlsProps) => {
 
                     {/* Info Btn */}
                     {/* <Tooltip label={INFO_BTN_TOOLTIP} hasArrow openDelay={1000}> */}
-                    <IconButton
+                    {displayMode === 'edit' || displayMode === 'view' ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenInfo}
-                        aria-label='audio-toggle'
+                        aria-label='info-toggle'
                         variant='ghost'
                         isRound={true}
                         fontSize='36px'
                         icon={<BsQuestion />}
-                    />
+                    /> : null}
                     {/* </Tooltip> */}
 
                     {/* Dark Mode Btn */}
@@ -478,7 +477,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Modal>
 
                 {/* Edit Btn */}
-                {/* {!editMode ? <IconButton
+                {/* {displayMode === 'view' ? <IconButton
                     _focus={{ outline: "none" }}
                     onClick={() => {
                         localStorage.setItem('storedPost', postContent);
@@ -525,7 +524,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         <SliderThumb />
                                     </Slider>
                                 </Box>
-                                {/* {editMode ? <Box>
+                                {/* {displayMode === 'edit' ? <Box>
                                     <FormLabel as='h3' fontWeight='bold'>{FONT_OPTIONS_LABEL_TEXT}</FormLabel>
                                     <Box display='flex' justifyContent='space-between' flexWrap='wrap'>
                                         {fontOptions.map((font) => (
@@ -547,7 +546,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                                         ))}
                                     </Box>
                                 </Box> : null} */}
-                                {editMode ? <Box display='flex' alignItems='center' margin='20px 0'>
+                                {displayMode === 'edit' ? <Box display='flex' alignItems='center' margin='20px 0'>
                                     <FormLabel htmlFor='markdown-toolbar' mb='0'>
                                         {MD_TOOLBAR_LABEL_TEXT}
                                     </FormLabel>
@@ -564,7 +563,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 </Modal>
 
                 {/* Stats Btn */}
-                {editMode ? <Popover>
+                {displayMode === 'edit' ? <Popover>
                     <PopoverTrigger>
                         <IconButton
                             _focus={{ outline: "none" }}

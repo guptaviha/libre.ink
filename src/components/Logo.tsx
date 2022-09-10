@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, Image, Link } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import ghostIconSW from '../../assets/icons/noun-ghost-sneaky-sw.svg';
 import ghostIconC from '../../assets/icons/noun-ghost-sneaky-c.svg';
 import ghostIconSE from '../../assets/icons/noun-ghost-sneaky-se.svg';
@@ -54,7 +55,7 @@ export const Logo = (props: LogoProps) => {
         }
     }, [positionX, positionY]);
     return (
-        <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+        <Link to='/'>
             <Box position={fixedLocationY ? 'fixed' : 'relative'} top={fixedLocationY ? `${fixedLocationY}px` : 'unset'} left={fixedLocationX ? `${fixedLocationX}px` : 'unset'} display='flex' alignItems='center' ref={logoRef}>
                 <Image src={icon} width={`${sizePx}px`} paddingRight='5px' />
             </Box>
