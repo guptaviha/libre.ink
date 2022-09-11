@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Center, Stack, useColorMode, Text, Heading, background } from '@chakra-ui/react';
+import { Box, useColorMode, Text } from '@chakra-ui/react';
 import { FloatingControls } from './FloatingControls';
 import MDEditor from '@uiw/react-md-editor';
 import { PostObject, setTitle } from '../common';
 import { Logo } from './Logo';
+import { Link } from 'react-router-dom';
 
 type ViewPageProps = {
     postObject: PostObject;
@@ -46,7 +47,7 @@ export const ViewPage = (props: ViewPageProps) => {
             <Box display='flex' alignItems='center' justifyContent='center' margin="20px 0 40px">
                 <Text fontSize={14} >Made with </Text>
                 <Logo sizePx={30} />
-                <Text fontSize={14} fontFamily='monospace'> Libre.ink</Text>
+                <Text fontSize={14} fontFamily='monospace'><Link to='/'> Libre.ink</Link></Text>
             </Box>
 
             {ismobilesafari() ? <div style={{ margin: "40px 0 140px" }}></div> : null}
