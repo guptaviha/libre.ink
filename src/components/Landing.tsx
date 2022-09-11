@@ -32,7 +32,7 @@ export const Landing = () => {
                 <Text fontSize='5xl' margin={'40px 0 30px'}>
                     <span style={{ color: mainTextColor }}>Instant anonymous</span> blogging
                 </Text>
-                <Text margin='0 0 25px' textAlign={isMobile() ? 'left' : 'center'}>
+                <Text margin='0 0 25px' textAlign={isMobile() ? 'left' : 'center'} lineHeight="taller">
                     libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk.
                     <br />We store your blog post right in the URL.
                 </Text>
