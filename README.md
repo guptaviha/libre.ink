@@ -16,6 +16,8 @@ https://user-images.githubusercontent.com/32573056/182714448-a6b5ad6d-bd42-4ba7-
  - [ ] iOS scroll fix needs to be perfected for edit page
  - [ ] About modal needs to include the GIF inside an accordion.
  - [ ] How do we show the Edit button? Save everything in local storage, and detect if this is the author?
+ - [ ] Ghost eyes at bottom don't work properly
+ - [ ] Main page subheading?
 
 ### Feature List - Later
  - [ ] Page views/ Analytics dashboard
