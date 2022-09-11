@@ -19,7 +19,9 @@ export const Landing = () => {
                 flexDirection='column'
                 alignItems='center'
                 overflow='scroll'
-                padding="100px 0 50px"
+                paddingTop="100px"
+                paddingBottom="50px"
+                className='landing-page'
             >
                 <Text fontSize='5xl' margin={'0 0 30px'}>
                     <span style={{ color: mainTextColor }}>Instant anonymous</span> blogging
@@ -35,7 +37,6 @@ export const Landing = () => {
                 </Link>
                 <video muted loop autoPlay width="800" height="600">
                     <source src='https://github.com/guptaviha/libre.ink/raw/main/assets/Quick-Tutorial.mov' />
-                    {/* <source src={'/Quick-Tutorial.mov'} /> */}
                 </video>
                 {/* <Image
                     src={tutorialGif}
