@@ -208,7 +208,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                     /> : null}
 
                     {/* Info Btn */}
-                    {displayMode === 'edit' || displayMode === 'view' ? <IconButton
+                    {displayMode === 'edit' || displayMode === 'view' || displayMode === 'landing' ? <IconButton
                         _focus={{ outline: "none" }}
                         onClick={onOpenInfo}
                         aria-label='info-toggle'
