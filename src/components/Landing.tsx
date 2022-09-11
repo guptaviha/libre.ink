@@ -25,7 +25,7 @@ export const Landing = () => {
                     <span style={{ color: mainTextColor }}>Instant anonymous</span> blogging
                 </Text>
                 <Text margin='0 0 25px' textAlign='center'>
-                    Libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk.
+                    libre.ink is a truly anonymous instant-publish blog platform that has a unique quirk.
                     <br />We store your blog post right in the URL.
                 </Text>
                 <Link to='/app'>
@@ -33,8 +33,8 @@ export const Landing = () => {
                         Write post
                     </Button>
                 </Link>
-                <video autoplay muted width="800" height="600" name="Libre.ink">
-                    <source src={'https://github.com/guptaviha/libre.ink/raw/main/assets/Quick-Tutorial.mov'} />
+                <video muted loop autoPlay width="800" height="600">
+                    <source src='https://github.com/guptaviha/libre.ink/raw/main/assets/Quick-Tutorial.mov' />
                     {/* <source src={'/Quick-Tutorial.mov'} /> */}
                 </video>
                 {/* <Image
