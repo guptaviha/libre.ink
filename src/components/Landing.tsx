@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Button, ChakraProvider, Image, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Button, ChakraProvider, Text, useColorMode } from '@chakra-ui/react';
 import theme from '../theme';
 import { Link } from 'react-router-dom';
 import { FloatingControls } from './FloatingControls';
 import '../styles/main.scss';
-// import tutorialMov from '../../assets/Quick-Tutorial.mov';
+import { setTitle } from '../common';
+import { LANDING_PAGE_TITLE } from '../constants';
 
 function isMobile() {
     if (navigator.userAgent.toLowerCase().match(/mobile/i)) {
@@ -16,6 +17,7 @@ function isMobile() {
 export const Landing = () => {
     const { colorMode } = useColorMode();
     const mainTextColor = colorMode === 'dark' ? 'rgb(167, 214, 247)' : 'rgb(42, 103, 247)';
+    setTitle(LANDING_PAGE_TITLE);
     return (
         <ChakraProvider theme={theme}>
             <Box
@@ -38,7 +40,7 @@ export const Landing = () => {
                 </Text>
                 <Link to='/app'>
                     <Button size='lg' variant='outline' margin='0 0 50px'>
-                        Write post
+                        Start writing
                     </Button>
                 </Link>
                 <Box marginBottom={isMobile() ? "200px" : "50px"} boxShadow="0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);">

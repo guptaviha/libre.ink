@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { BsFileText } from 'react-icons/bs';
 import { PUBLISH_BTN_TEXT } from '../constants';

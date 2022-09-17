@@ -1,4 +1,5 @@
 import { Link, Tooltip, Heading, PopoverHeader, PopoverArrow, PopoverBody, PopoverFooter, PopoverCloseButton, ButtonGroup, FormControl, FormLabel, Switch, useToast, Stack, Button, Box, Fade, IconButton, Popover, PopoverContent, PopoverTrigger, Table, TableContainer, Tbody, Td, Tr, useColorMode, Slider, SliderMark, SliderFilledTrack, SliderThumb, SliderTrack, Text, Center, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { BsVolumeUp, BsVolumeMute, BsClipboard, BsClipboardCheck } from 'react-icons/bs';
 import { MdOutlineLightMode, MdOutlineNightlight, MdOutlineMailOutline, MdOutlineMarkEmailRead } from 'react-icons/md';
@@ -65,6 +66,8 @@ export const FloatingControls = (props: FloatingControlsProps) => {
     const { isOpen: isOpenFont, onOpen: onOpenFont, onClose: onCloseFont } = useDisclosure();
     const { isOpen: isOpenSave, onOpen: onOpenSave, onClose: onCloseSave } = useDisclosure();
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         setTimeout(() => setTypewriterTimedout(true), 2200);
     }, []);
@@ -76,15 +79,18 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                 localStorage.setItem('storedPost', postContent);
                 const postObject = createPostObject(postContent, String(fontSize));
                 const encodedPostObject = encode(JSON.stringify(postObject));
-                encodedPostObject.length <= 15000 ?
-                    window.location.search = `?post=${encodedPostObject}` :
+                if (encodedPostObject.length >= 15000) {
                     toast({
                         title: `Oh no, your post is too long! The max URL length is 15000 but yours is ${encodedPostObject.length}. Please shorten your post and try again.`,
                         status: 'error',
                         duration: 15000,
                         position: 'top',
                         isClosable: true,
-                    })
+                    });
+                } else {
+                    // navigate(`?post=${encodedPostObject}`);
+                    window.location.search = `?post=${encodedPostObject}`;
+                }
             }} /> : null}
 
             {/* Boba button */}
@@ -144,7 +150,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
             {(displayMode === 'edit' || displayMode === 'landing') ? <Logo fixedLocationX={10} fixedLocationY={18} /> : null}
 
             <Fade style={{ transitionDuration: '0.4s' }} in={show}>
-                {(displayMode === 'edit' || displayMode === 'landing') ? <Link href='/' _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+                {(displayMode === 'edit' || displayMode === 'landing') ? <RouterLink to='/'>
                     <Box position='fixed' top='18px' left='10px' display='flex' alignItems='center'>
                         <Heading pl={10} pt={1} size={{ base: 'lg', sm: 'md', md: 'md', lg: 'md' }} fontFamily='monospace' title={APP_TITLE_TOOLTIP}>
                             {!typewriterTimedout ? <Typewriter
@@ -158,7 +164,7 @@ export const FloatingControls = (props: FloatingControlsProps) => {
                             /> : <div>{APP_TITLE}</div>}
                         </Heading>
                     </Box>
-                </Link> : null}
+                </RouterLink> : null}
 
                 {/* Toolbar Buttons */}
                 <Box display='flex' gap={{ base: '1px', md: '4px', sm: '1px' }} position='fixed' top='14px' right='10px'>

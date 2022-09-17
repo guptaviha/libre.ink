@@ -23,8 +23,6 @@ export const ViewPage = (props: ViewPageProps) => {
     const { colorMode } = useColorMode();
     setTitle(postObject.postContent);
 
-    console.log(ismobilesafari())
-
     return (
         <Box
             w='100%'
@@ -57,7 +55,6 @@ export const ViewPage = (props: ViewPageProps) => {
                 show={true}
                 postContent={postObject.postContent}
             />
-
         </Box>
     );
 };
